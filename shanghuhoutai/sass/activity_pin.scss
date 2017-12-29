@@ -1,0 +1,71 @@
+@import "public";
+@import 'all_pin';
+
+.activity-pin-con {
+  width: 1030px;
+  float: left;
+  background: #fff;
+  overflow: scroll;
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none
+  }
+  .activity-top {
+    height: 120px;
+    width: 100%;
+    color: #fff;
+    padding-top: 15px;
+    text-align: center;
+    .top-con {
+      width: 120px;
+      height: 100%;
+      background: #509be0;
+      margin-left: 15px;
+      .top-con-title {
+        height: 70%;
+        width: 100%;
+        line-height: 100px;
+      }
+      .pack-top-con-stu {
+        height: 30%;
+        width: 100%;
+        background: #03325a;
+        line-height: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+  .cons {
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    min-height: 720px;
+    padding-top: 10px;
+    .pack,
+    .time {
+      .input {
+        height: 40px;
+        line-height: 40px;
+        input {
+          border: 1px solid #ccc;
+          margin-left: 15px;
+          padding: 5px;
+        }
+      }
+    }
+    .submit {
+      height: 40px;
+      width: 120px;
+      background: #00d6f8;
+      box-shadow: 1px 1px 2px 2px #1e4570;
+      cursor: pointer;
+      float: left;
+      margin-top: 35px;
+      margin-left: 720px;
+      &:active{
+        box-shadow: 1px 1px 2px 2px #1e4570 inset;
+
+      }
+    }
+  }
+}

@@ -1,0 +1,558 @@
+@import "public";
+@import "all";
+.body {
+    background: #f1f1f1;
+}
+
+.set-con {
+    height: auto;
+    width: 1010px;
+    padding-top: 30px;
+    padding-left: 15px;
+    background: #f1f1f1;
+    float: left;
+    position: relative;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        display: none
+    }
+    .loading-show-img {
+        height: auto;
+        width: auto;
+        margin-top: 15px;
+        background: #fff;
+        overflow: hidden;
+        padding: 15px 0;
+        .show-img-con {
+            height: 120px;
+            width: 120px;
+            float: left;
+            margin-left: 15px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 15px;
+            border: 1px solid #000;
+            &:first-child {
+                margin-left: 0
+            }
+            img {}
+            .last,
+            .next {
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 20px;
+                background: rgba(255, 255, 255, 0.5);
+                line-height: 120px;
+                text-align: center;
+                font-size: 25px;
+                cursor: pointer;
+                z-index: 1;
+                color: #000;
+            }
+            .last {
+                left: -20px;
+            }
+            .next {
+                right: -20px;
+            }
+            .loading-show-img-del {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 20px;
+                cursor: pointer;
+                z-index: 2;
+            }
+        }
+    }
+    .loading-show-sure {
+        height: 30px;
+        width: 80px;
+        background: #00d6f8;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        margin: 15px;
+        box-shadow: 1px 1px 1px 1px #ccc;
+        float: right;
+        &:active {
+            box-shadow: 1px 1px 1px 1px #ccc inset;
+        }
+    }
+    .email,
+    .mima,
+    .phone {
+        height: auto;
+        width: 700px;
+        overflow: hidden;
+        span {
+            float: left;
+        }
+        .input {
+            height: 30px;
+            width: 60%;
+            float: left;
+            margin-left: 10px;
+            padding: 5px;
+            background: #fff;
+            input {
+                height: 100%;
+                width: 100%;
+                float: left;
+            }
+        }
+        .email-warn {
+            color: red;
+            margin-left: 15px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .hint {
+            height: 60px;
+            width: 150px;
+            background: #fff;
+            text-align: center;
+            line-height: 60px;
+            color: #888;
+            box-shadow: 0 0 30px 1px #333333;
+            position: absolute;
+            left: 200px;
+            top: 0;
+            display: none;
+        }
+    }
+    .bang,
+    .sure-mima {
+        height: 30px;
+        width: 80px;
+        background: #00d6f8;
+        box-shadow: 1px 1px 1px 1px #ccc;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        margin: 15px 0 80px 400px;
+        &:active {
+            box-shadow: 1px 1px 1px 1px #ccc inset;
+        }
+    }
+    .mima {
+        margin-top: 30px;
+        position: relative;
+        .input {
+            margin-bottom: 15px;
+            margin-left: 70px;
+            .yanzheng {
+                background: #00d6f8;
+                box-shadow: 1px 1px 1px 1px #ccc;
+                &:active {
+                    box-shadow: 1px 1px 1px 1px #ccc inset;
+                }
+            }
+        }
+        .hint-sure {
+            height: 60px;
+            width: 150px;
+            background: #fff;
+            text-align: center;
+            line-height: 60px;
+            color: #888;
+            box-shadow: 0 0 30px 1px #333333;
+            position: absolute;
+            left: 200px;
+            top: 10px;
+            display: none;
+        }
+    }
+    .sure-mima {
+        margin-top: 0;
+    }
+    .phone {
+        margin-top: 20px;
+        padding-bottom: 50px;
+        position: relative;
+        .input {
+            margin-bottom: 15px;
+            margin-left: 85px;
+        }
+        .sure-phone {
+            height: 30px;
+            width: 80px;
+            background: #00d6f8;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            margin-left: 15px;
+            box-shadow: 1px 1px 1px 1px #ccc;
+            &:active {
+                box-shadow: 1px 1px 1px 1px #ccc inset;
+            }
+        }
+        .hint-phone {
+            height: 60px;
+            width: 150px;
+            background: #fff;
+            text-align: center;
+            line-height: 60px;
+            color: #888;
+            box-shadow: 0 0 30px 1px #333333;
+            position: absolute;
+            left: 200px;
+            top: 50px;
+            display: none;
+        }
+    }
+    .yanzhengma {
+        margin-left: 15px;
+        height: auto;
+        width: 120px;
+        line-height: 30px;
+        font-size: 15px;
+        text-align: center;
+        float: left;
+        background: #00d6f8;
+        box-shadow: 1px 1px 1px 1px #ccc;
+        cursor: pointer;
+        &:active {
+            box-shadow: 1px 1px 1px 1px #ccc inset;
+        }
+    }
+    .banner-pic {
+        margin-top: 30px;
+        input {
+            display: block;
+            margin-bottom: 15px;
+            text-indent: 15px;
+            padding: 5px 0;
+        }
+        .banner-pic-sure {
+            height: 30px;
+            width: 80px;
+            background: #00d6f8;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            margin-left: 15px;
+            box-shadow: 1px 1px 1px 1px #ccc;
+            &:active {
+                box-shadow: 1px 1px 1px 1px #ccc inset;
+            }
+        }
+    }
+    .express-moudle {
+        margin-top: 30px;
+        .express-moudle-span {
+            font-size: 15px;
+        }
+        .moudle-name {
+            height: auto;
+            width: 100%;
+            padding-top: 15px;
+            span {
+                display: inline-block;
+                height: 40px;
+                width: 120px;
+                font-size: 20px;
+                color: #fff;
+                text-align: center;
+                line-height: 40px;
+                background: #002f4f;
+                border-radius: 4px;
+                margin-right: 15px;
+                margin-bottom: 15px;
+                cursor: pointer;
+            }
+            .seclect {
+                background: #3343b7;
+            }
+        }
+        .moudle-body {
+            width: 100%;
+            margin-top: 15px; // border: 1px solid #ccc;
+            .moudle {
+                height: auto;
+                width: 100%;
+                margin-bottom: 30px;
+                border: 1px solid #0098ff;
+                padding-bottom: 15px;
+                overflow: hidden;
+                .moudle-top {
+                    width: 100%;
+                    margin-top: 15px;
+                    overflow: hidden;
+                    .input {
+                        margin-left: 15px;
+                        height: 40px;
+                        width: 80%;
+                        margin-bottom: 15px;
+                        position: relative;
+                        ul {
+                            position: absolute;
+                            top: 25px;
+                            left: 70px;
+                            width: 30%;
+                            z-index: 999;
+                            text-align: center;
+                            background: #ccc;
+                            li {
+                                height: 30px;
+                                width: 100%;
+                                background: #fff;
+                                margin-bottom: 1px;
+                                line-height: 30px;
+                                cursor: pointer;
+                            }
+                        }
+                        span {
+                            float: left;
+                        }
+                        input {
+                            border: 1px solid #ccc;
+                        }
+                    }
+                    .sure {
+                        height: 30px;
+                        width: 120px;
+                        line-height: 30px;
+                        font-size: 15px;
+                        text-align: center;
+                        float: right;
+                        margin-bottom: 30px;
+                        margin-right: 200px;
+                        background: #00d6f8;
+                        box-shadow: 1px 1px 1px 1px #ccc;
+                        cursor: pointer;
+                        &:active {
+                            box-shadow: 1px 1px 1px 1px #ccc inset;
+                        }
+                    }
+                }
+                .freight {
+                    width: 100%;
+                    height: 40px;
+                    background: #0098ff;
+                    line-height: 40px;
+                    span {
+                        width: auto;
+                        height: 100%;
+                        padding: 0 15px;
+                        display: inline-block;
+                        img {
+                            width: 25px;
+                        }
+                    }
+                    .moudle-up,
+                    .moudle-del {
+                        cursor: pointer;
+                        color: #fff;
+                        margin-left: 15px;
+                        width: 100px;
+                    }
+                    .moudle-up {
+                        margin-left: 35px;
+                        text-align: center;
+                    }
+                    input {
+                        width: 70px;
+                        height: 25px;
+                        text-align: center;
+                    }
+                }
+                .moudle-con {
+                    height: auto;
+                    width: 100%;
+                    .moudle-con-top {
+                        height: 40px;
+                        width: 100%;
+                        background: #999999;
+                        color: #fff;
+                        line-height: 40px;
+                        overflow: hidden;
+                        div {
+                            height: 100%;
+                            float: left;
+                            font-size: 16px;
+                        }
+                        .left {
+                            width: 40%;
+                            text-align: center;
+                        }
+                        .con {
+                            width: 48%;
+                            text-align: center;
+                            a {
+                                display: inline-block;
+                                width: 20%;
+                                color: #fff;
+                                margin-left: 3%;
+                                &:first-child {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .moudle-con-body {
+                    height: auto;
+                    width: 100%;
+                    background: #f1f1f1;
+                    padding: 15px 0;
+                    border-bottom: 1px solid #ccc;
+                    overflow: hidden;
+                    div {
+                        float: left;
+                    }
+                    .left {
+                        width: 35%;
+                        .address {
+                            display: inline-block;
+                            width: 85%;
+                            padding: 0 5px;
+                        }
+                        .edit {
+                            width: 15%;
+                            float: right;
+                            padding: 0 5px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            color: #0098ff;
+                        }
+                    }
+                    .con {
+                        width: 50%;
+                        input {
+                            width: 20%;
+                            height: 30px;
+                            margin-left: 4%;
+                            text-indent: 15px;
+                        }
+                    }
+                    .gengxin {
+                        color: #0098ff;
+                        font-size: 16px;
+                        cursor: pointer;
+                    }
+                    .moudle-details-del {
+                        width: 8%;
+                        text-align: center;
+                        color: #0098ff;
+                        font-size: 16px;
+                        cursor: pointer;
+                    }
+                }
+                .add-moudle-details {
+                    color: #0098ff;
+                    cursor: pointer;
+                    margin-top: 15px;
+                }
+            }
+        }
+        .add-moudle,
+        .express-sure {
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #00d6f8;
+            margin: 30px auto;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px 1px #ccc;
+            cursor: pointer;
+            &:active {
+                box-shadow: 1px 1px 1px 1px #ccc inset;
+            }
+        }
+        .express-sure {
+            margin: 0;
+            margin-right: 15px;
+            float: right;
+        }
+    }
+}
+
+.banner-hint {
+    height: 60px;
+    width: 150px;
+    background: #fff;
+    text-align: center;
+    line-height: 60px;
+    color: #888;
+    box-shadow: 0 0 30px 1px #333333;
+    position: absolute;
+    left: 400px;
+    bottom: 300px;
+    display: none;
+}
+
+.cover {
+    height: 600px;
+    width: 600px;
+    background: #002f4f;
+    color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -300px;
+    z-index: 9999;
+    padding: 30px 15px;
+    display: none;
+    .province {
+        height: auto;
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 16px;
+        overflow: hidden;
+        span {
+            cursor: pointer;
+        }
+        .province-left {
+            float: left;
+            width: 20%;
+            input {
+                float: left;
+                margin-left: 15%;
+            }
+        }
+        .province-right {
+            float: left;
+            width: 80%;
+            input {
+                float: left;
+            }
+            div {
+                float: left;
+                margin-right: 15px;
+            }
+        }
+    }
+    .cover-sure {
+        height: 30px;
+        width: 80px;
+        text-align: center;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        cursor: pointer;
+        line-height: 30px;
+        background: #00d6f8;
+        box-shadow: 1px 1px 1px 1px #0c6977;
+        &:active {
+            box-shadow: 1px 1px 1px 1px #0c6977 inset;
+        }
+    }
+    .guanbi {
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        color: #000;
+        line-height: 30px;
+        border-radius: 50px;
+        background: #00d6f8;
+    }
+}

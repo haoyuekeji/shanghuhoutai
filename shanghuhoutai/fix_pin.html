@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/fix_pin.css">
+    <script src="js/token_pin.min.js"></script>
+    <style>
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+
+        <div class="push-con">
+            <a href="charge_pin.html" class="back">
+                <<返回</a>
+                    <div class="title">
+                        <span>宝贝标题：</span>
+                        <div class="input">
+                            <input type="text" placeholder="宝贝标题">
+                        </div>
+                    </div>
+                    <div class="kuanhao">
+                        <span>款号：</span>
+                        <div class="input">
+                            <input type="text" placeholder="款号">
+                        </div>
+                    </div>
+                    <div class="classify">
+                        <span>宝贝分类：</span>
+                        <div class="input">
+                            <input type="text" placeholder="宝贝分类">
+                        </div>
+                    </div>
+                    <div class="span">
+                    </div>
+                    <span style="display: inline-block;margin-top: 30px">上传主图(最多上传5张)</span>
+                    <input id="loading" name="file" type="file" multiple>
+                    <div class="loading-show-img">
+
+                    </div>
+                    <span style="display: inline-block;margin-top: 30px">上传详情图片(最多上传10张)</span>
+                    <input id="uploading" name="file" type="file" multiple>
+                    <div class="uploading-show-img">
+
+                    </div>
+                    <div class="preview">
+                        <span>预览：</span>
+                        <div class="uploading-preview-con">
+
+
+
+                        </div>
+                    </div>
+                    <span style="float: left; margin-top: 20px">添加信息 (双击修改信息)
+                    </span>
+                    <div class="sure">
+
+                    </div>
+
+                    <div class="add">
+                        <img src='images/add.png' alt="">
+                    </div>
+                    <div class="button">
+                        保 存
+                    </div>
+                    <div class="canshu">
+                        <span>商品参数</span>
+                        <textarea name="" id="" cols="100" rows="10"></textarea>
+                    </div>
+
+                    <!-- <div class="address">
+                <span>发货地址</span>
+                <div class="input">
+                    <textarea></textarea>
+                </div>
+            </div> -->
+
+                    <div class="kuaidi">
+                        <span>快递选择</span>
+                        <div class="input">
+                            <select>
+                                <option>选择快递模板</option>
+                            </select>
+                        </div>
+                        <div class="input">
+                            <span>免邮费</span>
+                            <input type="checkbox" class="express">
+                        </div>
+                    </div>
+
+                    <div class="tjbianji">
+                        <span>价格文案编辑</span>
+                        <div class="input">
+                            <input type="text" name="" value="" placeholder="例如特价优惠,二人团价等">
+                        </div>
+                    </div>
+                    <div class="pdan-num">
+                        <span>拼单人数</span>
+                        <div class="input">
+                            <input type="text" placeholder="拼单人数">
+                        </div>
+                    </div>
+                    <div class="pdan-time">
+                        <span>拼单时间</span>
+                        <div class="input">
+                            <input type="text" placeholder="拼单时间">
+                        </div>
+                    </div>
+                    <div class="pdan-start">
+                        <span>拼单开始时间</span>
+                        <div class="input">
+                            <input type="date" name="" id="">
+                            <input type="number" placeholder="小时(24小时制)"> 时
+                            <input type="number" placeholder="分钟"> 分
+                        </div>
+                    </div>
+                    <div class="pdan-end">
+                        <span>拼单结束时间</span>
+                        <div class="input">
+                            <input type="date" name="" id="">
+                            <input type="number" placeholder="小时(24小时制)"> 时
+                            <input type="number" placeholder="分钟"> 分
+                        </div>
+                    </div>
+                    <!--<div class="kuaidi">-->
+                    <!--<span>上架选择</span>-->
+                    <!--<div class="input">-->
+                    <!--<span>立即上架</span><input type="radio" name="jia">-->
+                    <!--</div>-->
+                    <!--<div class="input">-->
+                    <!--<span>稍后上架</span><input type="radio" name="jia">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!-- <div class="canshu">
+                <span>宝贝参数</span>
+                <div class="canshu-all">
+                    <div class="input">
+                        <span>品牌</span>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <span>材质</span>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <span>货号</span>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <span>图案</span>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <span>风格</span>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <span>款式</span>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <span>版型</span>
+                        <input type="text">
+                    </div>
+                </div>
+            </div> -->
+                    <div class="fabu">
+                        发 布
+                    </div>
+        </div>
+    </div>
+    <div class="hint-page">
+
+    </div>
+</body>
+
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/fileinput.min.js" type="text/javascript"></script>
+<script src="js/zh.min.js" type="text/javascript"></script>
+<script src="js/location.min.js"></script>
+<script src="js/fix_pin.min.js"></script>

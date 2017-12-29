@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>联系我们</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/link.css">
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=53d6df96c2b8ddaae18c93050f9f6894"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="head">
+            <div class="img">
+                <a href="index.html">
+                    <img src="images/logo1.png" alt="" width="100%">
+                </a>
+            </div>
+            <div class="nav">
+                <a href="index.html">首页</a>
+                <a href="coop.html">服务合作</a>
+                <a href="team.html">技术团队</a>
+                <a href="#">联系我们</a>
+                <a href="#">常见问题</a>
+            </div>
+            <div class="login">
+                <a href="login.html">普通商户登录</a>
+                <br>
+                <a href="login_pin.html">拼多多商户登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="link">
+        <div class="link-left">
+            <h4>联系我们</h4>
+            <ul>
+                <li>电话：13914937656</li>
+                <li>邮箱：liping.song@163.com</li>
+                <li>地址：苏州市 常熟市 新颜路1号 琴湖集团4楼402室</li>
+            </ul>
+            <div id="container" style="width:100%; height:450px"></div>
+        </div>
+        <div class="link-right">
+            <h4>留下您的联系方式</h4>
+            <ul>
+                <li>
+                    <div>
+                        <span>*</span>
+                        <div>姓名：</div>
+                    </div>
+                    <div>
+                        <input type="text" class="name">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>*</span>
+                        <div>电话：</div>
+                    </div>
+                    <div>
+                        <input type="text" class="phone">
+                    </div>
+                </li>
+                <li>
+                    <div>邮箱：</div>
+                    <div>
+                        <input type="text" class="mail">
+                    </div>
+                </li>
+                <li>
+                    <div>地址：</div>
+                    <p>
+                        <textarea name="" cols="70" rows="6" class="address"></textarea>
+                    </p>
+                </li>
+                <li>
+                    <div>
+                        <span>*</span>
+                        <div>留言：</div>
+                    </div>
+                    <p>
+                        <textarea name="" cols="70" rows="10" class="message"></textarea>
+                    </p>
+                </li>
+            </ul>
+            <div class="button">
+                确定
+            </div>
+        </div>
+    </div>
+
+
+    <div class="title">皓月科技有限公司</div>
+    <div class="footer">
+        <div class="footer-con">
+            <div class="con">
+                <div>
+                    <span>2017苏州皓月科技有限公司</span>
+                    <span>苏ICP备17055388号</span> 版权所有不得转载 网址：
+                    <a href="https://www.cslapp.com">www.cslapp.com</a>
+                </div>
+                <span>联系我们 &nbsp电话：0512-52705212</span>
+                <span>地址：苏州市常熟市新颜路琴湖集团4楼</span>
+            </div>
+            <div class="img">
+                <img src="images/erweima.png" alt="" width="100%">
+            </div>
+        </div>
+    </div>
+    <div class="init">
+
+    </div>
+</body>
+
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/link.min.js"></script>
+<script type="text/javascript">
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom: 11,
+        center: [120.774050, 31.643970]
+    });
+    var marker = new AMap.Marker({
+        position: [120.774050, 31.643970]
+    });
+    marker.setMap(map);
+    map.setFitView();
+    var info = new AMap.InfoWindow({
+        content: "苏州皓月科技有限公司",
+        offset: new AMap.Pixel(0, -28)
+    });
+    info.open(map, marker.getPosition())
+</script>

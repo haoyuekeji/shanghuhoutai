@@ -1,0 +1,212 @@
+@import "public";
+body {
+    background: #e7e7e7;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    line-height: 100px;
+    text-align: center;
+    .head {
+        height: 100%;
+        width: 80%;
+        margin: 0 auto;
+        .img {
+            height: 100%;
+            width: 10%;
+            float: left;
+            img {
+                margin-top: 10px;
+            }
+        }
+        .nav {
+            float: left;
+            height: 80%;
+            width: 70%;
+            margin-left: 5%;
+            border-bottom: 3px solid #e7e7e7;
+            &:hover {
+                color: #3d62ff;
+            }
+            a {
+                display: inline-block;
+                height: 100%;
+                width: 19%;
+                &:hover {
+                    border-bottom: 3px solid #3d62ff;
+                    color: #3d62ff;
+                }
+            }
+            .active {
+                color: #3d62ff;
+                border-bottom: 3px solid #3d62ff;
+            }
+        }
+    }
+    .login {
+        display: inline-block;
+        height: 100%;
+        width: 10%;
+        text-align: center;
+    }
+}
+
+.banner {
+    height: auto;
+    width: 100%; // position: relative;
+    // .img {
+    //   height: auto;
+    //   width: 100%;
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   z-index: -1;
+    // }
+    // .banner-con {
+    //   height: 265px;
+    //   width: 80%;
+    //   margin: 0 auto;
+    //   padding-top: 130px;
+    //   color: #fff;
+    //   text-align: center;
+    //   letter-spacing: 50px;
+    //   p {
+    //     width: 100%;
+    //     font-size: 130px;
+    //     font-weight: bold;
+    //   }
+    //   span {
+    //     display: block;
+    //     padding-top: 60px;
+    //     width: 100%;
+    //     font-size: 50px;
+    //     letter-spacing: 40px;
+    //     margin-left: 30px;
+    //   }
+    // }
+    // .button {
+    //   height: 100px;
+    //   width: 80%;
+    //   margin: 150px auto;
+    //   text-align: center;
+    //   input {
+    //     display: inline-block;
+    //     height: 80px;
+    //     width: 20%;
+    //     letter-spacing: 0;
+    //     color: #fff;
+    //     font-size: 30px;
+    //     line-height: 80px;
+    //     background: #00910e;
+    //     cursor: pointer;
+    //     &:first-child {
+    //       background: #f9ab02;
+    //       margin-right: 100px;
+    //     }
+    //   }
+    // }
+}
+
+.list {
+    height: auto;
+    width: 80%;
+    margin: 15px auto;
+    // padding: 60px 0;
+    // overflow: hidden;
+    // h2 {
+    //     font-size: 40px;
+    // }
+    // .list-con {
+    //     float: left;
+    //     width: 25%;
+    //     margin-top: 20px;
+    //     div {
+    //         width: 35%;
+    //         height: 50%;
+    //         margin: 0 auto;
+    //     }
+    //     span {
+    //         display: inline-block;
+    //         width: 100%;
+    //         text-align: center;
+    //         margin-top: 15px;
+    //     }
+    // }
+}
+
+.flow {
+    width: 100%;
+    height: auto;
+    background: #c0d2ff;
+    padding: 50px 0;
+    .flow-cons {
+        height: auto;
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        .flow-con {
+            height: 120px;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 30px;
+            .img {
+                width: 10%;
+                float: left;
+                margin-top: 5%;
+            }
+            .con {
+                width: 85%;
+                height: 100%;
+                float: left;
+                margin: 7% 0 0 15px;
+                span {
+                    font-weight: 700;
+                }
+                p {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 20px 0;
+}
+
+.footer {
+    height: 200px;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    .footer-con {
+        width: 80%;
+        height: 80%;
+        margin: 0 auto;
+        line-height: 30px;
+        .con {
+            float: left;
+            width: 90%;
+            height: 80%;
+            padding-top: 5%;
+            a {
+                color: #fff;
+            }
+            span {
+                margin: 0 10px;
+            }
+        }
+        .img {
+            height: 100%;
+            padding-top: 2%;
+            float: right;
+            width: 10%;
+        }
+    }
+}

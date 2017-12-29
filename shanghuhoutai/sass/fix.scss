@@ -1,0 +1,491 @@
+@import "public";
+@import "all";
+.push-con {
+    width: 100%;
+    float: left;
+    background: #f1f1f1;
+    padding: 20px;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        display: none
+    }
+    .back {
+        font-size: 25px;
+    }
+    .title {
+        margin-top: 20px;
+    }
+    .title,
+    .classify,
+    .kuanhao {
+        width: 990px;
+        height: 40px;
+        margin-bottom: 10px;
+        span {
+            line-height: 40px;
+            float: left;
+        }
+        div {
+            height: 40px;
+            width: 890px;
+            background: #fff;
+            padding-left: 15px;
+            float: left;
+            input {
+                height: 100%;
+                width: 100%;
+                font-size: 15px;
+            }
+        }
+    }
+    .kuanhao {
+        .input {
+            margin-left: 30px;
+        }
+    }
+    .span {
+        height: auto;
+        width: 92%;
+        background: #fff;
+        margin-left: 70px;
+        padding: 15px;
+        line-height: 40px;
+        font-size: 15px;
+        margin-bottom: 15px;
+        overflow: hidden;
+        .span-span {
+            height: 60px;
+            width: 100px;
+            text-align: center;
+            height: 100%;
+            padding: 0 15px;
+            background: #ccc;
+            cursor: pointer;
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            position: relative;
+            overflow: hidden;
+            .last,
+            .next {
+                height: 100%;
+                width: 20px;
+                background: rgba(255, 255, 255, 0.7);
+                position: absolute;
+                top: 0;
+            }
+            .last {
+                left: -20px;
+            }
+            .next {
+                right: -20px;
+            }
+            &:active {
+                color: red;
+            }
+        }
+    }
+    .upload {
+        width: auto;
+        height: auto;
+        overflow: hidden;
+        span {
+            float: left;
+        }
+        .pic {
+            height: auto;
+            width: auto;
+            background: #fff;
+            margin-left: 80px;
+            .input {
+                height: 80px;
+                width: 80px;
+                position: relative;
+                border: 1px solid #ccc;
+                img,
+                input {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    cursor: pointer;
+                }
+                input {
+                    opacity: 0;
+                    font-size: 0;
+                }
+            }
+        }
+    }
+    .loading-show-img,
+    .uploading-show-img {
+        height: auto;
+        width: auto;
+        margin-top: 15px;
+        background: #fff;
+        overflow: hidden;
+        padding: 15px 0;
+        .show-img-con {
+            height: 120px;
+            width: 120px;
+            float: left;
+            margin-left: 15px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 15px;
+            border: 1px solid #000;
+            &:first-child {
+                margin-left: 0
+            }
+            img {}
+            .last,
+            .next {
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 20px;
+                background: rgba(255, 255, 255, 0.5);
+                line-height: 120px;
+                text-align: center;
+                font-size: 25px;
+                cursor: pointer;
+                z-index: 1;
+            }
+            .last {
+                left: -20px;
+            }
+            .next {
+                right: -20px;
+            }
+            .loading-show-img-del {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 20px;
+                cursor: pointer;
+                z-index: 2;
+            }
+        }
+    }
+    .chima {
+        height: auto;
+        width: 500px;
+        .transform {
+            text-transform: uppercase;
+        }
+    }
+    .yanse,
+    .danjia,
+    .kucun {
+        width: 70px;
+        height: 30px;
+        margin-top: 15px;
+        float: left;
+        margin-right: 200px;
+        span {
+            float: left;
+            line-height: 30px;
+        }
+        .input {
+            width: 70px;
+            height: 20px;
+            margin-left: 80px;
+            input {
+                height: 100%;
+                width: 100%;
+                padding: 5px;
+                text-align: center;
+            }
+        }
+    }
+    .button,
+    .fabu {
+        height: 40px;
+        width: 120px;
+        background: #88efff;
+        margin: 40px auto;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        box-shadow: 1px 1px 1px 1px #999;
+        &:active {
+            box-shadow: 1px 1px 2px 1px #999 inset;
+        }
+    }
+    .button {
+        margin-top: 40px;
+        margin-left: 800px;
+        background: #ccc;
+    }
+    .address {
+        height: 101px;
+        width: 401px;
+        overflow: hidden;
+        margin-top: 20px;
+        span {
+            float: left;
+        }
+        .input {
+            height: 100px;
+            width: 300px;
+            margin-left: 100px;
+            textarea {
+                height: 99px;
+                width: 299px;
+            }
+        }
+    }
+    .sure {
+        height: auto;
+        width: 700px;
+        margin: 20px auto;
+        background: #fff;
+        .all {
+            height: auto;
+            width: 700px;
+            margin-top: 15px;
+            background: #ccc;
+            padding: 15px 0;
+            position: relative;
+            .all-top {
+                ul {
+                    height: 20px;
+                    width: 100%;
+                    li {
+                        height: 20px;
+                        width: 150px;
+                        float: left;
+                        text-align: center;
+                        border: 1px solid #ccc;
+                        border-left: none;
+                        &:first-child {
+                            border-left: 1px solid #ccc;
+                        }
+                    }
+                }
+            }
+            .all-con {
+                height: auto;
+                width: 100%;
+                overflow: hidden;
+                margin-top: 15px;
+                .all-con-left {
+                    height: 100%;
+                    width: 15%;
+                    float: left;
+                    text-align: center;
+                    line-height: 120px;
+                    input {
+                        height: 30px;
+                        width: 70px;
+                        text-align: center;
+                        border: 1px solid #666;
+                    }
+                }
+                .all-con-right {
+                    height: 100%;
+                    width: 85%;
+                    float: left;
+                    ul {
+                        width: 100%;
+                        li {
+                            width: 100%;
+                            height: 14%;
+                            .push-details {
+                                overflow: hidden;
+                                position: relative;
+                                li {
+                                    width: 24%;
+                                    height: 30px;
+                                    float: left;
+                                    line-height: 30px;
+                                    text-align: center;
+                                    input {
+                                        height: 80%;
+                                        width: 80%;
+                                        text-align: center;
+                                        border: 1px solid #666;
+                                    }
+                                }
+                                .del_ {
+                                    right: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .del,
+                .del_ {
+                    height: 20px;
+                    width: 20px;
+                    position: absolute;
+                    right: 5px;
+                    top: 5px;
+                    cursor: pointer;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .add,
+    .add_ {
+        height: auto;
+        width: 50px;
+        margin: 20px 0 0 582px;
+        cursor: pointer;
+    }
+    .add_ {
+        margin: 20px 0 0 250px;
+    }
+    .kuaidi {
+        height: auto;
+        width: 700px;
+        margin: 15px auto;
+        overflow: hidden;
+        span {
+            float: left;
+        }
+        select {
+            width: 130px;
+            text-align: center;
+        }
+        .input {
+            cursor: pointer;
+            float: left;
+            margin-left: 50px;
+            input[type=text] {
+                width: 100px;
+                border: 1px solid #000;
+            }
+            input {
+                height: 20px;
+                width: 20px;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+    .tjbianji{
+        height:32px;
+        margin-bottom: 10px;
+        span{
+            float: left;
+        }
+        .input {
+            cursor: pointer;
+            float: left;
+            margin-left: 30px;
+            input[type=text] {
+                width: 200px;
+                border: 1px solid #ccc;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            input {
+                height: 30px;
+                width: 20px;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+    .canshu {
+        height: auto;
+        width: 800px;
+        margin-top: 15px;
+        overflow: hidden;
+        span {
+            float: left;
+        }
+        .canshu-all {
+            height: auto;
+            width: 700px;
+            margin-left: 80px;
+            overflow: hidden;
+            .input {
+                float: left;
+                height: 20px;
+                width: 40%;
+                margin-left: 15px;
+                margin-bottom: 25px;
+                span {
+                    float: left;
+                }
+                input {
+                    height: 100%;
+                    width: 75%;
+                    margin-left: 15px;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+    .choujiang {
+        margin-top: 15px;
+        width: 100%;
+        float: left;
+        span {
+            float: left;
+            margin-right: 15px;
+        }
+        .input {
+            span {
+                margin-right: 5px;
+            }
+            float: left;
+            margin-right: 15px;
+        }
+    }
+    .fabu {
+        margin-top: 30px;
+        height: 60px;
+        width: 200px;
+        font-size: 20px;
+        line-height: 60px;
+        margin: 40px 450px;
+        float: left;
+    }
+    .preview {
+        width: 700px;
+        margin: 15px auto;
+        border: 1px solid #ccc;
+        span {
+            display: block;
+            padding: 5px 0;
+        }
+        .loading-preview-con,
+        .uploading-preview-con {
+            height: 400px;
+            width: 100%;
+            background: #fff;
+            overflow: scroll;
+            &::-webkit-scrollbar {
+                display: none
+            }
+        }
+    }
+    .hide {
+        overflow: hidden;
+    }
+}
+
+.hint-page {
+    height: 150px;
+    width: 300px;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -75px;
+    box-shadow: 2px 2px 5px 1px #999;
+    text-align: center;
+    line-height: 150px;
+    color: #f40000;
+    display: none;
+    z-index: 999;
+}

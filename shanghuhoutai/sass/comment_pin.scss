@@ -1,0 +1,185 @@
+@import "public";
+@import "all_pin";
+.body {
+    .body-top {
+        .body-top-con {
+            height: 100%;
+            width: 80%;
+            margin: 0 auto;
+            .checked {
+                height: 100%;
+                width: 15%;
+                line-height: 100px;
+                float: left;
+                text-align: center;
+            }
+            .resend-con {
+                height: 60%;
+                width: 85%;
+                float: left;
+                margin-top: 2%;
+                textarea {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+.body-con {
+    .all {
+        .comment-cons {
+            height: auto;
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 5px 0;
+            overflow: hidden;
+            font-size: 14px;
+            .comment-cons-img {
+                width: 10%;
+                height: 100%;
+                float: left;
+                img {
+                    float: left;
+                    margin-top: 30%;
+                }
+            }
+            .comment-cons-con {
+                float: left;
+                width: 35%;
+                height: 100%;
+            }
+            .comment-cons-name {
+                float: left;
+                width: 15%;
+                height: 100%;
+                text-align: center;
+            }
+            .comment-cons-details {
+                float: left;
+                width: 30%;
+                height: 100%;
+                div {
+                    height: 40px;
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+            }
+            .comment-cons-sure {
+                float: left;
+                width: 10%;
+                height: 100%;
+                text-align: center;
+                line-height: 100px;
+                input {
+                    height: 30px;
+                    width: 80px;
+                    background: #006cff;
+                    color: #fff;
+                    box-shadow: 1px 1px 1px 1px #999999;
+                    cursor: pointer;
+                    &:active {
+                        box-shadow: 1px 1px 1px 1px #999999 inset;
+                    }
+                }
+            }
+            .comment-cons-none {
+                float: left;
+                height: auto;
+                width: 89%;
+                margin-left: 10%;
+                display: none;
+                .imgs {
+                    width: 100%;
+                    height: auto;
+                    img {
+                        width: 10%;
+                    }
+                }
+                .comment-cons-none-seller {
+                    float: left;
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 15px;
+                    .comment-cons-none-seller-name {
+                        width: 10%;
+                        height: 100%;
+                        line-height: 40px;
+                        text-align: center;
+                        float: left;
+                    }
+                    .comment-cons-none-seller-con {
+                        width: 90%;
+                        float: left;
+                        color: #666;
+                        .images {
+                            width: 100%;
+                            height: auto;
+                            img {
+                                width: 10%;
+                            }
+                        }
+                    }
+                }
+                .comment-cons-none-con {
+                    height: auto;
+                    width: 100%;
+                    margin-bottom: 15px;
+                    .comment-cons-none-con-name {
+                        width: 10%;
+                        height: 100%;
+                        line-height: 40px;
+                        text-align: center;
+                        float: left;
+                    }
+                    .comment-cons-none-con-con {
+                        width: 90%;
+                        float: left;
+                        color: #666;
+                        .images {
+                            width: 100%;
+                            height: auto;
+                            img {
+                                width: 10%;
+                            }
+                        }
+                    }
+                    .comment-cons-none-con-resend-con {
+                        height: auto;
+                        width: 100%;
+                        float: left;
+                        margin-top: 18px;
+                        padding: 5px 0;
+                        background: #f1f1f1;
+                        float: left;
+                        textarea {
+                            background: #f1f1f1;
+                            padding-left: 15px;
+                        }
+                    }
+                    .comment-cons-none-sure {
+                        height: 30px;
+                        width: 80px;
+                        float: right;
+                        margin: 15px;
+                        input {
+                            height: 30px;
+                            width: 80px;
+                            background: #006cff;
+                            color: #fff;
+                            box-shadow: 1px 1px 1px 1px #999999;
+                            cursor: pointer;
+                            &:active {
+                                box-shadow: 1px 1px 1px 1px #999999 inset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

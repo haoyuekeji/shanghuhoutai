@@ -1,0 +1,15 @@
+@import "public";
+@import "all";
+.search-con {
+    height: auto;
+    width: 1010px;
+    padding-top: 30px;
+    padding-left: 15px;
+    background: #f1f1f1;
+    float: left;
+    position: relative;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        display: none
+    }
+}

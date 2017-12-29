@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>宝贝管理</title>
+    <link rel="stylesheet" href="css/charge_pin.css">
+    <script src="js/token.min.js"></script>
+</head>
+
+<body>
+
+    <div class="body">
+        <div class="body-top">
+            <ul>
+                <li class="li li-change">正在销售</li>
+                <li class="li">待拼单</li>
+                <li class="li">
+                    <span>已发货</span>
+                    <ol>
+                        <div class="tuan">团购订单</div>
+                        <div class="person">个人订单</div>
+                    </ol>
+                </li>
+                <li class="li">
+                    <span>未发货</span>
+                    <ol>
+                        <div class="tuan">团购订单</div>
+                        <div class="person">个人订单</div>
+                    </ol>
+                </li>
+                <li class="li">仓库</li>
+                <li class="li">
+                    <span>已完成</span>
+                    <ol>
+                        <div class="tuan">团购订单</div>
+                        <div class="person">个人订单</div>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+        <div class="body-left">
+            <a>首页</a>
+            <a>发布新品</a>
+            <a class="li-change">宝贝管理</a>
+            <a>设置</a>
+            <a>查询</a>
+            <a>评论</a>
+            <div>
+                皓月科技提供技术支持
+                <br> 电话：0512-52705212
+            </div>
+        </div>
+        <div class="body-con">
+            <div class="all">
+
+
+                <div class="details">
+                    <div class="details-left">
+                        <img src="images/awesome_ing.png" alt="">
+                    </div>
+                    <div class="details-con width">
+                        <div class="details-con-top">
+                            悍风品牌2017夏季中国风男装霸气T恤男短袖潮男士个性纹身印花衣服 黑色 XL
+                        </div>
+                        <div class="price price-charge price-tuan">
+                            ￥365
+                            <span>￥166</span>
+                        </div>
+                        <span class="nums num">
+                            剩余库存：999 已卖出：999
+                        </span>
+                    </div>
+                    <div class="fahuo-tuan-ready" title="true">
+                        <input type="button" value="更多" name="true">
+                    </div>
+
+                    <div class="details-details-cons-tuan-ready">
+                        <div class="ordernumber-tuan">
+                            <div>订单号：21436434313</div>
+                        </div>
+
+                        <div class="details-details-cons-tuan-cons">
+
+
+
+                            <div class="details-details-cons-tuan-con">
+                                <div class="order-datails">
+                                    <div class="order-details-con">
+                                        <span>订单号：21436434313</span>
+                                        <span>大叔 15150141311</span>
+                                        <span>江苏省苏州市常熟市新颜路</span>
+                                    </div>
+                                    <div class="order-details-con">
+                                        <span>颜色：黑色 尺码：L</span>
+                                        <span>待发货 1件 总价1411</span>
+                                    </div>
+                                </div>
+                                <span class="order-creattime">2017/11/9 12:45:34</span>
+                            </div>
+                            <div class="show-express">
+                                <input type="button" value="查看物流" name="true">
+                            </div>
+
+
+
+                            <div class="details-details-cons-tuan-express-con">
+                                <div class="order-number-ready">
+                                    订单号：21436434313
+                                </div>
+                                <ul>
+                                    <li>
+                                        <span>2017/9/11 6:20:30</span>
+                                        <span>常熟市 新颜路***********4楼</span>
+                                    </li>
+                                    <li>
+                                        <span>2017/9/11 6:20:30</span>
+                                        <span>常熟市 新颜路***********4楼</span>
+                                    </li>
+                                    <li>
+                                        <span>2017/9/11 6:20:30</span>
+                                        <span>常熟市 新颜路***********4楼</span>
+                                    </li>
+                                    <li>
+                                        <span>2017/9/11 6:20:30</span>
+                                        <span>常熟市 新颜路***********4楼</span>
+                                    </li>
+                                    <li>
+                                        <span>2017/9/11 6:20:30</span>
+                                        <span>常熟市 新颜路***********4楼</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/location_pin.min.js"></script>
+<script>
+    $('.all').on('click', '.fahuo-tuan input', function () {
+        var stu = eval($(this).prop('name')) === true ? true : false
+        console.log(stu)
+        $(this).prop('name', !stu)
+        if (stu) {
+            $(this).val('点击隐藏')
+            $(this).parents('.details').find('.details-details-cons-tuan').slideDown()
+        } else {
+            $(this).val('填写物流单号')
+            $(this).parents('.details').find('.details-details-cons-tuan').slideUp()
+        }
+    })
+
+
+
+    $('.all').on('click', '.order-img', function () {
+        var stu = eval($(this).prop('title')) === true ? true : false
+        $(this).prop('title', !stu)
+        if (stu) {
+            $(this).css({
+                'transform': ' rotate(180deg)'
+            })
+            $(this).parents('.details-details-cons-tuan').find('.details-details-cons-tuan-cons').slideDown()
+        } else {
+            $(this).css({
+                'transform': ' rotate(0deg)'
+            })
+            $(this).parents('.details-details-cons-tuan').find('.details-details-cons-tuan-cons').slideUp()
+        }
+    })
+
+
+    $('.all').on('click', '.fahuo-tuan-ready input', function () {
+        var stu = eval($(this).prop('name')) === true ? true : false
+        console.log(stu)
+        $(this).prop('name', !stu)
+        if (stu) {
+            $(this).val('隐藏')
+            $(this).parents('.details').find('.details-details-cons-tuan-ready').slideDown()
+        } else {
+            $(this).val('更多')
+            $(this).parents('.details').find('.details-details-cons-tuan-ready').slideUp()
+        }
+    })
+
+
+
+
+    $('.all').on('click', '.show-express input', function () {
+        var stu = eval($(this).prop('name')) === true ? true : false
+        console.log(stu)
+        $(this).prop('name', !stu)
+        if (stu) {
+            $(this).parents('.details-details-cons-tuan-ready').find('.details-details-cons-tuan-express-con').slideDown()
+        } else {
+            $(this).parents('.details-details-cons-tuan-ready').find('.details-details-cons-tuan-express-con').slideUp()
+        }
+    })
+
+    $('body').on('click', '.tuan', function () {
+        var ind = $(this).parents('li').index()
+        console.log($(this).index())
+        switch (ind) {
+            case 2:
+                console.log('已发货团购')
+                break;
+            case 3:
+                console.log('未发货团购')
+                break;
+            case 5:
+                console.log('已完成团购')
+                break;
+            default:
+                break;
+        }
+    })
+
+
+
+    $('body').on('click', '.person', function () {
+        var ind = $(this).parents('li').index()
+        switch (ind) {
+            case 2:
+                console.log('已发货个人')
+                break;
+            case 3:
+                console.log('未发货个人')
+                break;
+            case 5:
+                console.log('已完成个人')
+                break;
+            default:
+                break;
+        }
+    })
+</script>

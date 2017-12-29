@@ -1,0 +1,323 @@
+@import "public";
+@import "all";
+.body-top {
+    width: 100%;
+}
+
+.body-con {
+    background: #fff;
+    .all {
+        overflow: scroll;
+        background: #fff;
+        .details {
+            height: auto;
+            width: 1018px;
+            overflow: scroll;
+            font-size: 12px!important;
+            &::-webkit-scrollbar {
+                display: none
+            }
+           
+            .details-con {
+                overflow: hidden;
+                padding-bottom: 5px;
+                .details-con-top {
+                    padding-top: 0;
+                    div {
+                        font-size: 12px;
+                        color: #999999;
+                    }
+                }
+                .style {
+                    margin-top: 0;
+                    span {
+                        display: inline-block;
+                        margin-right: 30px;
+                        color: #999999;
+                    }
+                }
+                .nums {
+                    margin-top: 0;
+                    display: inline;
+                    font-size: 12px;
+                }
+                .num {
+                    color: #999999;
+                }
+                .price-charge {
+                    bottom: 0;
+                }
+            }
+            .clear {
+                clear: both;
+            }
+            .width {
+                font-size: 12px;
+                width: 35%;
+            }
+            .details-right-charge {
+                height: auto;
+                width: 45%;
+                float: left;
+                font-size: 12px;
+                position: relative;
+                .address {
+                    width: 75%;
+                }
+                .fahuo {
+                    height: 30px;
+                    width: 120px;
+                    background: #00d6f8;
+                    color: #1e4570;
+                    text-align: center;
+                    line-height: 30px;
+                    box-shadow: 1px 1px 1px 1px #999999;
+                    float: right;
+                    cursor: pointer;
+                    position: absolute;
+                    bottom: 0;
+                    right: -20px;
+                    &:active {
+                        box-shadow: 1px 1px 1px 1px #999999 inset;
+                    }
+                }
+            }
+            .price {
+                span {
+                    color: #888;
+                    font-size: 12px;
+                }
+                .produt-id {
+                    color: #c50000;
+                    span {
+                        color: #c50000;
+                    }
+                }
+            }
+            .init {
+                height: 10px;
+                width: 30px;
+                margin-top: 15px;
+            }
+            .edit,
+            .shangjia,
+            .down,
+            .fix {
+                height: 30px;
+                width: 100px;
+                background: #00d6f8;
+                cursor: pointer;
+                float: left;
+                margin-right: 15px;
+                line-height: 30px;
+                text-align: center;
+                margin-top: 20px;
+                box-shadow: 1px 1px 1px 1px #999999;
+                &:active {
+                    box-shadow: 1px 1px 1px 1px #999999 inset;
+                }
+            }
+            .shopcar-count {
+                height: 40px;
+                width: 150px;
+                float: left;
+                margin-right: 15px;
+                line-height: 40px;
+                text-align: center;
+                margin-top: 15px;
+            }
+            .details-details {
+                height: auto;
+                width: 100%;
+                display: none;
+                float: left;
+                padding-bottom: 50px;
+                div {
+                    height: 40px;
+                    width: 100%;
+                    span {
+                        display: inline-block;
+                        height: 40px;
+                        width: 120px;
+                        text-align: center;
+                        line-height: 40px;
+                        &:last-child {
+                            margin-left: 30px;
+                        }
+                        input {
+                            width: 50px;
+                            height: 80%;
+                            background: #ccc;
+                            text-align: center;
+                        }
+                        .sure-price,
+                        .sure-nums {
+                            display: inline;
+                            background: #00d6f8;
+                            padding: 4px;
+                            cursor: pointer;
+                            box-shadow: 1px 1px 1px 1px #999999;
+                            margin-left: 10px;
+                            &:active {
+                                box-shadow: 1px 1px 1px 1px #999999 inset;
+                            }
+                        }
+                    }
+                    .del {
+                        height: 35px;
+                        line-height: 35px;
+                        background: #00d6f8;
+                        box-shadow: 1px 1px 1px 1px #999999;
+                        margin-left: 30px;
+                        cursor: pointer;
+                        &:active {
+                            box-shadow: 1px 1px 1px 1px #999999 inset;
+                        }
+                    }
+                }
+            }
+            .details-times{
+                height: 78px;
+                width: 200px;
+                display: block;
+                float: right;
+                text-align: center;
+                line-height: 78px;
+                display: flex;
+                justify-content: space-around;
+                span{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    font-size: 16px;
+                }
+            }
+            .beizhu {
+                width: 100%;
+                min-height: 40px;
+                font-size: 12px;
+                float: left;
+                position: relative;
+                .con {
+                    float: left;
+                    width: 85%;
+                    overflow: scroll;
+                    &::-webkit-scrollbar {
+                        display: none
+                    }
+                }
+                .tianxie {
+                    height: 30px;
+                    padding: 0 15px;
+                    background: #00d6f8;
+                    color: #1e4570;
+                    text-align: center;
+                    line-height: 30px;
+                    box-shadow: 1px 1px 1px 1px #999999;
+                    cursor: pointer;
+                    position: absolute;
+                    bottom: 5px;
+                    right: 30px;
+                    &:active {
+                        box-shadow: 1px 1px 1px 1px #999999 inset;
+                    }
+                }
+            }
+            .details-details-cons {
+                height: auto;
+                width: 100%;
+                display: none;
+                float: left;
+                margin-top: 15px;
+                .details-details-con {
+                    width: 100%;
+                    .details-ul,
+                    .express {
+                        width: 25%;
+                        float: left;
+                        margin-left: 15px;
+                        .details-ul-input {
+                            width: 100%;
+                            height: 30px;
+                            text-indent: 15px;
+                            border: 1px solid #ccc;
+                        }
+                        ul {
+                            width: 100%;
+                            padding-bottom: 15px;
+                            li {
+                                width: calc(100% - 2px);
+                                height: 30px;
+                                line-height: 30px;
+                                border: 1px solid #ccc;
+                                border-top: none;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .express {
+                        height: 30px;
+                        border: 1px solid #ccc;
+                        input {
+                            height: 100%;
+                            width: 100%;
+                            text-indent: 15px;
+                        }
+                    }
+                    .express-sure {
+                        width: 120px;
+                        height: 40px;
+                        cursor: pointer;
+                        background: #00d6f8;
+                        box-shadow: 1px 1px 1px 1px #999999;
+                        text-align: center;
+                        line-height: 40px;
+                        float: right;
+                        margin-right: 65px;
+                        &:active {
+                            box-shadow: 1px 1px 1px 1px #999999 inset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pages {
+        height: 70px;
+        width: 280px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        span {
+            display: inline-block;
+            height: 40px;
+            width: 120px;
+            margin-top: 15px;
+            cursor: pointer;
+            background: #00d6f8;
+            box-shadow: 1px 1px 1px 1px #999999;
+            text-align: center;
+            line-height: 40px;
+            &:active {
+                box-shadow: 1px 1px 1px 1px #999999 inset;
+            }
+        }
+    }
+}
+
+.message {
+    height: 100px;
+    width: 240px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -120px;
+    margin-top: -50px;
+    text-align: center;
+    line-height: 100px;
+    color: #c50000;
+    font-size: 20px;
+    font-weight: bold;
+    background: #00d6f8;
+    display: none;
+}

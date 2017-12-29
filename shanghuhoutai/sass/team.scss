@@ -1,0 +1,131 @@
+@import "public";
+
+body {
+  background: #e7e7e7;
+}
+
+.header {
+  height: 100px;
+  width: 100%;
+  line-height: 100px;
+  text-align: center;
+  .head {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    .img {
+      height: 100%;
+      width: 10%;
+      float: left;
+      img {
+        margin-top: 10px;
+      }
+    }
+    .nav {
+      float: left;
+      height: 80%;
+      width: 70%;
+      margin-left: 5%;
+      border-bottom: 3px solid #e7e7e7;
+      &:hover {
+        color: #3d62ff;
+      }
+      a {
+        display: inline-block;
+        height: 100%;
+        width: 19%;
+        &:hover {
+          border-bottom: 3px solid #3d62ff;
+          color: #3d62ff;
+        }
+      }
+      .active {
+        color: #3d62ff;
+        border-bottom: 3px solid #3d62ff;
+      }
+    }
+  }
+  .login {
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    text-align: center;
+  }
+}
+
+
+
+.banner {
+  height: auto;
+  width: 100%;
+  position: relative;
+  .img {
+    height: auto;
+    width: 100%;
+  }
+  .con {
+    position: absolute;
+    color: #fff;
+    font-size: 25px;
+  }
+  .yi {
+    width: 15%;
+    left: 7%;
+    top: 45%;
+  }
+  .er {
+    width: 20%;
+    left: 40%;
+    top: 50%;
+  }
+  .san {
+    width: 15%;
+    left: 64%;
+    top: 33%;
+  }
+  .si {
+    width: 15%;
+    left: 80%;
+    top: 63%;
+  }
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+  padding: 20px 0;
+}
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  .footer-con {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    line-height: 30px;
+    .con {
+      float: left;
+      width: 90%;
+      height: 80%;
+      padding-top: 5%;
+      a {
+        color: #fff;
+      }
+      span {
+        margin: 0 10px;
+      }
+    }
+    .img {
+      height: 100%;
+      padding-top: 2%;
+      float: right;
+      width: 10%;
+    }
+  }
+}

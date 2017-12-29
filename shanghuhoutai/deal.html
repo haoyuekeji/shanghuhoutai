@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>交易管理</title>
+    <link rel="stylesheet" href="css/deal.css">
+    <script src="js/token.min.js"></script>
+</head>
+
+<body>
+<div class="searchBox">
+    <div class="formSearch">
+        <form id="myform">
+            <ul>
+                <li><a><input type="text" placeholder="输入商品号" id="shangpin"></a><span>选填</span></li>
+                <li><a><input type="text" placeholder="输入订单号后六位" id="dingdan"></a><span>选填</span></li>
+                <li><a><input type="text" placeholder="输入商品名" id="shangpm"></a><span>选填</span></li>
+                <li><a>
+                        <!--<input type="text" placeholder="输入订单状态(待付款,待发货,待收货,已完成)" id="dingdanzt">-->
+                    <select  id="dingdanzt">
+                        <option value="">选择状态</option>
+                        <option value="待付款">待付款</option>
+                        <option value="待发货">待发货</option>
+                        <option value="待收货">待收货</option>
+                        <option value="已完成">已完成</option>
+                    </select>
+                    </a><span>选填</span></li>
+                <li><a><input type="text" placeholder="输入买家昵称" id="mname"></a><span>选填</span></li>
+            </ul>
+        </form>
+    </div>
+    <div class="searchBtn">
+        <button class="goSearch">提交查询</button>
+        <button class="del">取消查询</button>
+    </div>
+</div>
+    <div class="body">
+        <div class="body-top">
+            <ul >
+                <li class="li-change">待付款</li>
+                <li>待发货</li>
+                <li>已发货</li>
+                <li>已完成</li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="body-left">
+            <a>首页</a>
+            <a>发布新品</a>
+            <a>宝贝管理</a>
+            <a class="li-change">交易管理</a>
+            <a>设置</a>
+            <a>抽奖</a>
+            <a>评论</a>
+            <div>
+                皓月科技提供技术支持
+                <br> 电话：0512-52705212
+            </div>
+        </div>
+
+        <div class="body-con">
+            <div class="all">
+
+            </div>
+            <div class="pages">
+                <span class="last">上一页</span>
+                <span class="next">下一页</span>
+            </div>
+        </div>
+    </div>
+    <div class="message">
+
+    </div>
+</body>
+
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/location.min.js"></script>
+<script src="js/deal.min.js"></script>

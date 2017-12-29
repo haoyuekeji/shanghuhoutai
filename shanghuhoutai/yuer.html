@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传文件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .meau {
+            width: 100%;
+            min-height: 40px;
+            line-height: 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .editor {
+            min-height: 360px;
+            width: 100%;
+            border: 1px solid #ccc;
+        }
+
+        .w-e-droplist {
+            background: #fff;
+            z-index: 99999;
+        }
+
+        .w-e-menu {
+            min-width: 100px;
+        }
+
+        .input {
+            float: right;
+            margin-top: 15px;
+            height: 40px;
+            width: 120px;
+            font-size: 20px;
+            background: #2577e2;
+            color: #fff;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="meau" class="meau"></div>
+<div style="padding: 4px 0; color: #ccc"></div>
+<div id="editor" class="editor">
+    <p>开始编辑您的日记吧！</p>
+</div>
+<input type="button" id="btn1" value="发布" class="input"
+</body>
+
+</html>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.0.js"></script>
+<script src="js/wangEditor.min.js"></script>
+<script>
+    console.log(window.__wxjs_environment === 'miniprogram')
+    // var stu = window.__wxjs_environment === 'miniprogram'
+    // if (!stu) {
+    //     console.log('这不是小程序！')
+    // } else {
+
+    // }
+    function ajax(staus, url, data, fun) {
+        function formatParams(data) {
+            var arr = [];
+            for (var key in data) {
+                arr.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+            }//对url进行编码，并转化为字符
+            arr.push(("v=" + Math.random()).replace(".", "") + (new Date).getTime());//添加字符并将“.”去除
+            return arr.join("&");//拼接字符串，并用&间隔
+        }
+
+        //提交到服务器的参数必须经过 encodeURIComponent() 方法进行编码，实际上在参数列表”key=value”的形式中，key 和 value 都需要进行编码，因为会包含特殊字符。每次请求的时候都会在参数列表中拼入一个 “v=xx” 的字符串，这样是为了拒绝缓存，每次都直接请求到服务器上。
+        // encodeURI() ：用于整个 URI 的编码，不会对本身属于 URI 的特殊字符进行编码，如冒号、正斜杠、问号和井号；其对应的解码函数 decodeURI()；
+        // encodeURIComponent() ：用于对 URI 中的某一部分进行编码，会对它发现的任何非标准字符进行编码；其对应的解码函数 decodeURIComponent()
+        var params = formatParams(data);
+        if (window.XMLHttpRequest) { //Mozilla 浏览器
+            var xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { // IE浏览器
+            try {
+                var xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (err) {
+                try {
+                    var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (err) {
+                }
+            }
+        }//创建了一个AJAX对象
+        if (staus == "post") {
+            xhr.open("POST", url, true);//创建请求
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//设置表单提交的内容类型、用post发送数据前须声明数据类型
+            xhr.send(params);//发送请求
+        } else if (staus == "get") {
+            xhr.open("GET", url + "?" + params, true);//创建请求
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//设置表单提交的内容类型、用post发送数据前须声明数据类型
+            xhr.send(null);//发送请求
+        }
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var val_ = eval(xhr.responseText);
+                fun(val_);
+            }
+        };
+    }
+
+    var E = window.wangEditor
+    var editor = new E('#meau', '#editor')
+    // 自定义菜单配置
+    editor.customConfig.menus = [
+        'head',  // 标题
+        'bold',  // 粗体
+        'italic',  // 斜体
+        'underline',  // 下划线
+        'strikeThrough',  // 删除线
+        'foreColor',  // 文字颜色
+        'backColor',  // 背景颜色
+        'list',  // 列表
+        'justify',  // 对齐方式
+        'quote',  // 引用
+        'emoticon',  // 表情
+        'image',  // 插入图片
+        'table',  // 表格
+        'undo',  // 撤销
+        'redo', // 重复
+        'familys'
+    ]
+    // editor.config.fontsizes = {
+    //     // 格式：'value': 'title'
+    //     1: '10px',
+    //     2: '13px',
+    //     3: '16px',
+    //     4: '19px',
+    //     5: '22px',
+    //     6: '25px',
+    //     7: '28px'
+    // };
+    editor.customConfig.uploadImgServer = 'https://www.cslapp.com/tuan/product/uploadPic'
+    editor.customConfig.uploadImgParams = {
+        saleId: 7// 属性值会自动进行 encode ，此处无需 encode
+    }
+    editor.customConfig.uploadFileName = 'file'
+    editor.create()
+    var menu = document.querySelectorAll('.w-e-menu')
+    menu[0].style.zIndex = 1000010
+    menu[4].style.zIndex = 1000009
+    menu[5].style.zIndex = 1000008
+    menu[6].style.zIndex = 1000007
+    menu[7].style.zIndex = 1000006
+    menu[8].style.zIndex = 1000005
+    editor.customConfig.uploadImgHooks = {
+        before: function (xhr, editor, files) {
+            // 图片上传之前触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
+
+            // 如果返回的结果是 {prevent: true, msg: 'xxxx'} 则表示用户放弃上传
+            // return {
+            //     prevent: true,
+            //     msg: '放弃上传'
+            // }
+        },
+        success: function (xhr, editor, result) {
+            // 图片上传并返回结果，图片插入成功之后触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+        },
+        fail: function (xhr, editor, result) {
+            // 图片上传并返回结果，但图片插入错误时触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+        },
+        error: function (xhr, editor) {
+
+            // 图片上传出错时触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+        },
+        timeout: function (xhr, editor) {
+            // 图片上传超时时触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+        },
+
+        // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+        // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
+        customInsert: function (insertImg, result, editor) {
+            // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+            // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+
+            // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
+            var url = result.url
+            insertImg(url)
+            // result 必须是一个 JSON 格式字符串！！！否则报错
+        }
+    }
+    // <p>开始编辑您的日记吧！</p><p><img src="http://haoyue.oss-cn-beijing.aliyuncs.com/hymarket/2017/12/6/1512532721046.jpg" style="max-width:100%;"><br></p>
+    // editor.txt.html('<p style="text-align: center;">开始编辑您的日记吧！</p><p style="text-align: center;"><img src="http://haoyue.oss-cn-beijing.aliyuncs.com/hymarket/2017/12/6/1512532721046.jpg" style="max-width:100%;"><br></p>')
+    document.getElementById('btn1').addEventListener('click', function () {
+
+        var json = editor.txt.getJSON()  // 获取 JSON 格式的内容
+        var jsonStr = JSON.stringify(json)
+        console.log(json)
+        console.log(jsonStr)
+
+        // var jsonStr = JSON.stringify(json)
+        // ajax('post', 'http://localhost:80/seller/test', {
+        //     sellerId: 7,
+        //     test: jsonStr
+        // }, function (res) {
+        //     console.log(res)
+        // })
+
+
+
+    })
+    ajax('post', 'https://pv.sohu.com/cityjson', {
+        ie:'utf-8'
+    }, function (res) {
+        console.log(res)
+    })
+
+</script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    // console.log(returnCitySN)
+</script>
