@@ -133,7 +133,8 @@ function addhtml4_(content) {
       if (content.length === 0) {
         $('.all').html('暂无商品！')
         return false
-      } else {
+      } else
+        {
         var img = content[i].indexImages.split(',')
         content[i].produtsTypes.forEach(function (val, key) {
           amount += val.amount
@@ -202,34 +203,21 @@ function addhtml4_(content) {
 function addhtml2_(cent) {
     $('.all').html('')
     $('.pages').show()
-    var timeall = [];
     if (cent.length === 0) {
         $('.all').html('您没有预售商品！')
         return false
-    } else {
-        // for (var q = cent.length - 1; q >= 0; q--) {
-        //     if (cent[q].active === true) {
-        //         cent.splice(q, 1)
-        //     }
-        // }
+    } else
+      {
+
+        }
         for (var i = 0; i < cent.length; i++) {
             var amount = 0
             var saleNumber = 0
             if (cent.length === 0) {
                 $('.all').html('暂无商品！')
                 return false
-            } else {
-                var oldTime = Date.parse(cent[i].showDate);
-                setInterval(function () {
-                    var nowtime = Date.parse(new Date());
-                    var time = oldTime - nowtime;
-                    var day = parseInt(time / 1000 / 60 / 60 / 24);
-                    var hour = parseInt(time / 1000 / 60 / 60 % 24);
-                    var minute = parseInt(time / 1000 / 60 % 60);
-                    var seconds = parseInt(time / 1000 % 60);
-                    $(".times"+i ).html(day + "天" + hour + "小时" + minute + "分钟" + seconds + "秒");
-                }, 1000);
-
+            } else
+              {
                 var img = cent[i].indexImages.split(',')
                 cent[i].produtsTypes.forEach(function (val, key) {
                     amount += val.amount
@@ -255,9 +243,6 @@ function addhtml2_(cent) {
                     '                        </span>\n' +
                     '                    </div>' +
                     '                </div>\n' +
-                    '                <div class="edit" title="">编辑</div>\n' +
-                    '                <div class="shangjia" title="">上架</div>\n' +
-                    '                <div class="fix" title="">修改</div>\n' +
                     '\n' +
                     '                <div class="details-details">\n' +
                     '                    <div class="">\n' +
@@ -268,14 +253,15 @@ function addhtml2_(cent) {
                     '                        <span>库存</span>\n' +
                     '                        <span>增加库存</span>\n' +
                     // '                        <span>已卖出</span>\n' +
-                    // '                        <span>shang</span>\n' +
+                    // '                        <span>shang</span>\n' +'+ allTime[i] +'
                     '                    </div>\n' +
                     '                </div>\n' +
-                    '                <div class="details-times" ><span class="times'+i+'"></span></div>\n'+
+                    '                <div class="details-times"  endTime="'+ cent[i].showDate+'">' +
+                    '</div>\n'+
                     '            </div>')
+                  $('body').append("<script src='js/times.min.js'></script>")
+     }
 
-
-            }
 
             for (var k = 0; k < cent[i].produtsTypes.length; k++) {
                 $('.details-details').eq(i).append(
@@ -292,16 +278,7 @@ function addhtml2_(cent) {
                     ' </div>\n' +
                     '')
             }
-            for(var j = 0;j<cent[i].showDate.length;j++){
-                var starttime = Date.parse(cent[i].showDate);
-                timeall.push(starttime);
-                console.log(timeall)
-                timeall.forEach(function (val,key) {
-
-                })
-            }
         }
-    }
 }
 
 
