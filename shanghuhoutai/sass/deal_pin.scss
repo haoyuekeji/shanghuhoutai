@@ -1,0 +1,594 @@
+@import "public";
+@import "all_pin";
+.body {
+    .body-top {
+        ul {
+            li {
+                width: 16.6%;
+                position: relative;
+                &:hover ol {
+                    display: block;
+                }
+                ol {
+                    width: 100%;
+                    height: auto;
+                    position: absolute;
+                    left: 0;
+                    top: 100px;
+                    z-index: 999;
+                    display: none;
+                    div {
+                        height: 40px;
+                        width: 100%;
+                        background: #006cff;
+                        color: #fff;
+                        line-height: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.body-con {
+    background: #fff;
+    .all {
+        overflow: scroll;
+        background: #fff;
+        overflow-x: hidden;
+        .details {
+        	position: relative;
+            height: auto;
+            width: 1018px;
+            overflow: scroll;
+            border: 1px solid #6e6e6e;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .data{
+            	border: 1px solid #ccc;
+            }
+            .details-con-top{
+            	font-size: 20px;
+            	font-weight: bolder;
+            	font-family: "agency fb";
+            }
+            .fahuo-tuan {
+                float: right;
+                width: 30%;
+                height: 100%;
+                line-height: 150px;
+                input {
+                    height: 40px;
+                    width: 120px;
+                    background: #006cff;
+                    color: #fff;
+                    box-shadow: 1px 1px 1px 1px #000;
+                    cursor: pointer;
+                    &:active {
+                        box-shadow: 1px 1px 1px 1px #000 inset;
+                    }
+                }
+            }
+            .fahuo-tuan-ready {
+                float: right;
+                width: 30%;
+                height: 100%;
+                line-height: 150px;
+                input {
+                    height: 40px;
+                    width: 120px;
+                    background: #006cff;
+                    color: #fff;
+                    box-shadow: 1px 1px 1px 1px #000;
+                    cursor: pointer;
+                    &:active {
+                        box-shadow: 1px 1px 1px 1px #000 inset;
+                    }
+                }
+            }
+            .details-con {
+                overflow: hidden;
+                padding-bottom: 20px;
+                .details-con-top {
+                    padding-top: 0;
+                    div {
+                        font-size: 15px;
+                        color: #999999;
+                    }
+                }
+                .style {
+                    margin-top: 0;
+                    span {
+                        display: inline-block;
+                        margin-right: 30px;
+                        color: #999999;
+                    }
+                }
+                .nums {
+                    margin-top: 0;
+                    display: inline;
+                    font-size: 15px;
+                }
+                .num {
+                    color: #999999;
+                }
+                .price-tuan {
+                    color: red;
+                    font-size: 18px;
+                }
+                .price-charge {
+                    bottom: 0;
+                    span {
+                        color: #999;
+                        font-size: 15px;
+                    }
+                }
+            }
+            .clear {
+                clear: both;
+            }
+            .width {
+                font-size: 16px;
+                width: 35%;
+            }
+
+            .details-right-charge {
+                height: 100px;
+                width: 30%;
+                float: left;
+                font-size: 15px;
+                position: relative;
+                .address {
+                    width: 75%;
+                }
+                
+            }
+            .price {
+                span {
+                    color: #888;
+                    font-size: 15px;
+                }
+                .produt-id {
+                    color: #c50000;
+                    span {
+                        color: #c50000;
+                    }
+                }
+            }
+            .init {
+                height: 20px;
+                width: 30px;
+                margin-top: 30px;
+            }
+            .edit,
+            .shangjia,
+            .down,
+            .fix {
+                height: 40px;
+                width: 100px;
+                background: #00d6f8;
+                cursor: pointer;
+                float: left;
+                margin-right: 15px;
+                line-height: 40px;
+                text-align: center;
+                margin-top: 50px;
+                box-shadow: 1px 1px 1px 1px #999999;
+                &:active {
+                    box-shadow: 1px 1px 1px 1px #999999 inset;
+                }
+            }
+            .shopcar-count {
+                height: 40px;
+                width: 150px;
+                float: left;
+                margin-right: 15px;
+                line-height: 40px;
+                text-align: center;
+                margin-top: 15px;
+            }
+            .details-details {
+                height: auto;
+                width: 100%;
+                display: none;
+                float: left;
+                padding-bottom: 50px;
+                div {
+                    height: 40px;
+                    width: 100%;
+                    span {
+                        display: inline-block;
+                        height: 40px;
+                        width: 120px;
+                        text-align: center;
+                        line-height: 40px;
+                        &:last-child {
+                            margin-left: 30px;
+                        }
+                        input {
+                            width: 50px;
+                            height: 80%;
+                            background: #ccc;
+                            text-align: center;
+                        }
+                        .sure-price,
+                        .sure-nums {
+                            display: inline;
+                            background: #00d6f8;
+                            padding: 4px;
+                            cursor: pointer;
+                            box-shadow: 1px 1px 1px 1px #999999;
+                            margin-left: 10px;
+                            &:active {
+                                box-shadow: 1px 1px 1px 1px #999999 inset;
+                            }
+                        }
+                    }
+                    .del {
+                        height: 35px;
+                        line-height: 35px;
+                        background: #00d6f8;
+                        box-shadow: 1px 1px 1px 1px #999999;
+                        margin-left: 30px;
+                        cursor: pointer;
+                        &:active {
+                            box-shadow: 1px 1px 1px 1px #999999 inset;
+                        }
+                    }
+                }
+            }
+            .tmjbeizhu {
+                width: 800px;
+                height: 50px;
+                position: absolute;
+                top: 150px;
+                left: 180px;
+                button{
+					float: right;
+                }
+            }
+            .fahuo {
+                height: 40px;
+                width: 120px;
+                background: #00d6f8;
+                color: #1e4570;
+                text-align: center;
+                line-height: 40px;
+                box-shadow: 1px 1px 1px 1px #999999;
+                float: right;
+                cursor: pointer;
+                position: absolute;
+                top:50px;
+                right: 20px;
+                &:active {
+                    box-shadow: 1px 1px 1px 1px #999999 inset;
+                }
+            }
+            .details-details-cons-tuan {
+                height: auto;
+                width: 98%;
+                display: none;
+                float: left;
+                margin-top: 15px;
+                background: #003567;
+                color: #fff;
+                font-size: 15px;
+                padding: 5px;
+                .ordernumber-tuan {
+                    width: 100%;
+                    float: left;
+                    div {
+                        float: right;
+                        &:first-child {
+                            float: left;
+                        }
+                    }
+                    .order-img {
+                        width: 3%;
+                        margin-left: 15px;
+                        cursor: pointer;
+                        -webkit-transform: rotate(0deg);
+                    }
+                }
+                .details-details-cons-tuan-cons {
+                    height: auto;
+                    width: 100%;
+                    float: left;
+                    display: none;
+                    .details-details-cons-tuan-con {
+                        height: auto;
+                        width: 100%;
+                        position: relative;
+                        background: #e6e6e6;
+                        color: #000;
+                        float: left;
+                        .order-datails {
+                            width: 100%;
+                            padding: 15px 0;
+                            float: left;
+                            .order-details-con {
+                                width: 100%;
+                                span {
+                                    display: inline-block;
+                                    margin: 5px;
+                                }
+                            } // &::first-child {
+                            //     padding-bottom: 0;
+                            // }
+                        }
+                        .order-creattime {
+                            position: absolute;
+                            top: 5px;
+                            right: 5px;
+                        }
+                        .express-tuan {
+                            height: auto;
+                            width: 100%;
+                            background: #003567;
+                            padding-bottom: 15px;
+                            float: left;
+                            .express-tuan-con {
+                                width: 50%;
+                                color: #fff;
+                                float: right;
+                                line-height: 40px;
+                                margin-top: 15px;
+                                input {
+                                    padding: 5px;
+                                }
+                                .fahuo-geren {
+                                    height: 30px;
+                                    width: 80px;
+                                    float: right;
+                                    background: #006cff;
+                                    box-shadow: 1px 1px 1px 1px #000;
+                                    cursor: pointer;
+                                    text-align: center;
+                                    line-height: 30px;
+                                    margin-right: 15px;
+                                    &:active {
+                                        box-shadow: 1px 1px 1px 1px #000 inset;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .details-details-cons-tuan-ready {
+                height: auto;
+                width: 98%;
+                display: none;
+                float: left;
+                margin-top: 15px;
+                background: #003567;
+                color: #fff;
+                font-size: 15px;
+                padding: 5px;
+                .ordernumber-tuan {
+                    width: 100%;
+                    float: left;
+                    margin: 15px 0;
+                    text-indent: 5px;
+                    div {
+                        float: right;
+                        &:first-child {
+                            float: left;
+                        }
+                    }
+                    .order-img {
+                        width: 3%;
+                        margin-left: 15px;
+                        cursor: pointer;
+                        -webkit-transform: rotate(0deg);
+                    }
+                }
+                .details-details-cons-tuan-cons {
+                    height: auto;
+                    width: 100%;
+                    float: left;
+                    display: none;
+                    overflow: hidden;
+                    .details-details-cons-tuan-con {
+                        height: auto;
+                        width: 85%;
+                        position: relative;
+                        background: #fff;
+                        color: #000;
+                        float: left;
+                        .order-datails {
+                            width: 100%;
+                            padding: 15px 0;
+                            float: left;
+                            .order-details-con {
+                                width: 100%;
+                                span {
+                                    display: inline-block;
+                                    margin: 5px;
+                                }
+                            }
+                        }
+                        .order-creattime {
+                            position: absolute;
+                            top: 5px;
+                            right: 5px;
+                        }
+                    }
+                    .show-express {
+                        width: 15%;
+                        height: 40px;
+                        float: left;
+                        margin-top: 15px;
+                        input {
+                            height: 100%;
+                            width: 100%;
+                            background: #006cff;
+                            color: #fff;
+                            cursor: pointer;
+                            box-shadow: 1px 1px 1px 1px #000;
+                            &:active {
+                                box-shadow: 1px 1px 1px 1px #000 inset;
+                            }
+                        }
+                    }
+                }
+                .details-details-cons-tuan-express-con {
+                    width: 85%;
+                    height: auto;
+                    color: #000;
+                    background: #e6e6e6;
+                    float: left;
+                    display: none;
+                    .order-number-ready {
+                        width: 80%;
+                        padding-left: 15px;
+                        margin-top: 15px;
+                    }
+                    ul {
+                        width: 100%;
+                        height: auto;
+                        li {
+                            width: 70%;
+                            height: 30px;
+                            margin-bottom: 15px;
+                            line-height: 30px;
+                            text-align: left;
+                            padding-left: 15px;
+                            span {
+                                margin-right: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+            .details-details-cons {
+                height: auto;
+                width: 100%;
+                display: none;
+                float: left;
+                margin-top: 15px;
+                .details-details-con {
+                    width: 100%;
+                    overflow: hidden;
+                    .details-ul,
+                    .express {
+                        width: 25%;
+                        float: left;
+                        margin-left: 15px;
+                        .details-ul-input {
+                            width: 100%;
+                            height: 30px;
+                            text-indent: 15px;
+                            border: 1px solid #ccc;
+                        }
+                        ul {
+                            width: 100%;
+                            padding-bottom: 15px;
+                            li {
+                                width: calc(100% - 2px);
+                                height: 30px;
+                                line-height: 30px;
+                                border: 1px solid #ccc;
+                                cursor: pointer;
+                                &:first-child {
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+                    .details-ul-wait-pin {
+                        width: 100%;
+                        float: left;
+                        margin-left: 15px;
+                        .details-ul-input {
+                            width: 100%;
+                            height: auto;
+                            text-indent: 5px;
+                            border: 1px solid #ccc;
+                        }
+                        ul {
+                            width: 100%;
+                            padding-bottom: 15px;
+                            .wait-pin {
+                                width: 20%;
+                                height: auto;
+                                line-height: 20px;
+                                float: left;
+                                border: 1px solid #ccc;
+                                margin-right: 15px;
+                                margin-bottom: 15px;
+                                cursor: pointer;
+                                span {
+                                    font-size: 15px;
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                    .express {
+                        height: 30px;
+                        border: 1px solid #ccc;
+                        input {
+                            height: 100%;
+                            width: 100%;
+                            text-indent: 15px;
+                        }
+                    }
+                    .express-sure {
+                        width: 120px;
+                        height: 40px;
+                        cursor: pointer;
+                        background: #00d6f8;
+                        box-shadow: 1px 1px 1px 1px #999999;
+                        text-align: center;
+                        line-height: 40px;
+                        float: right;
+                        margin-right: 65px;
+                        &:active {
+                            box-shadow: 1px 1px 1px 1px #999999 inset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pages {
+        height: 70px;
+        width: 280px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        span {
+            display: inline-block;
+            height: 40px;
+            width: 120px;
+            margin-top: 15px;
+            cursor: pointer;
+            background: #00d6f8;
+            box-shadow: 1px 1px 1px 1px #999999;
+            text-align: center;
+            line-height: 40px;
+            &:active {
+                box-shadow: 1px 1px 1px 1px #999999 inset;
+            }
+        }
+    }
+}
+
+.message {
+    height: 100px;
+    width: 240px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -120px;
+    margin-top: -50px;
+    text-align: center;
+    line-height: 100px;
+    color: #c50000;
+    font-size: 20px;
+    font-weight: bold;
+    background: #00d6f8;
+    display: none;
+}

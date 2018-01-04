@@ -11,15 +11,18 @@ $('.body-left a').click(function () {
       location.href = 'charge_pin.html'
       break
     case 3:
-      location.href = 'set_pin.html'
+      location.href = 'deal_pin.html'
       break
     case 4:
-      location.href = 'seach_pin.html'
+      location.href = 'set_pin.html'
       break
     case 5:
-      location.href = 'comment_pin.html'
+      location.href = 'seach_pin.html'
       break
     case 6:
+      location.href = 'comment_pin.html'
+      break
+    case 7:
       location.href = 'activity_pin.html'
       break
   }

@@ -68,6 +68,7 @@
 
         </div>
 
+
         <div class="add">
             <img src='images/add.png' alt="">
         </div>
@@ -83,8 +84,34 @@
 </div> -->
 
         <div class="tjbianji">
-            <span>价格文案编辑</span>
-            <div class="input"><input type="text"  placeholder="例如特价优惠,二人团价等"></div>
+            <span class="tjspan">价格文案编辑</span>
+            <input type="text" placeholder="例如特价优惠,二人团价等">
+        </div>
+        <div class="timesInput">
+            <span class="tIspan">预上架的时间(小时为单位)</span>
+            <input type="number" placeholder="输入预上架的时间" min="0" step="1">
+        </div>
+        <div class="mInput">
+            <label for="checkBox">是否秒杀</label>
+            <input type="checkbox" id="checkBox">
+        </div>
+        <div class="allPdan">
+            <div class="pdan-start">
+                <span>秒杀开始时间</span>
+                <div class="input">
+                    <input type="date" name="" >
+                    <input type="number" placeholder="小时(24小时制)"min="0" step="1"> 时
+                    <input type="number" placeholder="分钟" min="0" step="1"> 分
+                </div>
+            </div>
+            <div class="pdan-end">
+                <span>秒杀结束时间</span>
+                <div class="input">
+                    <input type="date" name="" >
+                    <input type="number" placeholder="小时(24小时制)" min="0" step="1"> 时
+                    <input type="number" placeholder="分钟" min="0" step="1"> 分
+                </div>
+            </div>
         </div>
         <div class="kuaidi">
             <span>快递选择</span>
