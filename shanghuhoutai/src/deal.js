@@ -644,6 +644,7 @@ $('body').on('click', '.express-sure', function () {
         outline(data)
         if (data.message === '操作成功') {
             alert(data.message)
+            history.go(0)
             $.post(localhost + '/order/changeState', {
                 oid: oid,
                 state: '待收货订单',
