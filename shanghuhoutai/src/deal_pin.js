@@ -60,79 +60,6 @@ function chageStyle(style, html, state) {
     }
 }
 
-function addhtml_(content) {
-    $('.all').html('')
-    $('.pages').show()
-    if (content.length === 0) {
-        $('.all').html('您没有发布任何商品！<a href="push_pin.html" style="color:red">点击发布</a>')
-        return false
-    } else {
-        for (var i = 0; i < content.length; i++) {
-            console.log(content)
-            var amount = 0;
-            var img = content[i].indexPic.split(',')
-            content[i].productsTypes.forEach(function (val, key) {
-                amount += val.amount
-            })
-            amount_.push(amount)
-
-            $('.all').append('<div class="details">\n' +
-                '                <div class="details-left">\n' +
-                '                    <img src="' + img[0] + '" alt="">\n' +
-                '                </div>\n' +
-                '                <div class="details-con">\n' +
-                '                    <div class="details-con-top">\n' +
-                content[i].pname +
-                '                    </div>\n' +
-                '                    <div class="init">   </div>\n' +
-                '                    <div class="price">\n' +
-                '<div class="produt-id" style="display:none">商品编号：<span>' + content[i].id + '</span></div>' +
-                // '<div style="color:red">商品编号：<span style="color:red">' + content[i].pcode + '</span></div>' +
-                '                        <span class="nums">\n' +
-                '                            剩余库存：' + amount_[i] + '&nbsp&nbsp&nbsp\n' +
-                '                            已卖出：' +  content[i].saleNum + '\n' +
-                '                        </span>\n' +
-                '                    </div>' +
-
-                '                </div>\n' +
-                '                <div class="edit" title="">编辑</div>\n' +
-                '                <div class="down" title="">下架</div>\n' +
-                '                <div class="fix" title="">修改</div>\n' +
-                // '                <div class="shopcar-count" title="">已加购物车人数：' + content[i].shopcar_count + '</div>\n' +
-                '\n' +
-                '                <div class="details-details">\n' +
-                '                    <div class="">\n' +
-                '                        <span>颜色</span>\n' +
-                '                        <span>尺码</span>\n' +
-                '                        <span>单价</span>\n' +
-                '                        <span>修改单价</span>\n' +
-                '                        <span>库存</span>\n' +
-                '                        <span>增加库存</span>\n' +
-                // '                        <span>已卖出</span>\n' +
-                '                        <span>下架</span>\n' +
-                '<span class="active" style="display:none">' + content[i].active + '</span>' +
-                '                    </div>\n' +
-                '                </div>\n' +
-                '            </div>')
-
-            for (var k = 0; k < content[i].productsTypes.length; k++) {
-                $('.details-details').eq(i).append(
-                    '<div class="list">\n' +
-                    '<span>' + content[i].productsTypes[k].color + '</span>\n' +
-                    '<span>' + content[i].productsTypes[k].size + '</span>\n' +
-                    '<span class="newPrice">' + content[i].productsTypes[k].newPrice + '</span>\n' +
-                    '<span><span class="id" style="display: none">' + content[i].productsTypes[k].id + '</span><input type="text"><span class="sure-price">确定</span></span>\n' +
-                    '<span class="amount">' + content[i].productsTypes[k].amount + '</span>\n' +
-                    '<span><span class="id" style="display: none">' + content[i].productsTypes[k].id + '</span><input type="text"><span class="sure-nums">确定</span></span>\n' +
-                    // '<span>' + content[i].productsTypes[k].saleNumber + '</span>\n' +
-                    '<span class="del"><span class="pid" style="display: none">' + content[i].id + '</span><span class="id" style="display: none">' + content[i].productsTypes[k].id + '</span><span class="pactive" style="display: none">' + content[i].productsTypes[k].isActive + '</span>下架</span>' +
-                    ' </div>\n' +
-                    '')
-            }
-        }
-    }
-}
-
 
 
 // 待拼单
@@ -222,6 +149,15 @@ function addhtml2_(content) {
         $('.all').html('您没有已发货个人订单！')
         return false
     } else {
+    	$('.all').append(
+    		'<div class="choice-query-form">' + 
+    			'<div class="allChoice">' + 
+    				'<input class="all-choice" type="checkbox" name="allChoice" />全选&nbsp;&nbsp;' + 
+    			'</div>' + 
+    			'<div class="queryOrder">查询订单</div>' + 
+    			'<div class="generateTable">生成表格</div>' + 
+    		'</div>'
+    	)
         for (var i = 0; i < content.length; i++) {
             var img = content[i].tProducts.indexPic.split(',')[0]
             var amount = 0
@@ -231,6 +167,8 @@ function addhtml2_(content) {
             amount_.push(amount)
             $('.all').append('' +
                 '<div class="details">\n' +
+                	'<div class="oNum" style="display:none;">' +  content[i].id + '</div>' + 
+			        '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;' +  '<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' +  content[i].tDeliver.createDate + '</span></div>\n' +
                 '    <div class="details-left">\n' +
                 '           <img src="' + img + '" alt="">\n' +
                 '    </div>\n' +
@@ -289,6 +227,15 @@ function addhtml3_(content) {
         $('.all').html('您没有未发货个人订单！')
         return false
     } else {
+    	$('.all').append(
+    		'<div class="choice-query-form">' + 
+    			'<div class="allChoice">' + 
+    				'<input class="all-choice" type="checkbox" name="allChoice" />全选&nbsp;&nbsp;' + 
+    			'</div>' + 
+    			'<div class="queryOrder">查询订单</div>' + 
+    			'<div class="generateTable">生成表格</div>' + 
+    		'</div>'
+    	)
         var amount_ = []
         for (var i = 0; i < content.length; i++) {
             var img = content[i].tProducts.indexPic.split(',')[0]
@@ -300,6 +247,8 @@ function addhtml3_(content) {
 
             $('.all').append('' +
                 '<div class="details">\n' +
+                '<div class="oNum" style="display:none;">' +  content[i].id + '</div>' + 
+			        '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;' +  '<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' +  content[i].tDeliver.createDate + '</span></div>\n' +
                 '    <div class="details-left">\n' +
                 '           <img src="' + img + '" alt="">\n' +
                 '    </div>\n' +
@@ -365,6 +314,15 @@ function addhtml5_(content) {
         $('.all').html('您没有已完成的个人订单！')
         return false
     } else {
+    	$('.all').append(
+    		'<div class="choice-query-form">' + 
+    			'<div class="allChoice">' + 
+    				'<input class="all-choice" type="checkbox" name="allChoice" />全选&nbsp;&nbsp;' + 
+    			'</div>' + 
+    			'<div class="queryOrder">查询订单</div>' + 
+    			'<div class="generateTable">生成表格</div>' + 
+    		'</div>'
+    	)
         for (var i = 0; i < content.length; i++) {
             var img = content[i].tProducts.indexPic.split(',')[0]
             var amount = 0
@@ -374,6 +332,8 @@ function addhtml5_(content) {
             amount_.push(amount)
             $('.all').append('' +
                 '<div class="details">\n' +
+                	'<div class="oNum" style="display:none;">' +  content[i].id + '</div>' + 
+			        '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;' +  '<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' +  content[i].tDeliver.createDate + '</span></div>\n' +
                 '    <div class="details-left">\n' +
                 '           <img src="' + img + '" alt="">\n' +
                 '    </div>\n' +
@@ -420,6 +380,15 @@ function addhtml6_(content) {
     if (content.length === 0 || content === null) {
         $('.all').append('您没有未发货的团购订单')
     } else {
+    	$('.all').append(
+    		'<div class="choice-query-form">' + 
+    			'<div class="allChoice">' + 
+    				'<input class="all-choice" type="checkbox" name="allChoice" />全选&nbsp;&nbsp;' + 
+    			'</div>' + 
+    			'<div class="queryOrder">查询订单</div>' + 
+    			'<div class="tuan-generateTable">生成表格</div>' + 
+    		'</div>'
+    	)
         content.forEach(function (val, key) {
             var groupcode = []
             var json = {}
@@ -446,8 +415,9 @@ function addhtml6_(content) {
             				tuanOrdersList[k].leavemsg = "";
             			}
             			$('.all').append('' +
-			                '<div class="details">\n' +
-			                '<div class="data"><span>团购号：' + groupcode[i] + '</span>&nbsp;&nbsp;' +  '<span> 订单号：' + tuanOrdersList[k].code + '</span>&nbsp;&nbsp;<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span></div>\n' +
+			                '<div class="details">\n' + 
+			                '<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
+			                '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;<span>团购号：' + groupcode[i] + '</span>&nbsp;&nbsp;' +  '<span> 订单号：' + tuanOrdersList[k].code + '</span>&nbsp;&nbsp;<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span></div>\n' +
 			                '    <div class="details-left">\n' +
 			                '           <img src="' + img + '" alt="">\n' +
 			                '    </div>\n' +
@@ -513,6 +483,15 @@ function addhtml7_(content) {
     if (content.length === 0 || content === null) {
         $('.all').append('您没有已发货的团购订单')
     } else {
+    	$('.all').append(
+    		'<div class="choice-query-form">' + 
+    			'<div class="allChoice">' + 
+    				'<input class="all-choice" type="checkbox" name="allChoice" />全选&nbsp;&nbsp;' + 
+    			'</div>' + 
+    			'<div class="queryOrder">查询订单</div>' + 
+    			'<div class="tuan-generateTable">生成表格</div>' + 
+    		'</div>'
+    	)
         content.forEach(function (val, key) {
             var groupcode = []
             var json = {}
@@ -534,7 +513,8 @@ function addhtml7_(content) {
         	var tuanOrdersList = val.tuanOrdersList
             for (var k = 0; k < tuanOrdersList.length; k++) {
             	$('.all').append('<div class="details">' +
-            	'<div class="details-top"'+
+            	'<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
+            	'<div class="details-top"><input type="checkbox" class="checkbox"/>&nbsp;'+
             		'<span>团购号：' + tuanOrdersList[k].groupCode + '</span>&nbsp;&nbsp;<span>订单号：' + tuanOrdersList[k].code + '</span> &nbsp;&nbsp;' + 
             		'<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span>' + 
             	'</div>' + 
@@ -573,87 +553,25 @@ function addhtml7_(content) {
 
                 '</div>')
         	}
-            /*$('.all').append('<div class="details">' +
-                '<div class="details-left">' +
-                ' <img src="' + img + '" alt="">' +
-                '</div>' +
-                '<div class="details-con width">' +
-                ' <div class="details-con-top">' +
-                val.products.pname +
-                ' </div>' +
-                ' <div class="price price-charge price-tuan">' +
-                val.products.productsTypes[0].tuanPrice +
-                '<span>￥' + val.products.productsTypes[0].newPrice + '</span>' +
-                '</div>' +
-                '<span class="nums num">' +
-                '  剩余库存：' + amount_[0] + ' 已卖出：' + val.products.saleNum +
-                ' </span>' +
-                ' </div>' +
-                ' <div class="fahuo-tuan-ready" title="true">' +
-                '   <input type="button" value="更多" name="true">' +
-                ' </div>' +
-
-                ' <div class="details-details-cons-tuan-ready">' +
-                ' </div>' +
-                '</div>')*/
-            /*for (var i = 0; i < groupcode.length; i++) {
-                $('.details-details-cons-tuan-ready').eq(key).append(' <div class="ordernumber-tuan">' +
-                    '  <div>团购号：' + groupcode[i] + '</div>' +
-                    '<div class="order-img" title="true" style="margin-right:15px;">' +
-                    ' <img src="images/arrow-down.png" alt="" width="100%">' +
-                    '</div>' +
-                    '</div>' +
-                    ' <div class="details-details-cons-tuan-cons">' +
-
-
-                    ' </div>')
-
-                var tuanOrdersList = val.tuanOrdersList
-
-                for (var k = 0; k < tuanOrdersList.length; k++) {
-                    $('.details-details-cons-tuan-ready').eq(key).find('.details-details-cons-tuan-cons').eq(i).append(
-                        '<div class="details-details-cons-tuan-con">' +
-                        '   <div class="order-datails">' +
-                        '  <div class="order-details-con">' +
-                        '   <span>订单号：' + tuanOrdersList[k].code + '</span>' +
-                        '  <span>' + tuanOrdersList[k].tDeliver.receiver + '   ' + tuanOrdersList[k].tDeliver.phone +
-                        '</span>' +
-                        '    <span>' + tuanOrdersList[k].tDeliver.address + '</span>' +
-                        ' </div>' +
-                        ' <div class="order-details-con">' +
-                        ' <span>颜色：' + tuanOrdersList[k].tProductsTypes.color + ' 尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>' +
-                        '   <span>已发货 ' + tuanOrdersList[k].amount + '件 总价' + tuanOrdersList[k].totalPrice + '</span>' +
-                        ' </div>' +
-                        ' </div>' +
-                        ' <span class="order-creattime">' + tuanOrdersList[k].tDeliver.createDate + '</span>' +
-                        ' </div>' +
-                        '<div class="show-express">' +
-                        '  <input type="button" value="查看物流" name="true">' +
-                        '</div>' +
-                        '<div class="details-details-cons-tuan-express-con">' +
-                        ' <div class="order-number-ready">' +
-                        '   运单号：<span class="dcode">' + tuanOrdersList[k].tDeliver.dcode +
-                        ' </span></div>' +
-                        ' <div class="order-number-ready">' +
-                        '   快递公司：<span class="dcode">' + tuanOrdersList[k].tDeliver.dname +
-                        ' </span></div>' +
-                        '<ul>' +
-                        ' </ul>' +
-                        ' </div>' +
-                        ' </div>'
-                    )
-                }
-            }*/
         })
     }
 }
 
-//
+//团购已完成
 function addhtml8_(content) {
     $('.all').html('')
     if (content.length === 0 || content === null) {
         $('.all').append('您没有已完成的团购订单')
     } else {
+    	$('.all').append(
+    		'<div class="choice-query-form">' + 
+    			'<div class="allChoice">' + 
+    				'<input class="all-choice" type="checkbox" name="allChoice" />全选&nbsp;&nbsp;' + 
+    			'</div>' + 
+    			'<div class="queryOrder">查询订单</div>' + 
+    			'<div class="tuan-generateTable">生成表格</div>' + 
+    		'</div>'
+    	)
         content.forEach(function (val, key) {
             var groupcode = []
             var json = {}
@@ -671,7 +589,14 @@ function addhtml8_(content) {
             })
             amount_.push(amount)
             var img = val.products.indexPic.split(',')[0]
-            $('.all').append('<div class="details">' +
+            var tuanOrdersList = val.tuanOrdersList
+            for (var k = 0; k < tuanOrdersList.length; k++) {
+            	$('.all').append('<div class="details">' +
+            	'<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
+            	'<div class="details-top"><input type="checkbox" class="checkbox"/>&nbsp;'+
+            		'<span>团购号：' + tuanOrdersList[k].groupCode + '</span>&nbsp;&nbsp;<span>订单号：' + tuanOrdersList[k].code + '</span> &nbsp;&nbsp;' + 
+            		'<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span>' + 
+            	'</div>' + 
                 '<div class="details-left">' +
                 ' <img src="' + img + '" alt="">' +
                 '</div>' +
@@ -683,68 +608,58 @@ function addhtml8_(content) {
                 val.products.productsTypes[0].tuanPrice +
                 '<span>￥' + val.products.productsTypes[0].newPrice + '</span>' +
                 '</div>' +
-                '<span class="nums num">' +
-                '  剩余库存：' + amount_[0] + ' 已卖出：' + val.products.saleNum +
-                ' </span>' +
+	                '<span class="yanse">颜色：' + tuanOrdersList[k].tProductsTypes.color + '</span>\n' +
+				    '<span class="chima">尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>\n' +
+				    '<span>已完成 ' + tuanOrdersList[k].amount + '件 总价' + tuanOrdersList[k].totalPrice + '</span>' +
                 ' </div>' +
-                ' <div class="fahuo-tuan-ready" title="true">' +
-                '   <input type="button" value="更多" name="true">' +
-                ' </div>' +
-
-                ' <div class="details-details-cons-tuan-ready">' +
-                ' </div>' +
+                '<div class="details-right-charge">\n' +
+                '    <div class="address">\n' +
+                '<span class="dliverid" style="display:none">' + tuanOrdersList[k].id + '</span>'+
+                tuanOrdersList[k].tDeliver.receiver + tuanOrdersList[k].tDeliver.phone + '<br>\n' +
+                tuanOrdersList[k].tDeliver.address +
+                '</div>\n' +
+                '<div style="width:70%;font-size:14px;margin-top:5px">买家备注：<span style="color:blue">' +
+                tuanOrdersList[k].leavemsg +
+                '</span></div>' +
+                '<p>卖家备注：' + tuanOrdersList[k].leavemsg2 + '</p>' + 
+                '<div class="wuliu" >' + 
+                	'<span>物流公司：' + tuanOrdersList[k].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                	'<span>物流单号：' + tuanOrdersList[k].tDeliver.dcode + '</span>' + 
+                '</div>' + 
                 '</div>')
-            for (var i = 0; i < groupcode.length; i++) {
-                $('.details-details-cons-tuan-ready').eq(key).append(' <div class="ordernumber-tuan">' +
-                    '  <div>团购号：' + groupcode[i] + '</div>' +
-                    '<div class="order-img" title="true" style="margin-right:15px;">' +
-                    ' <img src="images/arrow-down.png" alt="" width="100%">' +
-                    '</div>' +
-                    '</div>' +
-                    ' <div class="details-details-cons-tuan-cons">' +
-
-
-                    ' </div>')
-
-                var tuanOrdersList = val.tuanOrdersList
-
-                for (var k = 0; k < tuanOrdersList.length; k++) {
-                    $('.details-details-cons-tuan-ready').eq(key).find('.details-details-cons-tuan-cons').eq(i).append(
-                        '<div class="details-details-cons-tuan-con">' +
-                        '   <div class="order-datails">' +
-                        '  <div class="order-details-con">' +
-                        '   <span>订单号：' + tuanOrdersList[k].code + '</span>' +
-                        '  <span>' + tuanOrdersList[k].tDeliver.receiver + '   ' + tuanOrdersList[k].tDeliver.phone +
-                        '</span>' +
-                        '    <span>' + tuanOrdersList[k].tDeliver.address + '</span>' +
-                        ' </div>' +
-                        ' <div class="order-details-con">' +
-                        ' <span>颜色：' + tuanOrdersList[k].tProductsTypes.color + ' 尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>' +
-                        '   <span>已完成 ' + tuanOrdersList[k].amount + '件 总价' + tuanOrdersList[k].totalPrice + '</span>' +
-                        ' </div>' +
-                        ' </div>' +
-                        ' <span class="order-creattime">' + tuanOrdersList[k].tDeliver.createDate + '</span>' +
-                        ' </div>' +
-                        '<div class="show-express">' +
-                        '  <input type="button" value="查看物流" name="true">' +
-                        '</div>' +
-                        '<div class="details-details-cons-tuan-express-con">' +
-                        ' <div class="order-number-ready">' +
-                        '   运单号：<span class="dcode">' + tuanOrdersList[k].tDeliver.dcode +
-                        ' </span></div>' +
-                        ' <div class="order-number-ready">' +
-                        '   快递公司：<span class="dcode">' + tuanOrdersList[k].tDeliver.dname +
-                        ' </span></div>' +
-                        '<ul>' +
-                        ' </ul>' +
-                        ' </div>' +
-                        ' </div>'
-                    )
-                }
-            }
+        	}
         })
     }
 }
+
+//订单区分近三个月
+
+
+
+//订单查询
+/*function queryOrder(){
+	$('body').append(
+		'<div class="search">' + 
+			'<div class="tab">' + 
+				'<div class="tuan">团购订单</div>' + 
+				'<div class="personal">个人订单</div>' + 
+			'</div>' + 
+			'<div><input type="text" class="orderNum" placeholder="请填写订单号" />&nbsp;&nbsp;选填' + 
+			'</div>' +
+		'</div>'
+	)
+}
+*/
+
+//待退货
+
+
+
+
+
+
+
+
 
 // 点击切换
 $('.body-top ul li').click(function () {
@@ -856,6 +771,24 @@ $('body').on('click', '.tuan', function (e) {
             break
         default:
             break
+        /*case 4:
+            $.post(localhost + '/tuan/tuanorders/list', {
+                saleId: token,
+                online_code: onlinecode
+            }, function (res) {
+                outline(res)
+                var content = res.data
+                addhtml8_(content)
+                if (content.length === 0) {
+                    $('.pages').hide()
+                } else {
+                    $('.pages').show()
+                }
+            })
+            chageStyle('/tuan/tuanorders/list', addhtml8_, '已完成团购订单')
+            break
+        default:
+            break*/
     }
     return false
 })
@@ -926,24 +859,21 @@ $('body').on('click', '.person', function () {
 
     // 获取已销售信息
     ; (function () {
-        $.post(localhost + '/tuan/product/list', {
-            saleId: token,
-            active: true,
-            online_code: onlinecode
-        }, function (data) {
-            outline(data)
-            var content = data.data.content
-            for (var len = content.length - 1; len >= 0; len--) {
-                if (content[len].productsTypes.length === 0) {
-                    content.splice(len, 1)
+        $.post(localhost + '/tuan/tuanorders/tuaning_list', {
+                saleId: token,
+                online_code: onlinecode
+            }, function (data) {
+                outline(data)
+                var content = data.data
+                addhtml1_(content)
+                if (content.length === 0) {
+                    $('.pages').hide()
+
+                
+                } else {
+                    $('.pages').show()
                 }
-            }
-            nums = data.token - 0
-            if (content.length === 0) {
-                $('.pages').hide()
-            }
-            addhtml_(content)
-        })
+            })
     }())
 
 // 修改总价
@@ -1121,6 +1051,83 @@ function findlist(list, listen, substr) {
     }
 }
 
+//全选选择
+$('.all').on('click', 'input.all-choice', function(){
+	if($(this).is(":checked")){
+		$(this).parents('.all').find('.details .checkbox').prop('checked',true)
+	}else{
+		$(this).parents('.all').find('.details .checkbox').prop('checked',false)
+	}
+})
+$('.all').on('click','.details .checkbox',function(){
+	if(!$(this).is(":checked")){
+		$(this).parents('.all').find('input.all-choice').prop('checked',false)
+	}
+})
+
+//个人订单生成表格
+$('.all').on('click', '.generateTable', function(){
+	//将订单号添加至一个数组中
+	var xlsxs = []
+	$(this).parents(".all").find(".details .checkbox").each(function(){
+		if($(this).is(":checked")){
+			xlsxs.push($(this).parents(".details").find(".oNum").text())
+		}
+	})
+	console.log(xlsxs)
+	if(xlsxs.length===0){
+		alert("请选择订单")
+	}else{
+		$.post(localhost + '/tuan/torders/excel',{
+				saleId: token,
+				oids: xlsxs.join("=")
+			},function(res){
+				if(res.error){
+                    alert(res.message)
+                }else {
+                    if(res.data!==null){
+                        location.href = res.data
+                    }else {
+                        alert('数据错误！')
+                    }
+                }
+			})
+	}
+})
+
+
+//团购生成表格
+$('.all').on('click', '.tuan-generateTable', function(){
+	//将订单号添加至一个数组中
+	var xlsxs = []
+	$(this).parents(".all").find(".details .checkbox").each(function(){
+		if($(this).is(":checked")){
+			xlsxs.push($(this).parents(".details").find(".oNum").text())
+		}
+	})
+	if(xlsxs.length===0){
+		alert("请选择订单")
+	}else{
+		$.post(localhost + '/tuan/tuanorders/excel',{
+				saleId: token,
+				oids: xlsxs.join("=")
+			},function(res){
+				if(res.error){
+                    alert(res.message)
+                }else {
+                    if(res.data!==null){
+                        location.href = res.data
+                    }else {
+                        alert('数据错误！')
+                    }
+                }
+			})
+	}
+})
+
+
+
+
 // 点击发货按钮下拉事件
 $('body').on('click', '.fahuo', function () {
     if ($(this).attr('title') === '') {
@@ -1260,10 +1267,6 @@ $('.all').on("click", '.tianxie', function(){
 	var leavemsg = $(this).parents('.details').find('.tmjbeizhu input').val()
 	var input = $(this).parents('.details').find('.tmjbeizhu input')
 	var that = $(this)
-	console.log(leavemsg)
-	
-	console.log($(this).parents('.details').find('.tmjbeizhu input'))
-	console.log($(this).parents('.details').find('.tmjbeizhu input')[0].placeholder)
 	$.post(localhost + '/tuan/tuanorders/leavemsg',{
 		oid: oid,
 		saleId: token,

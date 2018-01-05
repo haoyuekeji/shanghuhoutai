@@ -14,7 +14,7 @@
                     height: auto;
                     position: absolute;
                     left: 0;
-                    top: 100px;
+                    top: 80px;
                     z-index: 999;
                     display: none;
                     div {
@@ -36,6 +36,20 @@
         overflow: scroll;
         background: #fff;
         overflow-x: hidden;
+        .choice-query-form{
+            width: 700px;
+            height: 40px;
+            div{
+                margin: 5px;
+                float: left;
+                height: 20px;
+//              border: 1px solid darkgray;
+                box-shadow: 3px 3px 3px #ccc;
+            }
+        }
+        .generateTable:hover{
+            cursor: pointer;
+        }
         .details {
         	position: relative;
             height: auto;
@@ -49,7 +63,7 @@
             	border: 1px solid #ccc;
             }
             .details-con-top{
-            	font-size: 20px;
+            	font-size: 17px;
             	font-weight: bolder;
             	font-family: "agency fb";
             }
@@ -240,10 +254,9 @@
             }
             .tmjbeizhu {
                 width: 800px;
-                height: 50px;
                 position: absolute;
-                top: 150px;
-                left: 180px;
+                top: 115px;
+                left: 130px;
                 button{
 					float: right;
                 }
