@@ -298,6 +298,7 @@ $('body').on('click','.goSearch',function (content) {
     var id = localStorage.getItem('token')
         var  a = $("#shangpin").val();
         var  b = $("#dingdan").val();
+        console.log(b)
         var  c = $("#shangpm").val();
         var  d = $("#dingdanzt option:selected").text();
         var  e = $("#mname").val();
@@ -316,13 +317,12 @@ $('body').on('click','.goSearch',function (content) {
         success:function (res) {
             var content=[];
             var searchAll = res.data;
+            console.log(searchAll)
             content.push.apply(content,searchAll)
             console.log(searchAll)
-            if( a ==="" && b===""&& c===""&& d===""&& e===""){
+            if( a ==="" && b===""&& c===""&& e===""){
                 alert("至少填写一种搜索信息")
-            }else if(b.length < 6 && b.length > 0 ){
-                alert("输入订单号后6位")
-            }else if(res.data.length === 0 ){
+            }else  if(res.data.length === 0 ){
                 alert("无数据")
             }else{
                 searchAll.forEach(function (val,key) {

@@ -476,6 +476,10 @@ $('.fabu').click(function () {
     var hours = $(".pdan-end").find('input').eq(1).val()
     var minites = $(".pdan-end").find('input').eq(2).val()
     var myTimes =mDatas+" "+hours+":"+minites+":00"
+
+
+
+
   for (var op = 0; op < $('.choujiang').find('input').length;op++) {
     if ($('.choujiang').find('input').eq(op).is(':checked')) {
       isLuckDraw = $('.choujiang').find('input').eq(op).val()

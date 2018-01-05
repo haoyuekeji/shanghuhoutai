@@ -182,6 +182,7 @@ $.post(localhost + '/seller/pro/findOne', {
   })
   color.forEach(function (val, key) {
     produtsTypes.forEach(function (val_, key_) {
+      console.log(val_)
       if (val === val_.color) {
         details_con.push({})
         details_con[key_].color = val_.color
@@ -189,65 +190,79 @@ $.post(localhost + '/seller/pro/findOne', {
         details_con[key_].priceNew = val_.priceNew
         details_con[key_].size = val_.size
         details_con[key_].discountPrice = val_.discountPrice
+          details_con[key_].secondKillPrice = val_.secondKillPrice
       }
     })
   })
   color.forEach(function (val, key) {
-    $('.sure').append('<div class="all">\n' +
-      '                <div class="all-top">\n' +
-      '                    <ul>\n' +
-      '                        <li style="width: 90px">颜色</li>\n' +
-      '                        <li>尺码</li>\n' +
-      '<li style="position: relative" class="djia">' +
-      '<span style="cursor: pointer">折扣价' +
-      '<span style="font-size: 12px;display: block">(双击一键添加)</span>' +
-      '</span>' +
-      '<input type="text" style="height: 100%;width: 64%;position: absolute;' +
-      'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">' +
-      '</li>' +
-      '                        <li style="position: relative" class="jia">\n' +
-      '                            <span style="cursor: pointer;display: block">原价\n' +
-      '                                <span style="font-size: 12px">(双击一键添加)</span>\n' +
-      '                            </span>\n' +
-      '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
-      'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
-      '                        </li>\n' +
-      '                        <li style="position: relative" class="cunliang">\n' +
-      '                            <span>库存\n' +
-      '                                <span style="font-size: 12px;display: block">(双击一键添加)</span>\n' +
-      '                            </span>\n' +
-      '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
-      'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
-      '                        </li>\n' +
-      '                    </ul>\n' +
-      '                </div>\n' +
-      '                <div class="all-con">\n' +
-      '                    <div class="all-con-left">\n' +
-      '                        <input type="text"  readonly class="clickdb">\n' +
-      '                    </div>\n' +
-      '                    <div class="all-con-right">\n' +
-      '                        <ul>\n' +
-      '                        </ul>\n' +
-      '<div class="add_">' +
-      '<img src="images/add.png" alt="">' +
-      '</div>' +
-      '                    </div>\n' +
-      '                    <div class="del">\n' +
-      '                        <img src="images/del.png" alt="">\n' +
-      '                    </div>\n' +
-      '                </div>\n' +
-      '            </div>')
+      $('.sure').append('<div class="all">\n' +
+          '                <div class="all-top">\n' +
+          '                    <ul>\n' +
+          '                        <li style="width: 90px">颜色</li>\n' +
+          '                        <li>尺码</li>\n' +
+          '<li style="position: relative" class="djia">' +
+          '<span style="cursor: pointer">折扣价' +
+          '<span style="font-size: 12px;display: block">(双击一键添加)</span>' +
+          '</span>' +
+          '<input type="text" style="height: 100%;width: 64%;position: absolute;' +
+          'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">' +
+          '</li>' +
+
+          '                        <li style="position: relative" class="jia">\n' +
+          '                            <span style="cursor: pointer;display: block">原价\n' +
+          '                                <span style="font-size: 12px">(双击一键添加)</span>\n' +
+          '                            </span>\n' +
+          '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
+          'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
+          '                        </li>\n' +
+          '<li style="position: relative" class="djia">' +
+          '<span style="cursor: pointer">秒杀价' +
+          '<span style="font-size: 12px;display: block">(双击一键添加)</span>' +
+          '</span>' +
+          '<input type="text" style="height: 100%;width: 64%;position: absolute;' +
+          'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">' +
+          '</li>' +
+          '                        <li style="position: relative" class="cunliang">\n' +
+          '                            <span>库存\n' +
+          '                                <span style="font-size: 12px;display: block">(双击一键添加)</span>\n' +
+          '                            </span>\n' +
+          '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
+          'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
+          '                        </li>\n' +
+          '                    </ul>\n' +
+          '                </div>\n' +
+          '                <div class="all-con">\n' +
+          '                    <div class="all-con-left">\n' +
+          '                        <input type="text"  readonly class="clickdb">\n' +
+          '                    </div>\n' +
+          '                    <div class="all-con-right">\n' +
+          '                        <ul>\n' +
+
+          '                        </ul>\n' +
+          '<div class="add_">' +
+          '<img src="images/add.png" alt="">' +
+          '</div>' +
+          '                    </div>\n' +
+          '                    <div class="del">\n' +
+          '                        <img src="images/del.png" alt="">\n' +
+          '                    </div>\n' +
+          '                </div>\n' +
+          '            </div>')
 
     $('.all').eq(key).find('.all-con-left input').val(val)
     details_con.forEach(function (val_, key_) {
+      console.log(val_)
       if (val === val_.color) {
+          var secondKillPrice = details_con[key_].secondKillPrice||0
+          var discountPrice = details_con[key_].discountPrice||0
         $('.all').eq(key).find('.all-con-right ul').eq(0).append('<li>\n' +
           '                                <ul class="push-details">\n' +
           '                                    <li><span>\n' +
           '                                      <input type="text" placeholder=\'列如："S"\' class="chima" readonly value=' + details_con[key_].size + '>\n' +
           '                                </span></li>\n' +
-          '                <li><input type="text" readonly class="clickdb disjiage" value=' + details_con[key_].discountPrice + '></li>' +
+          '                <li><input type="text" readonly class="clickdb disjiage" value=' + discountPrice + '></li>' +
           '<li><input type="text" readonly class="clickdb jiage" value=' + details_con[key_].priceNew + '></li>' +
+          '<li><input type="text" readonly class="clickdb mjiage" value=' + secondKillPrice + '></li>' +
           ' <li><input type="text" readonly class="clickdb nums" value=' + details_con[key_].amount + '></li>' +
           '<div class="del_">' +
           '<img src="images/del.png" alt="">' +
@@ -259,6 +274,18 @@ $.post(localhost + '/seller/pro/findOne', {
   })
   $('.address').find('textarea').val(content.sendAddress)
   // deliverPrice
+
+
+    //点击秒杀宝贝
+    $("body").on('click','#checkBox',function () {
+        if($(this).is(':checked')) {
+            $(".allPdan").css({display:'block'})
+        }else{
+            $(".allPdan").css({display:'none'})
+        }
+    })
+
+
 
   // 添加商品分类
   $.post(localhost + '/ptypename/list', {
@@ -447,6 +474,7 @@ $.post(localhost + '/seller/pro/findOne', {
       '                                </span></li>\n' +
       '                <li><input type="text" readonly class="clickdb disjiage"></li>' +
       '<li><input type="text" readonly class="clickdb jiage"></li>' +
+      ' <li><input type="text" readonly class="clickdb mjiage"></li>' +
       ' <li><input type="text" readonly class="clickdb nums"></li>' +
       '<div class="del_">' +
       '<img src="images/del.png" alt="">' +
@@ -476,6 +504,13 @@ $.post(localhost + '/seller/pro/findOne', {
       '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
       'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
       '                        </li>\n' +
+      '                        <li style="position: relative" class="djia">' +
+      '                          <span style="cursor: pointer">秒杀价' +
+      '                              <span style="font-size: 12px;display: block">(双击一键添加)</span>' +
+      '                          </span>' +
+      '                              <input type="text" style="height: 100%;width: 64%;position: absolute;' +
+      '                                   left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">' +
+      '                        </li>'+
       '                        <li style="position: relative" class="cunliang">\n' +
       '                            <span>库存\n' +
       '                                <span style="font-size: 12px;display: block">(双击一键添加)</span>\n' +
@@ -498,6 +533,7 @@ $.post(localhost + '/seller/pro/findOne', {
       '                                </span></li>\n' +
       '                <li><input type="text" readonly class="clickdb disjiage"></li>' +
       '<li><input type="text" readonly class="clickdb jiage"></li>' +
+        '<li><input type="text" readonly class="clickdb mjiage"></li>' +
       ' <li><input type="text" readonly class="clickdb nums"></li>' +
       '<div class="del_">' +
       '<img src="images/del.png" alt="">' +
@@ -515,6 +551,9 @@ $.post(localhost + '/seller/pro/findOne', {
       '                </div>\n' +
       '            </div>')
   })
+
+
+
 
   // 添加商品信息
 
@@ -568,11 +607,11 @@ $.post(localhost + '/seller/pro/findOne', {
       }
     }
 
-    for (var i = 0; i < $('.all-con-left').length; i++) {
-      for (var p = 0; p < $('.all-con-right').eq(i).find('.push-details input').length; p += 4) {
-        All += $('.all-con-left').find('input').eq(i).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 1).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 2).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 3).val() + '='
+      for (var i = 0; i < $('.all-con-left').length; i++) {
+          for (var p = 0; p < $('.all-con-right').eq(i).find('.push-details input').length; p += 5) {
+              All += $('.all-con-left').find('input').eq(i).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 1).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 2).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 3).val()+ ',' + $('.all-con-right').eq(i).find('input').eq(p + 4).val() + '='
+          }
       }
-    }
     $('.button').html('已保存！')
   })
 
@@ -584,6 +623,9 @@ $.post(localhost + '/seller/pro/findOne', {
       }, 1500)
     }
   })
+
+
+
 
   // 上传主图
   $('#loading').fileinput({
@@ -614,6 +656,8 @@ $.post(localhost + '/seller/pro/findOne', {
       view(banner, '.loading-preview-con')
     }
   })
+
+
 
   // 上传详情图片
   $('#uploading').fileinput({
@@ -667,6 +711,9 @@ $.post(localhost + '/seller/pro/findOne', {
       $('.express').prop('checked', false)
     }
   })
+
+
+
   // 点击发布
   $('.fabu').click(function () {
     var isLuckDraw = ''
@@ -676,6 +723,7 @@ $.post(localhost + '/seller/pro/findOne', {
     var classify = $('.classify').find('input').val()
     var pNumber = $('.kuanhao').find('input').val()
       var pText = $('.tjbianji').find('input').val()
+      var pTime = $('.timesInput').find('input').val()|0
     var address = $('.address .input textarea').val()
     var jia = $('.kuaidi').eq(1).find('input:checked').siblings('span').html() == '立即上架' ? 'true' : 'false'
     var brand = $('.canshu').find('input').eq(0).val()
@@ -684,6 +732,27 @@ $.post(localhost + '/seller/pro/findOne', {
     var pStyle = $('.canshu').find('input').eq(4).val()
     var model = $('.canshu').find('input').eq(5).val()
     var pattern = $('.canshu').find('input').eq(6).val()
+    var checked='';
+    //选中状态
+    if($("#checkBox").is(':checked')){
+        checked= true
+    }else{
+        checked= false
+    }
+
+
+      //秒杀时间开始
+      //年月日
+      var mData = $(".pdan-start").find('input').eq(0).val()
+      var hour = $(".pdan-start").find('input').eq(1).val()
+      var minite = $(".pdan-start").find('input').eq(2).val()
+      var myTime =mData+" "+hour+":"+minite+":00"
+      //秒杀时间结束
+      //年月日
+      var mDatas = $(".pdan-end").find('input').eq(0).val()
+      var hours = $(".pdan-end").find('input').eq(1).val()
+      var minites = $(".pdan-end").find('input').eq(2).val()
+      var myTimes =mDatas+" "+hours+":"+minites+":00"
     for (var op = 0; op < $('.choujiang').find('input').length; op++) {
       if ($('.choujiang').find('input').eq(op).is(':checked')) {
         isLuckDraw = $('.choujiang').find('input').eq(op).val()
@@ -722,8 +791,12 @@ $.post(localhost + '/seller/pro/findOne', {
               token: token,
               online_code: onlinecode,
               isLuckDraw: isLuckDraw,
-                suffix:pText,
-                qrcode: content.qrcode,
+              suffix:pText,
+              showHours:pTime,
+              qrcode: content.qrcode,
+              issecondkill:checked,
+              killStart:myTime,
+              killEnd:myTimes,
               //  废弃参数为空
               sendAddress: '',
               brand: '',

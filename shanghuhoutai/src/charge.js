@@ -87,6 +87,7 @@ function addhtml_(content) {
         '                        <span>尺码</span>\n' +
         '                        <span>单价</span>\n' +
         '                        <span>修改单价</span>\n' +
+
         '                        <span>库存</span>\n' +
         '                        <span>增加库存</span>\n' +
         // '                        <span>已卖出</span>\n' +
