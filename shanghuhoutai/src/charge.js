@@ -117,15 +117,12 @@ function addhtml_(content) {
 function addhtml4_(content) {
   $('.all').html('')
   $('.pages').show()
+    $('body').append("<script src='js/times.min.js'></script>")
   if (content.length === 0) {
     $('.all').html('您没有已下架商品！')
     return false
   } else {
-    for (var q = content.length - 1; q >= 0; q--) {
-      if (content[q].active === true) {
-        content.splice(q, 1)
-      }
-    }
+
     for (var i = 0; i < content.length; i++) {
       var amount = 0
       var saleNumber = 0
@@ -135,6 +132,12 @@ function addhtml4_(content) {
         return false
       } else
         {
+          var newTime = new Date();
+          if(Date.parse(content[i].showDate) > Date.parse(newTime)){
+            console.log(1)
+          }else{
+            console.log(2)
+          }
         var img = content[i].indexImages.split(',')
         content[i].produtsTypes.forEach(function (val, key) {
           amount += val.amount
@@ -176,7 +179,10 @@ function addhtml4_(content) {
           // '                        <span>shang</span>\n' +
           '                    </div>\n' +
           '                </div>\n' +
+            '            <div class="details-times"  endTime="'+ content[i].showDate+'">' +
+            '            </div>'+
           '            </div>')
+
       }
       for (var k = 0; k < content[i].produtsTypes.length; k++) {
         $('.details-details').eq(i).append(
@@ -195,90 +201,7 @@ function addhtml4_(content) {
       }
     }
   }
-}
 
-
-
-// 预售列表
-function addhtml2_(cent) {
-    $('.all').html('')
-    $('.pages').show()
-    if (cent.length === 0) {
-        $('.all').html('您没有预售商品！')
-        return false
-    } else
-      {
-
-        }
-        for (var i = 0; i < cent.length; i++) {
-            var amount = 0
-            var saleNumber = 0
-            if (cent.length === 0) {
-                $('.all').html('暂无商品！')
-                return false
-            } else
-              {
-                var img = cent[i].indexImages.split(',')
-                cent[i].produtsTypes.forEach(function (val, key) {
-                    amount += val.amount
-                })
-                amount_.push(amount)
-                cent[i].monthSale === null ? saleNumber_ = 0 : saleNumber_ = cent[i].monthSale
-                $('.all').append('<div class="details">\n' +
-                    '<div class="id_id" style="display: none">' + cent[i].id + '</div>' +
-                    '                <div class="details-left">\n' +
-                    '                    <img src="' + img[0] + '" alt="">\n' +
-                    '                </div>\n' +
-                    '                <div class="details-con">\n' +
-                    '                    <div class="details-con-top">\n' +
-                    cent[i].pname +
-                    '                    </div>\n' +
-                    '                    <div class="init">   </div>\n' +
-                    '                    <div class="price">\n' +
-                    '<div class="produt-id" style="display:none">商品编号：<span>' + cent[i].id + '</span></div>' +
-                    '<div style="color:red">商品编号：<span style="color:red">' + cent[i].pcode + '</span></div>' +
-                    '                        <span class="nums">\n' +
-                    '                            剩余库存：' + amount_[i] + '&nbsp&nbsp&nbsp\n' +
-                    '                            已卖出：' + saleNumber_ + '\n' +
-                    '                        </span>\n' +
-                    '                    </div>' +
-                    '                </div>\n' +
-                    '\n' +
-                    '                <div class="details-details">\n' +
-                    '                    <div class="">\n' +
-                    '                        <span>颜色</span>\n' +
-                    '                        <span>尺码</span>\n' +
-                    '                        <span>单价</span>\n' +
-                    '                        <span>修改单价</span>\n' +
-                    '                        <span>库存</span>\n' +
-                    '                        <span>增加库存</span>\n' +
-                    // '                        <span>已卖出</span>\n' +
-                    // '                        <span>shang</span>\n' +'+ allTime[i] +'
-                    '                    </div>\n' +
-                    '                </div>\n' +
-                    '                <div class="details-times"  endTime="'+ cent[i].showDate+'">' +
-                    '</div>\n'+
-                    '            </div>')
-                  $('body').append("<script src='js/times.min.js'></script>")
-     }
-
-
-            for (var k = 0; k < cent[i].produtsTypes.length; k++) {
-                $('.details-details').eq(i).append(
-                    '<div class="list">\n' +
-                    '<span>' + cent[i].produtsTypes[k].color + '</span>\n' +
-                    '<span>' + cent[i].produtsTypes[k].size + '</span>\n' +
-                    '<span>' + cent[i].produtsTypes[k].discountPrice + '</span>\n' +
-                    '<span><span class="id" style="display: none">' + cent[i].produtsTypes[k].id + '</span><input type="text"><span class="sure-price">确定</span></span>\n' +
-                    '<span>' + cent[i].produtsTypes[k].amount + '</span>\n' +
-                    '<span><span class="id" style="display: none">' + cent[i].produtsTypes[k].id + '</span><input type="text"><span class="sure-nums">确定</span></span>\n' +
-                    // '<span>' + cent[i].produtsTypes[k].saleNumber + ' </span>\n' +
-                    '<span class="del" style="display: none"><span class="id" style="display: none">' + cent[i].produtsTypes[k].id +
-                    '</span><span class="id_id" style="display: none">' + cent[i].id + '</span>下架</span>' +
-                    ' </div>\n' +
-                    '')
-            }
-        }
 }
 
 
@@ -290,7 +213,6 @@ $('.body-top ul li').click(function () {
   var id_ = $(this).index()
   pagesindex = $(this).index()
   pages = 0
-    var No = 'no'
   $('.all').html('')
   switch (id_) {
     case 0:
@@ -330,28 +252,6 @@ $('.body-top ul li').click(function () {
         }
       })
       break
-    case 2:
-          $.post(localhost + '/seller/pro/list', {
-              pageNumber: pages,
-              pageSize: 10,
-              token: token,
-              active: true,
-              online_code: onlinecode,
-              showdate:No
-          }, function (res) {
-            console.log(res)
-              var content =res.data.content
-              var cent =[];
-            cent.push.apply(cent,content)
-              if (content.length === 0) {
-                  $('.pages').hide()
-              } else {
-                  $('.pages').show()
-              }
-              outline(res)
-              addhtml2_(cent)
-          })
-          break
     default:
       break
   }
@@ -503,6 +403,7 @@ $('body').on('click', '.shangjia', function () {
       that.parents('.details').remove()
     }
   })
+
 })
 
 

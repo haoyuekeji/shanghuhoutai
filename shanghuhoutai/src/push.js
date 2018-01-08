@@ -145,6 +145,7 @@ $('body').on('click', '.all-top .djia', function () {
     'opacity': 0
   })
 })
+
 // 移出焦点进行赋值
 $('body').on('blur', '.all-top .jia', function () {
   var val = $(this).find('input').val()
@@ -196,6 +197,7 @@ $('body').on('click', '.add_', function () {
     '                                </span></li>\n' +
     '                <li><input type="text" readonly class="clickdb disjiage"></li>' +
     '<li><input type="text" readonly class="clickdb jiage"></li>' +
+      ' <li><input type="text" readonly class="clickdb mjiage"></li>' +
     ' <li><input type="text" readonly class="clickdb nums"></li>' +
     '<div class="del_">' +
     '<img src="images/del.png" alt="">' +
@@ -203,6 +205,19 @@ $('body').on('click', '.add_', function () {
     '                                </ul>\n' +
     '                            </li>')
 })
+
+
+ //点击秒杀宝贝
+$("body").on('click','#checkBox',function () {
+    if($(this).is(':checked')) {
+       $(".allPdan").css({display:'block'})
+    }else{
+        $(".allPdan").css({display:'none'})
+    }
+})
+
+
+
 
 // 点击添加颜色分类
 $('.add').click(function () {
@@ -218,6 +233,7 @@ $('.add').click(function () {
     '<input type="text" style="height: 100%;width: 64%;position: absolute;' +
     'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">' +
     '</li>' +
+
     '                        <li style="position: relative" class="jia">\n' +
     '                            <span style="cursor: pointer;display: block">原价\n' +
     '                                <span style="font-size: 12px">(双击一键添加)</span>\n' +
@@ -225,6 +241,13 @@ $('.add').click(function () {
     '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
     'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
     '                        </li>\n' +
+      '<li style="position: relative" class="djia">' +
+      '<span style="cursor: pointer">秒杀价' +
+      '<span style="font-size: 12px;display: block">(双击一键添加)</span>' +
+      '</span>' +
+      '<input type="text" style="height: 100%;width: 64%;position: absolute;' +
+      'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">' +
+      '</li>' +
     '                        <li style="position: relative" class="cunliang">\n' +
     '                            <span>库存\n' +
     '                                <span style="font-size: 12px;display: block">(双击一键添加)</span>\n' +
@@ -247,6 +270,7 @@ $('.add').click(function () {
     '                                </span></li>\n' +
     '                <li><input type="text" readonly class="clickdb disjiage"></li>' +
     '<li><input type="text" readonly class="clickdb jiage"></li>' +
+    '<li><input type="text" readonly class="clickdb mjiage"></li>' +
     ' <li><input type="text" readonly class="clickdb nums"></li>' +
     '<div class="del_">' +
     '<img src="images/del.png" alt="">' +
@@ -319,8 +343,8 @@ $('.button').click(function () {
   }
 
   for (var i = 0; i < $('.all-con-left').length; i++) {
-    for (var p = 0; p < $('.all-con-right').eq(i).find('.push-details input').length; p += 4) {
-      All += $('.all-con-left').find('input').eq(i).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 1).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 2).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 3).val() + '='
+    for (var p = 0; p < $('.all-con-right').eq(i).find('.push-details input').length; p += 5) {
+      All += $('.all-con-left').find('input').eq(i).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 1).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 2).val() + ',' + $('.all-con-right').eq(i).find('input').eq(p + 3).val()+ ',' + $('.all-con-right').eq(i).find('input').eq(p + 4).val() + '='
     }
   }
   $('.button').html('已保存！')
@@ -423,7 +447,6 @@ $('.fabu').click(function () {
   var classify = $('.classify').find('input').val()
   var pNumber = $('.kuanhao').find('input').val()
   var pText = $('.tjbianji').find('input').val()
-  var pTime = $('.timesInput').find('input').val()|0
   var address = $('.address .input textarea').val()
   var jia = $('.kuaidi').eq(1).find('input:checked').siblings('span').html() == '立即上架' ? 'true' : 'false'
   var brand = $('.canshu').find('input').eq(0).val()
@@ -432,12 +455,41 @@ $('.fabu').click(function () {
   var pStyle = $('.canshu').find('input').eq(4).val()
   var model = $('.canshu').find('input').eq(5).val()
   var pattern = $('.canshu').find('input').eq(6).val()
+    var checked='';
+    //选中状态
+    if($("#checkBox").is(':checked')){
+        checked= true
+    }else{
+        checked= false
+    }
+    console.log(checked)
+  //预上架时间
+    var pData = $(".pdan-start").find('input').eq(0).val()
+    var phour = $(".pdan-start").find('input').eq(1).val()
+    var pminite = $(".pdan-start").find('input').eq(2).val()
+    var pmyTime =pData+" "+phour+":"+pminite+":00"
+
+  //秒杀时间开始
+    //年月日
+    var mData = $(".pdan-start").find('input').eq(0).val()
+    var hour = $(".pdan-start").find('input').eq(1).val()
+    var minite = $(".pdan-start").find('input').eq(2).val()
+    var myTime =mData+" "+hour+":"+minite+":00"
+  //秒杀时间结束
+    //年月日
+    var mDatas = $(".pdan-end").find('input').eq(0).val()
+    var hours = $(".pdan-end").find('input').eq(1).val()
+    var minites = $(".pdan-end").find('input').eq(2).val()
+    var myTimes =mDatas+" "+hours+":"+minites+":00"
+
+
+
+
   for (var op = 0; op < $('.choujiang').find('input').length;op++) {
     if ($('.choujiang').find('input').eq(op).is(':checked')) {
       isLuckDraw = $('.choujiang').find('input').eq(op).val()
     }
   }
-   console.log(pTime)
   if (
     title === '' || classify === '' || deliverPrice === '' || deliverPrice === '选择快递模板'
   ) {
@@ -467,7 +519,10 @@ $('.fabu').click(function () {
             online_code: onlinecode,
             isLuckDraw:isLuckDraw,
             suffix:pText,
-            showHours:pTime,
+            showHours:pmyTime,
+            issecondkill:checked,
+            killStart:myTime,
+            killEnd:myTimes,
             //  废弃参数为空
             brand: '',
             pStyle: '',
@@ -477,6 +532,7 @@ $('.fabu').click(function () {
             designPic: '',
             sendAddress: ''
           }, function (data) {
+            console.log(data)
             outline(data)
             if (data.data !== null && data.token !== '折扣价不应该大于原价') { // 成功后清空数据
               alert('添加成功！')
