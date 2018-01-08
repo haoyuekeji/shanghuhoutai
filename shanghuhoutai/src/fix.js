@@ -227,6 +227,7 @@ $.post(localhost + '/seller/pro/findOne', {
         }
   color.forEach(function (val, key) {
     produtsTypes.forEach(function (val_, key_) {
+      console.log(val_)
       if (val === val_.color) {
         details_con.push({})
         details_con[key_].color = val_.color
@@ -259,7 +260,11 @@ $.post(localhost + '/seller/pro/findOne', {
           '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
           'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
           '                        </li>\n' +
+<<<<<<< HEAD
           '<li style="position: relative" class="mjia">' +
+=======
+          '<li style="position: relative" class="djia">' +
+>>>>>>> ee254b723972331d84341935617ebed4301fbbcb
           '<span style="cursor: pointer">秒杀价' +
           '<span style="font-size: 12px;display: block">(双击一键添加)</span>' +
           '</span>' +
@@ -295,10 +300,14 @@ $.post(localhost + '/seller/pro/findOne', {
 
     $('.all').eq(key).find('.all-con-left input').val(val)
     details_con.forEach(function (val_, key_) {
+      console.log(val_)
       if (val === val_.color) {
           var secondKillPrice = details_con[key_].secondKillPrice||0
           var discountPrice = details_con[key_].discountPrice||0
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee254b723972331d84341935617ebed4301fbbcb
         $('.all').eq(key).find('.all-con-right ul').eq(0).append('<li>\n' +
           '                                <ul class="push-details">\n' +
           '                                    <li><span>\n' +
@@ -569,7 +578,11 @@ $.post(localhost + '/seller/pro/findOne', {
       '                            <input type="text" style="height: 100%;width: 64%;position: absolute;\n' +
       'left:0;top:0;margin-left: 25px;opacity: 0;cursor: pointer;text-align: center">\n' +
       '                        </li>\n' +
+<<<<<<< HEAD
       '                        <li style="position: relative" class="mjia">' +
+=======
+      '                        <li style="position: relative" class="djia">' +
+>>>>>>> ee254b723972331d84341935617ebed4301fbbcb
       '                          <span style="cursor: pointer">秒杀价' +
       '                              <span style="font-size: 12px;display: block">(双击一键添加)</span>' +
       '                          </span>' +
@@ -788,6 +801,7 @@ $.post(localhost + '/seller/pro/findOne', {
     var classify = $('.classify').find('input').val()
     var pNumber = $('.kuanhao').find('input').val()
       var pText = $('.tjbianji').find('input').val()
+      var pTime = $('.timesInput').find('input').val()|0
     var address = $('.address .input textarea').val()
     var jia = $('.kuaidi').eq(1).find('input:checked').siblings('span').html() == '立即上架' ? 'true' : 'false'
     var brand = $('.canshu').find('input').eq(0).val()
@@ -803,11 +817,15 @@ $.post(localhost + '/seller/pro/findOne', {
     }else{
         checked= false
     }
+<<<<<<< HEAD
       //预上架时间
       var pData = $(".pdan-start").find('input').eq(0).val()
       var phour = $(".pdan-start").find('input').eq(1).val()
       var pminite = $(".pdan-start").find('input').eq(2).val()
       var pmyTime =pData+" "+phour+":"+pminite+":00"
+=======
+
+>>>>>>> ee254b723972331d84341935617ebed4301fbbcb
 
       //秒杀时间开始
       //年月日
@@ -860,7 +878,11 @@ $.post(localhost + '/seller/pro/findOne', {
               online_code: onlinecode,
               isLuckDraw: isLuckDraw,
               suffix:pText,
+<<<<<<< HEAD
               showHours:pmyTime,
+=======
+              showHours:pTime,
+>>>>>>> ee254b723972331d84341935617ebed4301fbbcb
               qrcode: content.qrcode,
               issecondkill:checked,
               killStart:myTime,
