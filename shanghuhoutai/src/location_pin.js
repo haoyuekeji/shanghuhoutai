@@ -17,13 +17,10 @@ $('.body-left a').click(function () {
       location.href = 'set_pin.html'
       break
     case 5:
-      location.href = 'seach_pin.html'
-      break
-    case 6:
       location.href = 'comment_pin.html'
       break
-    case 7:
-      location.href = 'activity_pin.html'
+    case 6:
+       location.href = 'activity_pin.html'
       break
   }
 })

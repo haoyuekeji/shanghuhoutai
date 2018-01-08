@@ -272,6 +272,202 @@ function addhtml4_(content) {
     }
 }
 
+//退款中
+function addhtml5_(content){
+	 $('.all').html('')
+    if ( content.length === 0) {
+        $('.all').html('您没有退款中订单！')
+        return false
+    } else {
+        $(".all").append('<div class="dBtn"><div class="allInput"><input type="checkbox" id="zongBox"><label for="zongBox">全选</label></div><div class="searchInput">查询订单</div><div class="btnEcl">生成表格</div></div>')
+        for (var i = 0; i < content.length; i++) {
+            var img = content[i].products[0].indexImages.split(',')[0]
+            var asd=''
+            inputEcl.forEach(function (val,key) {
+                if( val == content[i].id){
+                    asd = 'checked'
+                }
+            })
+            $('.all').append('' +
+                '<div class="details" style="font-size:12px">\n' +
+                '<div class="data"><input type="checkbox" class="inputBox" value="' + content[i].id + '" '+ asd +'><a> 订单号：' + content[i].orderCode + '</a><span>成交时间：' + content[i].createDate + '</span></div>\n' +
+                '    <div class="details-left">\n' +
+                '           <img src="' + img + '" alt="">\n' +
+                '    </div>\n' +
+                '    <div class="details-con width">\n' +
+                '    <div class="details-con-top">\n' +
+                content[i].products[0].pname +
+                '</div>\n' +
+                '<s class="style">\n' +
+                '<span class="yanse">颜色：' + content[i].produtsTypes[0].color + '</span>\n' +
+                '<span class="chima">尺码：' + content[i].produtsTypes[0].size + '</span>\n' +
+                '<span class="price price-charge">\n' +
+                ' 总价：' + content[i].totalPrice +
+                ' <span>数量：' + content[i].amount + '</span>   </s>\n' +
+                '</span>\n' +
+                '</div>\n' +
+                '<div class="details-right-charge">\n' +
+                '    <div class="address">\n' +
+                content[i].address.receiver + content[i].address.phone + '<br>\n' +
+                content[i].address.address +
+                '</div>\n' +
+                '<div class="fahuo wuliu-details" title="">\n' +
+                '删除订单\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>' +
+                '')
+        }
+    }
+}
+
+
+//已关闭订单
+function addhtml6_(content) {
+    $('.all').html('')
+    if ( content.length === 0) {
+        $('.all').html('您没有已关闭订单！')
+        return false
+    } else {
+        $(".all").append('<div class="dBtn"><div class="allInput"><input type="checkbox" id="zongBox"><label for="zongBox">全选</label></div><div class="searchInput">查询订单</div><div class="btnEcl">生成表格</div></div>')
+        for (var i = 0; i < content.length; i++) {
+            var img = content[i].products[0].indexImages.split(',')[0]
+            var asd=''
+            inputEcl.forEach(function (val,key) {
+                if( val == content[i].id){
+                    asd = 'checked'
+                }
+            })
+            $('.all').append('' +
+                '<div class="details" style="font-size:12px">\n' +
+                '<div class="data"><input type="checkbox" class="inputBox" value="' + content[i].id + '" '+ asd +'><a> 订单号：' + content[i].orderCode + '</a><span>成交时间：' + content[i].createDate + '</span></div>\n' +
+                '    <div class="details-left">\n' +
+                '           <img src="' + img + '" alt="">\n' +
+                '    </div>\n' +
+                '    <div class="details-con width">\n' +
+                '    <div class="details-con-top">\n' +
+                content[i].products[0].pname +
+                '</div>\n' +
+                '<s class="style">\n' +
+                '<span class="yanse">颜色：' + content[i].produtsTypes[0].color + '</span>\n' +
+                '<span class="chima">尺码：' + content[i].produtsTypes[0].size + '</span>\n' +
+                '<span class="price price-charge">\n' +
+                ' 总价：' + content[i].totalPrice +
+                ' <span>数量：' + content[i].amount + '</span>   </s>\n' +
+                '</span>\n' +
+                '</div>\n' +
+                '<div class="details-right-charge">\n' +
+                '    <div class="address">\n' +
+                content[i].address.receiver + content[i].address.phone + '<br>\n' +
+                content[i].address.address +
+                '</div>\n' +
+                '<div class="fahuo wuliu-details" title="">\n' +
+                '删除订单\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>' +
+                '')
+        }
+    }
+}
+//近三个月总订单
+function addhtml7_(content){
+	$('.all').html('')
+    if ( content.length === 0) {
+        $('.all').html('您近三个月没有订单！')
+        return false
+    } else {
+        $(".all").append('<div class="dBtn"><div class="allInput"><input type="checkbox" id="zongBox"><label for="zongBox">全选</label></div><div class="searchInput">查询订单</div><div class="btnEcl">生成表格</div></div>')
+        for (var i = 0; i < content.length; i++) {
+            var img = content[i].products[0].indexImages.split(',')[0]
+            var asd=''
+            inputEcl.forEach(function (val,key) {
+                if( val == content[i].id){
+                    asd = 'checked'
+                }
+            })
+            $('.all').append('' +
+                '<div class="details" style="font-size:12px">\n' +
+                '<div class="data"><input type="checkbox" class="inputBox" value="' + content[i].id + '" '+ asd +'><a> 订单号：' + content[i].orderCode + '</a><span>成交时间：' + content[i].createDate + '</span></div>\n' +
+                '    <div class="details-left">\n' +
+                '           <img src="' + img + '" alt="">\n' +
+                '    </div>\n' +
+                '    <div class="details-con width">\n' +
+                '    <div class="details-con-top">\n' +
+                content[i].products[0].pname +
+                '</div>\n' +
+                '<s class="style">\n' +
+                '<span class="yanse">颜色：' + content[i].produtsTypes[0].color + '</span>\n' +
+                '<span class="chima">尺码：' + content[i].produtsTypes[0].size + '</span>\n' +
+                '<span class="price price-charge">\n' +
+                ' 总价：' + content[i].totalPrice +
+                ' <span>数量：' + content[i].amount + '</span>   </s>\n' +
+                '</span>\n' +
+                '</div>\n' +
+                '<div class="details-right-charge">\n' +
+                '    <div class="address">\n' +
+                content[i].address.receiver + content[i].address.phone + '<br>\n' +
+                content[i].address.address +
+                '</div>\n' +
+                '<div class="fahuo wuliu-details" title="">\n' +
+                '删除订单\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>' +
+                '')
+        }
+    }
+}
+
+//三个月前订单
+function addhtml8_(content){
+	$('.all').html('')
+    if ( content.length === 0) {
+        $('.all').html('您三个月前没有订单！')
+        return false
+    } else {
+        $(".all").append('<div class="dBtn"><div class="allInput"><input type="checkbox" id="zongBox"><label for="zongBox">全选</label></div><div class="searchInput">查询订单</div><div class="btnEcl">生成表格</div></div>')
+        for (var i = 0; i < content.length; i++) {
+            var img = content[i].products[0].indexImages.split(',')[0]
+            var asd=''
+            inputEcl.forEach(function (val,key) {
+                if( val == content[i].id){
+                    asd = 'checked'
+                }
+            })
+            $('.all').append('' +
+                '<div class="details" style="font-size:12px">\n' +
+                '<div class="data"><input type="checkbox" class="inputBox" value="' + content[i].id + '" '+ asd +'><a> 订单号：' + content[i].orderCode + '</a><span>成交时间：' + content[i].createDate + '</span></div>\n' +
+                '    <div class="details-left">\n' +
+                '           <img src="' + img + '" alt="">\n' +
+                '    </div>\n' +
+                '    <div class="details-con width">\n' +
+                '    <div class="details-con-top">\n' +
+                content[i].products[0].pname +
+                '</div>\n' +
+                '<s class="style">\n' +
+                '<span class="yanse">颜色：' + content[i].produtsTypes[0].color + '</span>\n' +
+                '<span class="chima">尺码：' + content[i].produtsTypes[0].size + '</span>\n' +
+                '<span class="price price-charge">\n' +
+                ' 总价：' + content[i].totalPrice +
+                ' <span>数量：' + content[i].amount + '</span>   </s>\n' +
+                '</span>\n' +
+                '</div>\n' +
+                '<div class="details-right-charge">\n' +
+                '    <div class="address">\n' +
+                content[i].address.receiver + content[i].address.phone + '<br>\n' +
+                content[i].address.address +
+                '</div>\n' +
+                '<div class="fahuo wuliu-details" title="">\n' +
+                '删除订单\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>' +
+                '')
+        }
+    }
+}
+
 //一键添加 一键清除
 $("body").on('click','#zongBox',function () {
     if(!$(".all").find('.data').find('.inputBox').prop('checked')){
@@ -298,7 +494,6 @@ $('body').on('click','.goSearch',function (content) {
     var id = localStorage.getItem('token')
         var  a = $("#shangpin").val();
         var  b = $("#dingdan").val();
-        console.log(b)
         var  c = $("#shangpm").val();
         var  d = $("#dingdanzt option:selected").text();
         var  e = $("#mname").val();
@@ -317,12 +512,13 @@ $('body').on('click','.goSearch',function (content) {
         success:function (res) {
             var content=[];
             var searchAll = res.data;
-            console.log(searchAll)
             content.push.apply(content,searchAll)
             console.log(searchAll)
-            if( a ==="" && b===""&& c===""&& e===""){
+            if( a ==="" && b===""&& c===""&& d===""&& e===""){
                 alert("至少填写一种搜索信息")
-            }else  if(res.data.length === 0 ){
+            }else if(b.length < 6 && b.length > 0 ){
+                alert("输入订单号后6位")
+            }else if(res.data.length === 0 ){
                 alert("无数据")
             }else{
                 searchAll.forEach(function (val,key) {
@@ -471,7 +667,8 @@ $('.body-top ul li').click(function () {
                 pageNumber: pages,
                 pageSize: 10,
                 sellerId: token,
-                state: '待收货订单'
+                state: '待收货订单',
+                online_code: onlinecode
             }, function (data) {
                 outline(data)
                 var content = data.data.content
@@ -488,11 +685,86 @@ $('.body-top ul li').click(function () {
                 pageNumber: pages,
                 pageSize: 10,
                 sellerId: token,
-                state: '已完成订单'
+                state: '已完成订单',
+                online_code: onlinecode
             }, function (data) {
                 outline(data)
                 var content = data.data.content
                 addhtml4_(content)
+                if (content.length === 0) {
+                    $('.pages').hide()
+                } else {
+                    $('.pages').show()
+                }
+            })
+            break
+        case 4:
+            $.post(localhost + '/after-sale/list', {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                online_code: onlinecode
+            }, function (data) {
+                outline(data)
+                var content = data.data.content
+                addhtml5_(content)
+                if (content.length === 0) {
+                    $('.pages').hide()
+                } else {
+                    $('.pages').show()
+                }
+            })
+            break
+        case 5:
+            $.post(localhost + '/order/list', {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                active: false,
+                state: '已关闭订单',
+                online_code: onlinecode
+            }, function (data) {
+                outline(data)
+                var content = data.data.content
+                addhtml6_(content)
+                if (content.length === 0) {
+                    $('.pages').hide()
+                } else {
+                    $('.pages').show()
+                }
+            })
+            break
+        case 6:
+            $.post(localhost + '/order/list', {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                in_three_month: "yes",
+                active: true,
+                online_code: onlinecode
+            }, function (data) {
+                outline(data)
+                var content = data.data.content
+                addhtml7_(content)
+                if (content.length === 0) {
+                    $('.pages').hide()
+                } else {
+                    $('.pages').show()
+                }
+            })
+            break
+        case 7:
+            $.post(localhost + '/order/list', {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                out_three_month: "yes",
+                active: true,
+                online_code: onlinecode
+            }, function (data) {
+                outline(data)
+                var content = data.data.content
+                addhtml8_(content)
                 if (content.length === 0) {
                     $('.pages').hide()
                 } else {
@@ -644,7 +916,6 @@ $('body').on('click', '.express-sure', function () {
         outline(data)
         if (data.message === '操作成功') {
             alert(data.message)
-            history.go(0)
             $.post(localhost + '/order/changeState', {
                 oid: oid,
                 state: '待收货订单',
@@ -747,6 +1018,49 @@ $('.next').click(function () {
             }
             html_ = addhtml4_
             break
+        case 4:
+            style = '/after-sale/list'
+            details = {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                online_code: onlinecode
+            }
+            html_ = addhtml5_
+            break
+        case 5:
+            style = '/order/list'
+            details = {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                active:false,
+                online_code: onlinecode
+            }
+            html_ = addhtml6_
+            break
+        case 6:
+            style = '/order/list'
+            details = {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                in_three_month: "yes",
+                online_code: onlinecode
+            }
+            html_ = addhtml7_
+            break
+        case 7:
+            style = '/order/list'
+            details = {
+                pageNumber: pages,
+                pageSize: 10,
+                sellerId: token,
+                out_three_month: "yes",
+                online_code: onlinecode
+            }
+            html_ = addhtml8_
+            break
     }
     $.post(localhost + style, details, function (data) {
         outline(data)
@@ -803,6 +1117,49 @@ $('.next').click(function () {
                         online_code: onlinecode
                     }
                     html_ = addhtml4_
+                    break
+                case 4:
+	                style = '/after-sale/list'
+	                details = {
+	                    pageNumber: pages,
+	                    pageSize: 10,
+	                    sellerId: token,
+	                    online_code: onlinecode
+	                }
+	                html_ = addhtml5_
+	                break
+                case 5:
+                    style = '/order/list'
+                    details = {
+                        pageNumber: pages,
+                        pageSize: 10,
+                        sellerId: token,
+                        active: false,
+                        online_code: onlinecode
+                    }
+                    html_ = addhtml6_
+                    break
+                case 6:
+                    style = '/order/list'
+                    details = {
+                        pageNumber: pages,
+                        pageSize: 10,
+                        sellerId: token,
+                        in_three_month: "yes",
+                        online_code: onlinecode
+                    }
+                    html_ = addhtml7_
+                    break
+                case 7:
+                    style = '/order/list'
+                    details = {
+                        pageNumber: pages,
+                        pageSize: 10,
+                        sellerId: token,
+                        out_three_month: "yes",
+                        online_code: onlinecode
+                    }
+                    html_ = addhtml8_
                     break
             }
             $.post(localhost + style, details, function (data) {
@@ -878,6 +1235,49 @@ $('.last').click(function () {
                     online_code: onlinecode
                 }
                 html_ = addhtml4_
+                break
+            case 4:
+                style = '/after-sale/list'
+                details = {
+                    pageNumber: pages,
+                    pageSize: 10,
+                    sellerId: token,
+                    online_code: onlinecode
+                }
+                html_ = addhtml5_
+                break
+            case 5:
+                style = '/order/list'
+                details = {
+                    pageNumber: pages,
+                    pageSize: 10,
+                    sellerId: token,
+                    active: false,
+                    online_code: onlinecode
+                }
+                html_ = addhtml6_
+                break
+            case 6:
+                style = '/order/list'
+                details = {
+                    pageNumber: pages,
+                    pageSize: 10,
+                    sellerId: token,
+                    in_three_month: "yes",
+                    online_code: onlinecode
+                }
+                html_ = addhtml7_
+                break
+            case 7:
+                style = '/order/list'
+                details = {
+                    pageNumber: pages,
+                    pageSize: 10,
+                    sellerId: token,
+                    out_three_month: "yes",
+                    online_code: onlinecode
+                }
+                html_ = addhtml8_
                 break
         }
         $.post(localhost + style, details, function (data) {

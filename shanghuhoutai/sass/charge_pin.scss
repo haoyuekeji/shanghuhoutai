@@ -38,9 +38,15 @@
         overflow: scroll;
         overflow-x: hidden;
         .details {
+            *{
+                font-size: 10px;
+            }
+            border: 1px solid grey;
+            margin-top: 10px;
             height: auto;
             width: 1018px;
             overflow: scroll;
+            position: relative;
             &::-webkit-scrollbar {
                 display: none
             }
@@ -80,13 +86,17 @@
             }
             .details-con {
                 overflow: hidden;
-                padding-bottom: 20px;
+//              padding-bottom: 20px;
+                position: relative;
                 .details-con-top {
                     padding-top: 0;
                     div {
                         font-size: 15px;
                         color: #999999;
                     }
+                }
+                img{
+                    width:70px;
                 }
                 .style {
                     margin-top: 0;
@@ -115,6 +125,11 @@
                         color: #999;
                         font-size: 15px;
                     }
+                }
+                .details-con-seller{
+                    position: absolute;
+                    left: 120px;
+                    top: 0px;
                 }
             }
             .clear {
@@ -168,19 +183,24 @@
                 width: 30px;
                 margin-top: 30px;
             }
+            .details-slidedown{
+                position: absolute;
+                left: 600px;
+                top: 30px;
+            }
             .edit,
             .shangjia,
             .down,
             .fix {
-                height: 40px;
-                width: 100px;
+                height: 30px;
+                width: 80px;
                 background: #00d6f8;
                 cursor: pointer;
                 float: left;
                 margin-right: 15px;
-                line-height: 40px;
+                line-height: 30px;
                 text-align: center;
-                margin-top: 50px;
+//              margin-top: 50px;
                 box-shadow: 1px 1px 1px 1px #999999;
                 &:active {
                     box-shadow: 1px 1px 1px 1px #999999 inset;
@@ -201,6 +221,7 @@
                 display: none;
                 float: left;
                 padding-bottom: 50px;
+                border: 1px solid #CCCCCC;
                 div {
                     height: 40px;
                     width: 100%;

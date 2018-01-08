@@ -1,5 +1,29 @@
 @import "public";
 @import "all_pin";
+
+
+.search-con{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50vh;
+    margin-top: -150px;
+    left: 50vw;
+    margin-left: -150px;
+    z-index: 100;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px darkgray;
+    background: white;
+    div{
+        border: 1px solid #ccc;
+        height: 30px;
+        margin: 5px 0;
+    }
+    .input-time{
+        height: 60px;
+    }
+}
+
 .body {
     .body-top {
         ul {
@@ -45,521 +69,154 @@
                 height: 20px;
 //              border: 1px solid darkgray;
                 box-shadow: 3px 3px 3px #ccc;
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
         .generateTable:hover{
             cursor: pointer;
         }
         .details {
-        	position: relative;
+            *{
+                font-size: 11px;
+                
+            }
+            position: relative;
             height: auto;
-            width: 1018px;
-            overflow: scroll;
-            border: 1px solid #6e6e6e;
+            width: 980px;
+            border: 1px solid #DAF3FF;
+            margin: 10px;
+            input{
+                border: 1px solid #CCCCCC;
+            }
             &::-webkit-scrollbar {
                 display: none;
             }
-            .data{
-            	border: 1px solid #ccc;
-            }
-            .details-con-top{
-            	font-size: 17px;
-            	font-weight: bolder;
-            	font-family: "agency fb";
-            }
-            .fahuo-tuan {
-                float: right;
-                width: 30%;
-                height: 100%;
-                line-height: 150px;
-                input {
-                    height: 40px;
-                    width: 120px;
-                    background: #006cff;
-                    color: #fff;
-                    box-shadow: 1px 1px 1px 1px #000;
-                    cursor: pointer;
-                    &:active {
-                        box-shadow: 1px 1px 1px 1px #000 inset;
-                    }
-                }
-            }
-            .fahuo-tuan-ready {
-                float: right;
-                width: 30%;
-                height: 100%;
-                line-height: 150px;
-                input {
-                    height: 40px;
-                    width: 120px;
-                    background: #006cff;
-                    color: #fff;
-                    box-shadow: 1px 1px 1px 1px #000;
-                    cursor: pointer;
-                    &:active {
-                        box-shadow: 1px 1px 1px 1px #000 inset;
-                    }
-                }
-            }
-            .details-con {
-                overflow: hidden;
-                padding-bottom: 20px;
-                .details-con-top {
-                    padding-top: 0;
-                    div {
-                        font-size: 15px;
-                        color: #999999;
-                    }
-                }
-                .style {
-                    margin-top: 0;
-                    span {
-                        display: inline-block;
-                        margin-right: 30px;
-                        color: #999999;
-                    }
-                }
-                .nums {
-                    margin-top: 0;
-                    display: inline;
-                    font-size: 15px;
-                }
-                .num {
-                    color: #999999;
-                }
-                .price-tuan {
-                    color: red;
-                    font-size: 18px;
-                }
-                .price-charge {
-                    bottom: 0;
-                    span {
-                        color: #999;
-                        font-size: 15px;
-                    }
-                }
-            }
-            .clear {
-                clear: both;
-            }
-            .width {
-                font-size: 16px;
-                width: 35%;
-            }
-
-            .details-right-charge {
-                height: 100px;
-                width: 30%;
-                float: left;
-                font-size: 15px;
-                position: relative;
-                .address {
-                    width: 75%;
-                }
-                
-            }
-            .price {
-                span {
-                    color: #888;
-                    font-size: 15px;
-                }
-                .produt-id {
-                    color: #c50000;
-                    span {
-                        color: #c50000;
-                    }
-                }
-            }
-            .init {
+            .details-top{
+                background: #EAF8FF;
                 height: 20px;
-                width: 30px;
-                margin-top: 30px;
             }
-            .edit,
-            .shangjia,
-            .down,
-            .fix {
-                height: 40px;
-                width: 100px;
-                background: #00d6f8;
-                cursor: pointer;
-                float: left;
-                margin-right: 15px;
-                line-height: 40px;
-                text-align: center;
-                margin-top: 50px;
-                box-shadow: 1px 1px 1px 1px #999999;
-                &:active {
-                    box-shadow: 1px 1px 1px 1px #999999 inset;
-                }
-            }
-            .shopcar-count {
-                height: 40px;
-                width: 150px;
-                float: left;
-                margin-right: 15px;
-                line-height: 40px;
-                text-align: center;
-                margin-top: 15px;
-            }
-            .details-details {
-                height: auto;
-                width: 100%;
-                display: none;
-                float: left;
-                padding-bottom: 50px;
-                div {
-                    height: 40px;
-                    width: 100%;
-                    span {
-                        display: inline-block;
-                        height: 40px;
-                        width: 120px;
-                        text-align: center;
-                        line-height: 40px;
-                        &:last-child {
-                            margin-left: 30px;
-                        }
-                        input {
-                            width: 50px;
-                            height: 80%;
-                            background: #ccc;
-                            text-align: center;
-                        }
-                        .sure-price,
-                        .sure-nums {
-                            display: inline;
-                            background: #00d6f8;
-                            padding: 4px;
-                            cursor: pointer;
-                            box-shadow: 1px 1px 1px 1px #999999;
-                            margin-left: 10px;
-                            &:active {
-                                box-shadow: 1px 1px 1px 1px #999999 inset;
-                            }
-                        }
-                    }
-                    .del {
-                        height: 35px;
-                        line-height: 35px;
-                        background: #00d6f8;
-                        box-shadow: 1px 1px 1px 1px #999999;
-                        margin-left: 30px;
-                        cursor: pointer;
-                        &:active {
-                            box-shadow: 1px 1px 1px 1px #999999 inset;
-                        }
-                    }
-                }
-            }
-            .tmjbeizhu {
-                width: 800px;
-                position: absolute;
-                top: 115px;
-                left: 130px;
-                button{
-					float: right;
-                }
-            }
-            .fahuo {
-                height: 40px;
-                width: 120px;
-                background: #00d6f8;
-                color: #1e4570;
-                text-align: center;
-                line-height: 40px;
-                box-shadow: 1px 1px 1px 1px #999999;
-                float: right;
-                cursor: pointer;
-                position: absolute;
-                top:50px;
-                right: 20px;
-                &:active {
-                    box-shadow: 1px 1px 1px 1px #999999 inset;
-                }
-            }
-            .details-details-cons-tuan {
-                height: auto;
-                width: 98%;
-                display: none;
-                float: left;
-                margin-top: 15px;
-                background: #003567;
-                color: #fff;
-                font-size: 15px;
-                padding: 5px;
-                .ordernumber-tuan {
-                    width: 100%;
+            .details-con{
+                position: relative;
+                overflow: hidden;
+                >div{
+                    border-top: 1px solid #EAF8FF;
                     float: left;
-                    div {
-                        float: right;
-                        &:first-child {
-                            float: left;
-                        }
-                    }
-                    .order-img {
-                        width: 3%;
-                        margin-left: 15px;
-                        cursor: pointer;
-                        -webkit-transform: rotate(0deg);
+                    margin-left: 10px;
+                }
+                .details-con-img{
+                    width: 70px;
+                    img{
+                        width: 70px;
                     }
                 }
-                .details-details-cons-tuan-cons {
-                    height: auto;
-                    width: 100%;
-                    float: left;
-                    display: none;
-                    .details-details-cons-tuan-con {
-                        height: auto;
-                        width: 100%;
-                        position: relative;
-                        background: #e6e6e6;
-                        color: #000;
-                        float: left;
-                        .order-datails {
-                            width: 100%;
-                            padding: 15px 0;
+                .details-con-seller{
+                    width: 350px;
+                    position: relative;
+                    .num{
+                        color: red;
+                    }
+                    .seller-beizhu{
+                        div{
                             float: left;
-                            .order-details-con {
-                                width: 100%;
-                                span {
-                                    display: inline-block;
-                                    margin: 5px;
-                                }
-                            } // &::first-child {
-                            //     padding-bottom: 0;
-                            // }
+                            width: 60px;
                         }
-                        .order-creattime {
+                        P{
+                            float: left;
+                            width: 220px;
+                            left: 50px;
+                            word-break: break-all;
+                        }
+                        .tianxie{
                             position: absolute;
-                            top: 5px;
-                            right: 5px;
-                        }
-                        .express-tuan {
-                            height: auto;
-                            width: 100%;
-                            background: #003567;
-                            padding-bottom: 15px;
-                            float: left;
-                            .express-tuan-con {
-                                width: 50%;
-                                color: #fff;
-                                float: right;
-                                line-height: 40px;
-                                margin-top: 15px;
-                                input {
-                                    padding: 5px;
-                                }
-                                .fahuo-geren {
-                                    height: 30px;
-                                    width: 80px;
-                                    float: right;
-                                    background: #006cff;
-                                    box-shadow: 1px 1px 1px 1px #000;
-                                    cursor: pointer;
-                                    text-align: center;
-                                    line-height: 30px;
-                                    margin-right: 15px;
-                                    &:active {
-                                        box-shadow: 1px 1px 1px 1px #000 inset;
-                                    }
-                                }
+                            left: 290px;
+                            width: 54px;
+                            background: #66B6FF;
+                            color: #FFFFFF;
+                            vertical-align: middle;
+                            &:hover{
+                                cursor: pointer;
                             }
                         }
-                    }
-                }
-            }
-            .details-details-cons-tuan-ready {
-                height: auto;
-                width: 98%;
-                display: none;
-                float: left;
-                margin-top: 15px;
-                background: #003567;
-                color: #fff;
-                font-size: 15px;
-                padding: 5px;
-                .ordernumber-tuan {
-                    width: 100%;
-                    float: left;
-                    margin: 15px 0;
-                    text-indent: 5px;
-                    div {
-                        float: right;
-                        &:first-child {
-                            float: left;
-                        }
-                    }
-                    .order-img {
-                        width: 3%;
-                        margin-left: 15px;
-                        cursor: pointer;
-                        -webkit-transform: rotate(0deg);
-                    }
-                }
-                .details-details-cons-tuan-cons {
-                    height: auto;
-                    width: 100%;
-                    float: left;
-                    display: none;
-                    overflow: hidden;
-                    .details-details-cons-tuan-con {
-                        height: auto;
-                        width: 85%;
-                        position: relative;
-                        background: #fff;
-                        color: #000;
-                        float: left;
-                        .order-datails {
-                            width: 100%;
-                            padding: 15px 0;
-                            float: left;
-                            .order-details-con {
-                                width: 100%;
-                                span {
-                                    display: inline-block;
-                                    margin: 5px;
-                                }
-                            }
-                        }
-                        .order-creattime {
+                        .tuan-tianxie{
                             position: absolute;
-                            top: 5px;
-                            right: 5px;
-                        }
-                    }
-                    .show-express {
-                        width: 15%;
-                        height: 40px;
-                        float: left;
-                        margin-top: 15px;
-                        input {
-                            height: 100%;
-                            width: 100%;
-                            background: #006cff;
-                            color: #fff;
-                            cursor: pointer;
-                            box-shadow: 1px 1px 1px 1px #000;
-                            &:active {
-                                box-shadow: 1px 1px 1px 1px #000 inset;
+                            left: 290px;
+                            width: 54px;
+                            background: #66B6FF;
+                            color: #FFFFFF;
+                            vertical-align: middle;
+                            &:hover{
+                                cursor: pointer;
                             }
                         }
                     }
                 }
-                .details-details-cons-tuan-express-con {
-                    width: 85%;
-                    height: auto;
-                    color: #000;
-                    background: #e6e6e6;
-                    float: left;
-                    display: none;
-                    .order-number-ready {
-                        width: 80%;
-                        padding-left: 15px;
-                        margin-top: 15px;
+                .details-con-Buyers{
+                    width: 350px;
+                }
+                .fahuo{
+                    width: 30px;
+                    height: 20px;
+                    position: relative;
+                    top: 30px;
+                    background: #66B6FF;
+                    color: #FFFFFF;
+                    text-align: center;
+                    line-height: 20px;
+                    &:hover{
+                        cursor: pointer;
                     }
-                    ul {
-                        width: 100%;
-                        height: auto;
-                        li {
-                            width: 70%;
-                            height: 30px;
-                            margin-bottom: 15px;
-                            line-height: 30px;
-                            text-align: left;
-                            padding-left: 15px;
-                            span {
-                                margin-right: 30px;
-                            }
-                        }
+                }
+                .see-wuliu{
+                    width: 60px;
+                    height: 30px;
+                    position: relative;
+                    top: 20px;
+                    background: #66B6FF;
+                    color: #FFFFFF;
+                    text-align: center;
+                    line-height: 30px;
+                    &:hover{
+                        cursor: pointer;
                     }
+                }
+                .order-style{
+                    color:red;
+                    position: absolute;
+                    left: 800px;
                 }
             }
-            .details-details-cons {
-                height: auto;
-                width: 100%;
+            .details-details-cons{
                 display: none;
-                float: left;
-                margin-top: 15px;
-                .details-details-con {
-                    width: 100%;
-                    overflow: hidden;
-                    .details-ul,
-                    .express {
-                        width: 25%;
-                        float: left;
-                        margin-left: 15px;
-                        .details-ul-input {
-                            width: 100%;
-                            height: 30px;
-                            text-indent: 15px;
-                            border: 1px solid #ccc;
-                        }
-                        ul {
-                            width: 100%;
-                            padding-bottom: 15px;
-                            li {
-                                width: calc(100% - 2px);
-                                height: 30px;
-                                line-height: 30px;
-                                border: 1px solid #ccc;
-                                cursor: pointer;
-                                &:first-child {
-                                    border-bottom: none;
-                                }
-                            }
-                        }
-                    }
-                    .details-ul-wait-pin {
-                        width: 100%;
-                        float: left;
-                        margin-left: 15px;
-                        .details-ul-input {
-                            width: 100%;
-                            height: auto;
-                            text-indent: 5px;
-                            border: 1px solid #ccc;
-                        }
-                        ul {
-                            width: 100%;
-                            padding-bottom: 15px;
-                            .wait-pin {
-                                width: 20%;
-                                height: auto;
-                                line-height: 20px;
-                                float: left;
-                                border: 1px solid #ccc;
-                                margin-right: 15px;
-                                margin-bottom: 15px;
-                                cursor: pointer;
-                                span {
-                                    font-size: 15px;
-                                    display: inline-block;
-                                }
-                            }
-                        }
-                    }
-                    .express {
-                        height: 30px;
-                        border: 1px solid #ccc;
-                        input {
-                            height: 100%;
-                            width: 100%;
-                            text-indent: 15px;
-                        }
-                    }
-                    .express-sure {
-                        width: 120px;
-                        height: 40px;
+                overflow: hidden;
+                margin-top: 10px;
+                >div{
+                    float: left;
+                    margin-left: 10px;
+                }
+                .tuan-fahuo-sure{
+                    background: #66B6FF;
+                    color: white;
+                    &:hover{
                         cursor: pointer;
-                        background: #00d6f8;
-                        box-shadow: 1px 1px 1px 1px #999999;
-                        text-align: center;
-                        line-height: 40px;
-                        float: right;
-                        margin-right: 65px;
-                        &:active {
-                            box-shadow: 1px 1px 1px 1px #999999 inset;
+                    }
+                }
+                .fahuo-sure{
+                    background: #66B6FF;
+                    color: white;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                ul{
+                    border-top:1px solid #DAF3FF;
+                    li{
+                        overflow: hidden;
+                        >div{
+                            height: 20px;
+                            float: left;
+                            margin-left: 20px;
                         }
                     }
                 }

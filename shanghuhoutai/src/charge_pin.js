@@ -27,10 +27,10 @@ if (authority === '0') {
 }
 $('body').on('click', '.edit', function () {
     if ($(this).attr('title') === '') {
-        $(this).siblings('.details-details').stop(true).slideDown()
+        $(this).parents('.details').find('.details-details').stop(true).slideDown()
         $(this).prop('title', '编辑')
     } else {
-        $(this).siblings('.details-details').stop(true).slideUp()
+        $(this).parents('.details').find('.details-details').stop(true).slideUp()
         $(this).prop('title', '')
     }
 })
@@ -70,13 +70,49 @@ function addhtml_(content) {
         for (var i = 0; i < content.length; i++) {
             console.log(content)
             var amount = 0;
-            var img = content[i].indexPic.split(',')
+            var img = content[i].indexPic.split(',')[0]
             content[i].productsTypes.forEach(function (val, key) {
                 amount += val.amount
             })
             amount_.push(amount)
 
-            $('.all').append('<div class="details">\n' +
+            $('.all').append(
+            	'<div class="details">' + 
+					'<div class="id_id" style="display:none;">' + content[i].id + '</div>' + 
+					'<div class="details-con">' + 
+						'<div class="details-con-img">' + 
+							'<img src="' + img + '" alt="">\n' +
+						'</div>' + 
+						'<div class="details-con-seller">' + 
+							'<p class="pname">' + content[i].pname +'</p>' + 
+							'<div class="produt-id" style="color:red;">商品编号：<span>' + content[i].id + '</span></div>' +
+							'<div class="surplus">' +
+								'<span class="nums" style="color:#888888; font-size:10px">\n' +
+					                '剩余库存：' + amount_[i] + '&nbsp&nbsp&nbsp\n' +
+					                '已卖出：' +  content[i].saleNum + 
+				                '</span>\n' +
+							'</div>' + 
+						'</div>' + 
+					'</div>' + 
+					'<div class="details-slidedown">' + 
+						'<div class="edit" title="">编辑</div>\n' +
+	                	'<div class="down" title="">下架</div>\n' +
+	                	'<div class="fix" title="">修改</div>\n' +
+					'</div>' + 
+	                '<div class="details-details">\n' +
+		                '<div class="">\n' +
+			                '<span>颜色</span>\n' +
+			                '<span>尺码</span>\n' +
+			                '<span>单价</span>\n' +
+			                '<span>修改单价</span>\n' +
+			                '<span>库存</span>\n' +
+			                '<span>增加库存</span>\n' +
+			                '<span>下架</span>\n' +
+			                '<span class="active" style="display:none">' + content[i].active + '</span>' +
+		                '</div>\n' +
+	                '</div>\n' +
+				'</div>'
+            	/*'<div class="details">\n' +
                 '                <div class="details-left">\n' +
                 '                    <img src="' + img[0] + '" alt="">\n' +
                 '                </div>\n' +
@@ -113,7 +149,8 @@ function addhtml_(content) {
                 '<span class="active" style="display:none">' + content[i].active + '</span>' +
                 '                    </div>\n' +
                 '                </div>\n' +
-                '            </div>')
+                '            </div>'*/
+            )
 
             for (var k = 0; k < content[i].productsTypes.length; k++) {
                 $('.details-details').eq(i).append(
@@ -370,7 +407,45 @@ function addhtml4_(content) {
                 amount += val.amount
             })
             amount_.push(amount)
-            $('.all').append('<div class="details">\n' +
+            $('.all').append(
+            	'<div class="details">' + 
+					'<div class="id_id" style="display:none;">' + content[i].id + '</div>' + 
+					'<div class="details-con">' + 
+						'<div class="details-con-img">' + 
+							'<img src="' + img + '" alt="">\n' +
+						'</div>' + 
+						'<div class="details-con-seller">' + 
+							'<p class="pname">' + content[i].pname +'</p>' + 
+							'<div class="produt-id" style="color:red;">商品编号：<span>' + content[i].id + '</span></div>' +
+							'<div class="surplus">' +
+								'<span class="nums" style="color:#888888; font-size:10px">\n' +
+					                '剩余库存：' + amount_[i] + '&nbsp&nbsp&nbsp\n' +
+					                '已卖出：' +  content[i].saleNum + 
+				                '</span>\n' +
+							'</div>' + 
+						'</div>' + 
+					'</div>' + 
+					'<div class="details-slidedown">' + 
+						'<div class="edit" title="">编辑</div>\n' +
+		                '<div class="shangjia" title="">上架</div>\n' +
+		                '<div class="fix" title="">修改</div>\n' +
+					'</div>' + 
+				
+                '                <div class="details-details">\n' +
+                '                    <div class="">\n' +
+                '                        <span>颜色</span>\n' +
+                '                        <span>尺码</span>\n' +
+                '                        <span>单价</span>\n' +
+                '                        <span>修改单价</span>\n' +
+                '                        <span>库存</span>\n' +
+                '                        <span>增加库存</span>\n' +
+                '                        <span>下架</span>\n' +
+                '<span class="active" style="display:none">' + content[i].active + '</span>' +
+                '                    </div>\n' +
+                '                </div>\n' +
+				'</div>'
+            	
+            	/*'<div class="details">\n' +
                 '<div class="id_id" style="display: none">' + content[i].id + '</div>' +
                 '                <div class="details-left">\n' +
                 '                    <img src="' + img + '" alt="">\n' +
@@ -405,7 +480,8 @@ function addhtml4_(content) {
                 // '                        <span>shang</span>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
-                '            </div>')
+                '            </div>'*/
+            )
 
             for (var k = 0; k < content[i].productsTypes.length; k++) {
                 $('.details-details').eq(i).append(
@@ -798,22 +874,22 @@ $('.body-top ul li').click(function () {
             })
             chageStyle('/tuan/product/list', addhtml_)
             break
-        case 1:
+        /*case 1:
             $.post(localhost + '/tuan/tuanorders/tuaning_list', {
                 saleId: token,
                 online_code: onlinecode
             }, function (data) {
                 outline(data)
                 var content = data.data
-                addhtml1_(content)
+                addhtml4_(content)
                 if (content.length === 0) {
                     $('.pages').hide()
                 } else {
                     $('.pages').show()
                 }
             })
-            break
-        case 4:
+            break*/
+        case 1:
             $.post(localhost + '/tuan/product/list', {
                 saleId: token,
                 active: false,

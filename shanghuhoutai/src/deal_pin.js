@@ -7,6 +7,9 @@ var showlist = []
 var enlist = []
 var dename = []
 var style_ = '/tuan/product/list'
+var reg = /^[0-9]{4}-[0-1]?[0-9]{1}-[0-3]?[0-9]{1}$/
+var reg1 = /^[0-9]{4}\/[0-1]?[0-9]{1}\/[0-3]?[0-9]{1}$/
+var reg2 = /^[0-9]{4}\.[0-1]?[0-9]{1}\.[0-3]?[0-9]{1}$/
 var details_ = {
     pageNumber: pages,
     pageSize: 10,
@@ -77,7 +80,55 @@ function addhtml1_(content) {
                 amount += val.amount
             })
             amount_.push(amount)
-            $('.all').append('' +
+            
+            $('.all').append(
+				'<div class="details">' + 
+					'<div class="details-top">' + 
+						'<input type="checkbox" class="checkbox"/>&nbsp;<span>团购号：' + content[i].iterable[0].groupCode + '</span>&nbsp;&nbsp;' + 
+						'<span> 个人订单号：' + content[i].iterable[0].code +
+					'</div>' + 
+					'<div class="details-con">' + 
+						'<div class="details-con-img">' + 
+							'<img src="' + img + '" alt="">\n' +
+						'</div>' + 
+						'<div class="details-con-seller">' + 
+							'<p class="pname">' + content[i].products.pname +'</p>' + 
+							'<div class="produce-style">' +
+								'<span class="price">标价：￥' + content[i].products.productsTypes[0].tuanPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+								'<span class="yanse">颜色：' + content[i].products.productsTypes[0].color + '</span>&nbsp;&nbsp;&nbsp;' +
+                				'<span class="chima">尺码：' + content[i].products.productsTypes[0].size + '</span>&nbsp;&nbsp;&nbsp;' +
+							'</div>' + 
+							'<div class="num">' + 
+				                '剩余库存：' + amount_[0] +
+				                '已卖出：' + content[i].products.saleNum  + '\n' +
+							'</div>' + 
+						'</div>' + 
+						/*'<div class="details-con-Buyers">' + 
+							'<div class="name-tel">' + 
+								tuanOrdersList[k].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + tuanOrdersList[k].tDeliver.phone + 
+							'</div>' + 
+							'<p class="address"> 地址：' + 
+								tuanOrdersList[k].tDeliver.address +
+							'</p>' + 
+							'<div class="beizhu">买家备注：' + 
+								tuanOrdersList[k].leavemsg +
+							'</div>' + 
+						'</div>' + */
+						'<div class="fahuo" title="">\n' + 
+		                	'更多\n' +
+		                '</div>\n' +
+					'</div>' + 
+					'<div class="details-details-cons">' +
+		                /*'<div class="details-ul">' +
+		                	'<input type="text" class="details-ul-input" placeholder="物流公司">' +
+		                '</div>' +
+	                	'<span class="did" style="display: none">' + tuanOrdersList[k].tDeliver.id + '</span>' +
+	                	'<div class="express"><input type="text" placeholder="物流订单号"></div>' +
+	                	'<div class="tuan-fahuo-sure">确定发货</div>' +*/
+	                '</div>\n' +
+				'</div>'
+			)
+            /*$('.all').append('' +
                 '<div class="details">\n' +
                 '    <div class="details-left">\n' +
                 '           <img src="' + img + '" alt="">\n' +
@@ -112,7 +163,7 @@ function addhtml1_(content) {
                 '</div>' +
                 '</div>\n' +
                 '    </div>' +
-                '')
+                '')*/
             var iterable = content[i].iterable
 
             for (var k = 0; k < iterable.length; k++) {
@@ -132,7 +183,7 @@ function addhtml1_(content) {
                     return time
                 }
 
-                $('.details-ul-wait-pin').eq(i).append('<ul><li class="wait-pin">' +
+                $('.details-details-cons').eq(i).append('<ul><li class="wait-pin">' +
                     '<div>拼主：<span>' + iterable[k].owner + '</span></div>' +
                     '<div>还差<span style="color:red">' + (iterable[k].startNum - iterable[k].joinNum) + '</span>人</div>' +
                     '<div>剩余时间：<span style="color:red">' + msg(endtime) + '</span></div>' +
@@ -164,58 +215,61 @@ function addhtml2_(content) {
             content[i].tProducts.productsTypes.forEach(function (val, key) {
                 amount += val.amount
             })
+            if(content[i].leavemsg == null){
+				content[i].leavemsg = "无";
+			}
+			if(content[i].leavemsg2 == null){
+				content[i].leavemsg2 = "无";
+			}
             amount_.push(amount)
-            $('.all').append('' +
-                '<div class="details">\n' +
-                	'<div class="oNum" style="display:none;">' +  content[i].id + '</div>' + 
-			        '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;' +  '<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' +  content[i].tDeliver.createDate + '</span></div>\n' +
-                '    <div class="details-left">\n' +
-                '           <img src="' + img + '" alt="">\n' +
-                '    </div>\n' +
-                '    <div class="details-con width">\n' +
-                '    <div class="details-con-top">\n' +
-                '<div>订单号：' + content[i].code + '</div>\n' +
-                content[i].tProducts.pname +
-                '</div>\n' +
-                '<div class="style">\n' +
-                '<span class="yanse">颜色：' + content[i].tProductsTypes.color + '</span>\n' +
-                '<span class="chima">尺码：' + content[i].tProductsTypes.size + '</span>\n' +
-                '</div>\n' +
-                '<div class="price price-charge">\n' +
-                '售价：￥' + content[i].totalPrice +
-                '    </div>\n' +
-                '    <span class="nums num">\n' +
-                '剩余库存：' + amount_[0] +
-                '已卖出： ' + content[i].saleNum  + '\n' +
-                '</span>\n' +
-                '</div>\n' +
-                '<div class="details-right-charge">\n' +
-                '    <div class="address">\n' +
-                content[i].tDeliver.receiver + content[i].tDeliver.phone + '<br>\n' +
-                content[i].tDeliver.address +
-                '</div>\n' +
-                '<div class="status">\n' +
-                '待签收 ' + content[i].amount + '件 总价：' + content[i].totalPrice +
-                '</div>\n' +
-                '<div class="data" style="border:none;">\n' +
-                content[i].createDate +
-                '</div>\n' +
-                '<div class="fahuo wuliu-details" title="">\n' +
-                '查看物流详情\n' +
-                '</div>\n' +
-                '</div>\n' +
-                '<div class="details-details-cons">' +
-                '<div class="details-details-con">' +
-                '<div class="details-ul">' +
-                '<ul>' +
-                '<li>' + content[i].tDeliver.dname + '</li>' +
-                '<li>' + content[i].tDeliver.dcode + '</li>' +
-                '</ul>' +
-                '</div>' +
-                '</div>' +
-                '</div>\n' +
-                '    </div>' +
-                '')
+            $('.all').append(
+				'<div class="details">' + 
+					'<div class="oNum" style="display:none;">' + content[i].id + '</div>' + 
+					'<div class="details-top">' + 
+						'<input type="checkbox" class="checkbox"/>&nbsp;' + 
+						'<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' + content[i].tDeliver.createDate + '</span>' +
+					'</div>' + 
+					'<div class="details-con">' + 
+						'<div class="details-con-img">' + 
+							'<img src="' + img + '" alt="">\n' +
+						'</div>' + 
+						'<div class="details-con-seller">' + 
+							'<p class="pname">' + content[i].tProducts.pname +'</p>' + 
+							'<div class="produce-style">' +
+								'<span class="price">单价：￥' + content[i].tProductsTypes.newPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+								'<span class="yanse">颜色：' + content[i].tProductsTypes.color + '</span>&nbsp;&nbsp;&nbsp;' +
+                				'<span class="chima">尺码：' + content[i].tProductsTypes.size + '</span>&nbsp;&nbsp;&nbsp;' +
+							'</div>' + 
+							'<div class="num">' + 
+								content[i].amount + '件&nbsp;&nbsp;&nbsp;共' + content[i].totalPrice + '元' + 
+							'</div>' + 
+							'<div class="seller-beizhu">卖家备注：' + 
+								content[i].leavemsg2 +
+							'</div>' + 
+						'</div>' + 
+						'<div class="details-con-Buyers">' + 
+							'<div class="name-tel">' + 
+								content[i].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + content[i].tDeliver.phone + 
+							'</div>' + 
+							'<p class="address"> 地址：' + 
+								content[i].tDeliver.address +
+							'</p>' + 
+							'<div class="beizhu">买家备注：' + 
+								content[i].leavemsg +
+							'</div>' + 
+						'</div>' + 
+						'<div class="see-wuliu" title="">\n' + 
+		                	'查看物流\n' +
+		                '</div>\n' +
+					'</div>' + 
+					'<div class="details-details-cons">' +
+		                '<div class="wuliu" >' + 
+		                	'<span>物流公司：' + content[i].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+		                	'<span>物流单号：' + content[i].tDeliver.dcode + '</span>' + 
+	                	'</div>' + 
+		            '</div>\n' +
+				'</div>'
+			)
         }
     }
 }
@@ -244,62 +298,65 @@ function addhtml3_(content) {
                 amount += val.amount
             })
             amount_.push(amount)
+            if(content[i].leavemsg == null){
+				content[i].leavemsg = "无";
+			}
+			if(content[i].leavemsg2 == null){
+				content[i].leavemsg2 = "无";
+			}
+            $('.all').append(
+				'<div class="details">' + 
+					'<div class="oNum" style="display:none;">' + content[i].id + '</div>' + 
+					'<div class="details-top">' + 
+						'<input type="checkbox" class="checkbox"/>&nbsp;' + 
+						'<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' + content[i].tDeliver.createDate + '</span>' +
+					'</div>' + 
+					'<div class="details-con">' + 
+						'<div class="details-con-img">' + 
+							'<img src="' + img + '" alt="">\n' +
+						'</div>' + 
+						'<div class="details-con-seller">' + 
+							'<p class="pname">' + content[i].tProducts.pname +'</p>' + 
+							'<div class="produce-style">' +
+								'<span class="price">单价：￥' + content[i].tProductsTypes.newPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+								'<span class="yanse">颜色：' + content[i].tProductsTypes.color + '</span>&nbsp;&nbsp;&nbsp;' +
+                				'<span class="chima">尺码：' + content[i].tProductsTypes.size + '</span>&nbsp;&nbsp;&nbsp;' +
+							'</div>' + 
+							'<div class="num">' + 
+								content[i].amount + '件&nbsp;&nbsp;&nbsp;共' + content[i].totalPrice + '元' + 
+							'</div>' + 
+							'<div class="seller-beizhu">' + 
+								'<div>卖家备注：</div>' +
+								'<p></p>' + 
+								'<button class="tianxie">填写备注</button >' +
+							'</div>' + 
+						'</div>' + 
+						'<div class="details-con-Buyers">' + 
+							'<div class="name-tel">' + 
+								content[i].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + content[i].tDeliver.phone + 
+							'</div>' + 
+							'<p class="address"> 地址：' + 
+								content[i].tDeliver.address +
+							'</p>' + 
+							'<div class="beizhu">买家备注：' + 
+								content[i].leavemsg +
+							'</div>' + 
+						'</div>' + 
+						'<div class="fahuo" title="">\n' + 
+		                	'发货\n' +
+		                '</div>\n' +
+					'</div>' + 
+					'<div class="details-details-cons">' +
+		                '<div class="details-ul">' +
+		                	'<input type="text" class="details-ul-input" placeholder="物流公司">' +
+		                '</div>' +
+	                	'<span class="did" style="display: none">' + content[i].tDeliver.id + '</span>' +
+	                	'<div class="express"><input type="text" placeholder="物流订单号"></div>' +
+	                	'<div class="fahuo-sure">确定发货</div>' +
+	                '</div>\n' +
+				'</div>'
+			)
 
-            $('.all').append('' +
-                '<div class="details">\n' +
-                '<div class="oNum" style="display:none;">' +  content[i].id + '</div>' + 
-			        '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;' +  '<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' +  content[i].tDeliver.createDate + '</span></div>\n' +
-                '    <div class="details-left">\n' +
-                '           <img src="' + img + '" alt="">\n' +
-                '    </div>\n' +
-                '    <div class="details-con width">\n' +
-                '    <div class="details-con-top">\n' +
-                '<div>订单号：' + content[i].code + '</div>\n' +
-                content[i].tProducts.pname +
-                '</div>\n' +
-                '<div class="style">\n' +
-                '<span class="yanse">颜色：' + content[i].tProductsTypes.color + '</span>\n' +
-                '<span class="chima">尺码：' + content[i].tProductsTypes.size + '</span>\n' +
-                '</div>\n' +
-                '<div class="price price-charge">\n' +
-                '<div class="status">\n' +
-                '总价：' + content[i].totalPrice +
-                '</div>\n' +
-                '    </div>\n' +
-                '    <span class="nums num">\n' +
-                '剩余库存：' + amount_[0] +
-                '<span style="margin-left: 30px">已卖出：' + content[i].tProducts.saleNum + '</span>\n' +
-                '</span>\n' +
-                '</div>\n' +
-                '<div class="details-right-charge">\n' +
-                '    <div class="address">\n' +
-                '<span class="deliverId" style="display:none">' + content[i].tDeliver.id + '</span>' +
-                content[i].tDeliver.receiver + content[i].tDeliver.phone + '<br>\n' +
-                content[i].tDeliver.address +
-                '</div>\n' +
-                '<div class="data" style="border:none;">\n' +
-                content[i].createDate +
-                '<br><span>待发货数量：' + content[i].amount + '</span>' +
-                '</div>\n' +
-
-                '<div class="fahuo" title="">\n' +
-                '发货\n' +
-                '</div>\n' +
-                '</div>\n' +
-                '<div class="details-details-cons">' +
-                '<div class="details-details-con">' +
-                '<div class="details-ul">' +
-                '<div><input type="text" class="details-ul-input" placeholder="物流公司"></div>' +
-                '<ul>' +
-                '</ul>' +
-                '</div>' +
-                '<span class="oid" style="display: none">' + content[i].id + '</span>' +
-                '<div class="express"><input type="text" placeholder="物流订单号"></div>' +
-                '<div class="express-sure">确定发货</div>' +
-                '</div>' +
-                '</div>\n' +
-                '</div>'
-            )
         }
     }
 }
@@ -330,46 +387,60 @@ function addhtml5_(content) {
                 amount += val.amount
             })
             amount_.push(amount)
-            $('.all').append('' +
-                '<div class="details">\n' +
-                	'<div class="oNum" style="display:none;">' +  content[i].id + '</div>' + 
-			        '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;' +  '<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' +  content[i].tDeliver.createDate + '</span></div>\n' +
-                '    <div class="details-left">\n' +
-                '           <img src="' + img + '" alt="">\n' +
-                '    </div>\n' +
-                '    <div class="details-con width">\n' +
-                '    <div class="details-con-top">\n' +
-                '<div>订单号：' + content[i].code + '</div>\n' +
-                content[i].tProducts.pname +
-                '</div>\n' +
-                '<div class="style">\n' +
-                '<span class="yanse">颜色：' + content[i].tProductsTypes.color + '</span>\n' +
-                '<span class="chima">尺码：' + content[i].tProductsTypes.size + '</span>\n' +
-                '</div>\n' +
-                '<div class="price price-charge" style="color:red">\n' +
-                '售价：￥' + content[i].totalPrice +
-                '  &nbsp&nbsp<span style="text-decoration: line-through;color:#999;">' + content[i].tProductsTypes.newPrice + '</span>' +
-                '    </div>\n' +
-
-                '    <span class="nums num">\n' +
-                '剩余库存：' + amount_[0] +
-                '已卖出： ' + content[i].tProducts.saleNum + '\n' +
-                '</span>\n' +
-                '</div>\n' +
-                '<div class="details-right-charge">\n' +
-                '    <div class="address">\n' +
-                content[i].tDeliver.receiver + content[i].tDeliver.phone + '<br>\n' +
-                content[i].tDeliver.address +
-                '</div>\n' +
-                '<div class="data">\n' +
-                content[i].createDate +
-                '<div class="status">\n' +
-                '已完成 ' + content[i].amount + '件 总价：' + content[i].totalPrice +
-                '</div>\n' +
-                '</div>\n' +
-                '</div>\n' +
-                '    </div>' +
-                '')
+            if(content[i].leavemsg == null){
+				content[i].leavemsg = "无";
+			}
+			if(content[i].leavemsg2 == null){
+				content[i].leavemsg2 = "无";
+			}
+            $('.all').append(
+				'<div class="details">' + 
+					'<div class="oNum" style="display:none;">' + content[i].id + '</div>' + 
+					'<div class="details-top">' + 
+						'<input type="checkbox" class="checkbox"/>&nbsp;' + 
+						'<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' + content[i].tDeliver.createDate + '</span>' +
+					'</div>' + 
+					'<div class="details-con">' + 
+						'<div class="details-con-img">' + 
+							'<img src="' + img + '" alt="">\n' +
+						'</div>' + 
+						'<div class="details-con-seller">' + 
+							'<p class="pname">' + content[i].tProducts.pname +'</p>' + 
+							'<div class="produce-style">' +
+								'<span class="price">单价：￥' + content[i].tProductsTypes.newPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+								'<span class="yanse">颜色：' + content[i].tProductsTypes.color + '</span>&nbsp;&nbsp;&nbsp;' +
+                				'<span class="chima">尺码：' + content[i].tProductsTypes.size + '</span>&nbsp;&nbsp;&nbsp;' +
+							'</div>' + 
+							'<div class="num">' + 
+								content[i].amount + '件&nbsp;&nbsp;&nbsp;共' + content[i].totalPrice + '元' + 
+							'</div>' + 
+							'<div class="seller-beizhu">卖家备注：' + 
+								content[i].leavemsg2 +
+							'</div>' + 
+						'</div>' + 
+						'<div class="details-con-Buyers">' + 
+							'<div class="name-tel">' + 
+								content[i].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + content[i].tDeliver.phone + 
+							'</div>' + 
+							'<p class="address"> 地址：' + 
+								content[i].tDeliver.address +
+							'</p>' + 
+							'<div class="beizhu">买家备注：' + 
+								content[i].leavemsg +
+							'</div>' + 
+						'</div>' + 
+						'<div class="see-wuliu" title="">\n' + 
+		                	'查看物流\n' +
+		                '</div>\n' +
+					'</div>' + 
+					'<div class="details-details-cons">' +
+		                '<div class="wuliu" >' + 
+		                	'<span>物流公司：' + content[i].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+		                	'<span>物流单号：' + content[i].tDeliver.dcode + '</span>' + 
+	                	'</div>' + 
+		            '</div>\n' +
+				'</div>'
+			)
         }
     }
 }
@@ -412,62 +483,63 @@ function addhtml6_(content) {
             		if (tuanOrdersList[k].groupCode === groupcode[i]) {
             			//买家留言判断，null（没有留言备注）时，把null变为空
             			if(tuanOrdersList[k].leavemsg == null){
-            				tuanOrdersList[k].leavemsg = "";
-            			}
-            			$('.all').append('' +
-			                '<div class="details">\n' + 
-			                '<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
-			                '<div class="data"><input type="checkbox" class="checkbox"/>&nbsp;<span>团购号：' + groupcode[i] + '</span>&nbsp;&nbsp;' +  '<span> 订单号：' + tuanOrdersList[k].code + '</span>&nbsp;&nbsp;<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span></div>\n' +
-			                '    <div class="details-left">\n' +
-			                '           <img src="' + img + '" alt="">\n' +
-			                '    </div>\n' +
-			                '    <div class="details-con width">\n' +
-			                '    <p class="details-con-top">\n' +
-			                val.products.pname +
-			                '</p>\n' +
-			                '<div class="style">\n' +
-			                '<span class="yanse">颜色：' + tuanOrdersList[k].tProductsTypes.color + '</span>\n' +
-			                '<span class="chima">尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>\n' +
-			                '</div>\n' +
-			                '<div class="price price-charge">\n' +
-			                '<div class="status">\n' +
-			                '总价：' + tuanOrdersList[k].totalPrice +
-			                '<span style="margin-left:30px;">数量：' + tuanOrdersList[k].amount + '</span></div>\n' +
-			                '    </div>\n' +
-			                '</div>\n' +
-			                '<div class="details-right-charge">\n' +
-			                '    <div class="address">\n' +
-			                '<span class="dliverid" style="display:none">' + tuanOrdersList[k].id + '</span>'+
-			                tuanOrdersList[k].tDeliver.receiver + tuanOrdersList[k].tDeliver.phone + '<br>\n' +
-			                tuanOrdersList[k].tDeliver.address +
-			                '</div>\n' +
-			                '<div style="width:70%;font-size:14px;margin-top:5px">买家备注：<span style="color:blue">' +
-			                tuanOrdersList[k].leavemsg +
-			                '</span></div>' +
-			                '</div>\n' +
-			                '<div class="fahuo" title="">\n' +
-			                '发货\n' +
-			                '</div>\n' +
-			                '<div class="tmjbeizhu">' +
-			                '<div class="con">卖家备注：<input type="text" placeholder="请填写备注">' +'<button class="tianxie">确定备注</button >' + '</div>' +
-			                '<div class="id" style="display:none">' + tuanOrdersList[k].tDeliver.id + '</div>' +
-			                
-			                '</div>' +
-			                '<div class="details-details-cons">' +
-			                '<div class="details-details-con">' +
-			                '<div class="details-ul">' +
-			                '<div><input type="text" class="details-ul-input" placeholder="物流公司"></div>' +
-			                '<ul>' +
-			                '</ul>' +
-			                '</div>' +
-			                '<span class="oid" style="display: none">' + tuanOrdersList[k].tDeliver.id + '</span>' +
-			                '<div class="express"><input type="text" placeholder="物流订单号"></div>' +
-			                '<div class="fahuo-geren">确定发货</div>' +
-			                '</div>' +
-			                '</div>\n' +
-			                
-			                '</div>'
-			            )
+		    				tuanOrdersList[k].leavemsg = "无";
+		    			}
+		    			if(tuanOrdersList[k].leavemsg2 == null){
+		    				tuanOrdersList[k].leavemsg2 = "无";
+		    			}
+            			$('.all').append(
+            				'<div class="details">' + 
+            					'<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
+            					'<div class="details-top">' + 
+            						'<input type="checkbox" class="checkbox"/>&nbsp;<span>团购号：' + tuanOrdersList[k].groupCode + '</span>&nbsp;&nbsp;' + 
+            						'<span> 订单号：' + tuanOrdersList[k].code + '</span>&nbsp;&nbsp;<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span>' +
+            					'</div>' + 
+            					'<div class="details-con">' + 
+            						'<div class="details-con-img">' + 
+            							'<img src="' + img + '" alt="">\n' +
+            						'</div>' + 
+            						'<div class="details-con-seller">' + 
+            							'<p class="pname">' + val.products.pname +'</p>' + 
+            							'<div class="produce-style">' +
+            								'<span class="price">团价：￥' + tuanOrdersList[k].tProductsTypes.newPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+            								'<span class="yanse">颜色：' + tuanOrdersList[k].tProductsTypes.color + '</span>&nbsp;&nbsp;&nbsp;' +
+			                				'<span class="chima">尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>&nbsp;&nbsp;&nbsp;' +
+            							'</div>' + 
+            							'<div class="num">' + 
+            								tuanOrdersList[k].amount + '件&nbsp;&nbsp;&nbsp;共' + tuanOrdersList[k].totalPrice + '元' + 
+            							'</div>' + 
+            							'<div class="seller-beizhu">' +
+            								'<div>卖家备注：</div>' +
+            								'<p></p>' + 
+            								'<button class="tuan-tianxie">填写备注</button >' +
+            							'</div>' + 
+            						'</div>' + 
+            						'<div class="details-con-Buyers">' + 
+            							'<div class="name-tel">' + 
+            								tuanOrdersList[k].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + tuanOrdersList[k].tDeliver.phone + 
+            							'</div>' + 
+            							'<p class="address"> 地址：' + 
+            								tuanOrdersList[k].tDeliver.address +
+            							'</p>' + 
+            							'<div class="beizhu">买家备注：' + 
+            								tuanOrdersList[k].leavemsg +
+            							'</div>' + 
+            						'</div>' + 
+            						'<div class="fahuo" title="">\n' + 
+					                	'发货\n' +
+					                '</div>\n' +
+            					'</div>' + 
+            					'<div class="details-details-cons">' +
+					                '<div class="details-ul">' +
+					                	'<input type="text" class="details-ul-input" placeholder="物流公司">' +
+					                '</div>' +
+				                	'<span class="did" style="display: none">' + tuanOrdersList[k].tDeliver.id + '</span>' +
+				                	'<div class="express"><input type="text" placeholder="物流订单号"></div>' +
+				                	'<div class="tuan-fahuo-sure">确定发货</div>' +
+				                '</div>\n' +
+            				'</div>'
+            			)
             			
 		            }
             	}
@@ -512,46 +584,61 @@ function addhtml7_(content) {
             console.log(val)
         	var tuanOrdersList = val.tuanOrdersList
             for (var k = 0; k < tuanOrdersList.length; k++) {
-            	$('.all').append('<div class="details">' +
-            	'<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
-            	'<div class="details-top"><input type="checkbox" class="checkbox"/>&nbsp;'+
-            		'<span>团购号：' + tuanOrdersList[k].groupCode + '</span>&nbsp;&nbsp;<span>订单号：' + tuanOrdersList[k].code + '</span> &nbsp;&nbsp;' + 
-            		'<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span>' + 
-            	'</div>' + 
-                '<div class="details-left">' +
-                ' <img src="' + img + '" alt="">' +
-                '</div>' +
-                '<div class="details-con width">' +
-                ' <div class="details-con-top">' +
-                val.products.pname +
-                ' </div>' +
-                ' <div class="price price-charge price-tuan">' +
-                val.products.productsTypes[0].tuanPrice +
-                '<span>￥' + val.products.productsTypes[0].newPrice + '</span>' +
-                '</div>' +
-	                '<span class="yanse">颜色：' + tuanOrdersList[k].tProductsTypes.color + '</span>\n' +
-				    '<span class="chima">尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>\n' +
-				    '<span>已发货 ' + tuanOrdersList[k].amount + '件 总价' + tuanOrdersList[k].totalPrice + '</span>' +
-                ' </div>' +
-                '<div class="details-right-charge">\n' +
-                '    <div class="address">\n' +
-                '<span class="dliverid" style="display:none">' + tuanOrdersList[k].id + '</span>'+
-                tuanOrdersList[k].tDeliver.receiver + tuanOrdersList[k].tDeliver.phone + '<br>\n' +
-                tuanOrdersList[k].tDeliver.address +
-                '</div>\n' +
-                '<div style="width:70%;font-size:14px;margin-top:5px">买家备注：<span style="color:blue">' +
-                tuanOrdersList[k].leavemsg +
-                '</span></div>' +
-                /*' <div class="fahuo-tuan-ready" title="true">' +
-                '   <input type="button" value="查看物流" name="true" style="position:relative; top:-30px">' +
-                ' </div>' +*/
-                '<p>卖家备注：' + tuanOrdersList[k].leavemsg2 + '</p>' + 
-                '<div class="wuliu" >' + 
-                	'<span>物流公司：' + tuanOrdersList[k].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                	'<span>物流单号：' + tuanOrdersList[k].tDeliver.dcode + '</span>' + 
-                '</div>' + 
-
-                '</div>')
+            	//买家留言判断，null（没有留言备注）时，把null变为空
+    			if(tuanOrdersList[k].leavemsg == null){
+    				tuanOrdersList[k].leavemsg = "无";
+    			}
+    			if(tuanOrdersList[k].leavemsg2 == null){
+    				tuanOrdersList[k].leavemsg2 = "无";
+    			}
+    			$('.all').append(
+    				'<div class="details">' + 
+    					'<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
+    					'<div class="details-top">' + 
+    						'<input type="checkbox" class="checkbox"/>&nbsp;<span>团购号：' + tuanOrdersList[k].groupCode + '</span>&nbsp;&nbsp;' + 
+    						'<span> 订单号：' + tuanOrdersList[k].code + '</span>&nbsp;&nbsp;<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span>' +
+    					'</div>' + 
+    					'<div class="details-con">' + 
+    						'<div class="details-con-img">' + 
+    							'<img src="' + img + '" alt="">\n' +
+    						'</div>' + 
+    						'<div class="details-con-seller">' + 
+    							'<p class="pname">' + val.products.pname +'</p>' + 
+    							'<div class="produce-style">' +
+    								'<span class="price">团价：￥' + tuanOrdersList[k].tProductsTypes.newPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+    								'<span class="yanse">颜色：' + tuanOrdersList[k].tProductsTypes.color + '</span>&nbsp;&nbsp;&nbsp;' +
+	                				'<span class="chima">尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>&nbsp;&nbsp;&nbsp;' +
+    							'</div>' + 
+    							'<div class="num">' + 
+    								tuanOrdersList[k].amount + '件&nbsp;&nbsp;&nbsp;共' + tuanOrdersList[k].totalPrice + '元' + 
+    							'</div>' + 
+    							'<p class="seller-beizhu">卖家备注：' + 
+    								tuanOrdersList[k].leavemsg2 +
+    							'</p>' + 
+    						'</div>' + 
+    						'<div class="details-con-Buyers">' + 
+    							'<div class="name-tel">' + 
+    								tuanOrdersList[k].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + tuanOrdersList[k].tDeliver.phone + 
+    							'</div>' + 
+    							'<p class="address"> 地址：' + 
+    								tuanOrdersList[k].tDeliver.address +
+    							'</p>' + 
+    							'<div class="beizhu">买家备注：' + 
+    								tuanOrdersList[k].leavemsg +
+    							'</div>' + 
+    						'</div>' + 
+    						'<div class="see-wuliu" title="">\n' + 
+			                	'查看物流\n' +
+			                '</div>\n' +
+    					'</div>' + 
+    					'<div class="details-details-cons">' +
+			                '<div class="wuliu" >' + 
+			                	'<span>物流公司：' + tuanOrdersList[k].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+			                	'<span>物流单号：' + tuanOrdersList[k].tDeliver.dcode + '</span>' + 
+		                	'</div>' + 
+		                '</div>\n' +
+    				'</div>'
+    			)
         	}
         })
     }
@@ -591,65 +678,257 @@ function addhtml8_(content) {
             var img = val.products.indexPic.split(',')[0]
             var tuanOrdersList = val.tuanOrdersList
             for (var k = 0; k < tuanOrdersList.length; k++) {
-            	$('.all').append('<div class="details">' +
-            	'<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
-            	'<div class="details-top"><input type="checkbox" class="checkbox"/>&nbsp;'+
-            		'<span>团购号：' + tuanOrdersList[k].groupCode + '</span>&nbsp;&nbsp;<span>订单号：' + tuanOrdersList[k].code + '</span> &nbsp;&nbsp;' + 
-            		'<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span>' + 
-            	'</div>' + 
-                '<div class="details-left">' +
-                ' <img src="' + img + '" alt="">' +
-                '</div>' +
-                '<div class="details-con width">' +
-                ' <div class="details-con-top">' +
-                val.products.pname +
-                ' </div>' +
-                ' <div class="price price-charge price-tuan">' +
-                val.products.productsTypes[0].tuanPrice +
-                '<span>￥' + val.products.productsTypes[0].newPrice + '</span>' +
-                '</div>' +
-	                '<span class="yanse">颜色：' + tuanOrdersList[k].tProductsTypes.color + '</span>\n' +
-				    '<span class="chima">尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>\n' +
-				    '<span>已完成 ' + tuanOrdersList[k].amount + '件 总价' + tuanOrdersList[k].totalPrice + '</span>' +
-                ' </div>' +
-                '<div class="details-right-charge">\n' +
-                '    <div class="address">\n' +
-                '<span class="dliverid" style="display:none">' + tuanOrdersList[k].id + '</span>'+
-                tuanOrdersList[k].tDeliver.receiver + tuanOrdersList[k].tDeliver.phone + '<br>\n' +
-                tuanOrdersList[k].tDeliver.address +
-                '</div>\n' +
-                '<div style="width:70%;font-size:14px;margin-top:5px">买家备注：<span style="color:blue">' +
-                tuanOrdersList[k].leavemsg +
-                '</span></div>' +
-                '<p>卖家备注：' + tuanOrdersList[k].leavemsg2 + '</p>' + 
-                '<div class="wuliu" >' + 
-                	'<span>物流公司：' + tuanOrdersList[k].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                	'<span>物流单号：' + tuanOrdersList[k].tDeliver.dcode + '</span>' + 
-                '</div>' + 
-                '</div>')
+            	if(tuanOrdersList[k].leavemsg == null){
+    				tuanOrdersList[k].leavemsg = "无";
+    			}
+    			if(tuanOrdersList[k].leavemsg2 == null){
+    				tuanOrdersList[k].leavemsg2 = "无";
+    			}
+            	$('.all').append(
+    				'<div class="details">' + 
+    					'<div class="oNum" style="display:none;">' + tuanOrdersList[k].id + '</div>' + 
+    					'<div class="details-top">' + 
+    						'<input type="checkbox" class="checkbox"/>&nbsp;<span>团购号：' + tuanOrdersList[k].groupCode + '</span>&nbsp;&nbsp;' + 
+    						'<span> 订单号：' + tuanOrdersList[k].code + '</span>&nbsp;&nbsp;<span>成交时间：' + tuanOrdersList[k].tDeliver.createDate + '</span>' +
+    					'</div>' + 
+    					'<div class="details-con">' + 
+    						'<div class="details-con-img">' + 
+    							'<img src="' + img + '" alt="">\n' +
+    						'</div>' + 
+    						'<div class="details-con-seller">' + 
+    							'<p class="pname">' + val.products.pname +'</p>' + 
+    							'<div class="produce-style">' +
+    								'<span class="price">团价：￥' + tuanOrdersList[k].tProductsTypes.newPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+    								'<span class="yanse">颜色：' + tuanOrdersList[k].tProductsTypes.color + '</span>&nbsp;&nbsp;&nbsp;' +
+	                				'<span class="chima">尺码：' + tuanOrdersList[k].tProductsTypes.size + '</span>&nbsp;&nbsp;&nbsp;' +
+    							'</div>' + 
+    							'<div class="num">' + 
+    								tuanOrdersList[k].amount + '件&nbsp;&nbsp;&nbsp;共' + tuanOrdersList[k].totalPrice + '元' + 
+    							'</div>' + 
+    							'<p class="seller-beizhu">卖家备注：' + 
+    								tuanOrdersList[k].leavemsg2 +
+    							'</p>' + 
+    						'</div>' + 
+    						'<div class="details-con-Buyers">' + 
+    							'<div class="name-tel">' + 
+    								tuanOrdersList[k].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + tuanOrdersList[k].tDeliver.phone + 
+    							'</div>' + 
+    							'<p class="address"> 地址：' + 
+    								tuanOrdersList[k].tDeliver.address +
+    							'</p>' + 
+    							'<div class="beizhu">买家备注：' + 
+    								tuanOrdersList[k].leavemsg +
+    							'</div>' + 
+    						'</div>' + 
+    						'<div class="see-wuliu" title="">\n' + 
+			                	'查看物流\n' +
+			                '</div>\n' +
+    					'</div>' + 
+    					'<div class="details-details-cons">' +
+			                '<div class="wuliu" >' + 
+		                	'<span>物流公司：' + tuanOrdersList[k].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+		                	'<span>物流单号：' + tuanOrdersList[k].tDeliver.dcode + '</span>' + 
+		                '</div>' + 
+		                '</div>\n' +
+    				'</div>'
+    			)
         	}
         })
     }
 }
 
-//订单区分近三个月
+//订单搜索后陈列
+function addhtml13_(content){
+	$('.all').html('')
+    if (content.length === 0 || content === null) {
+        $('.all').append('没有搜索到订单')
+    } else {
+    	$('.all').append(
+    		'<div class="choice-query-form">' + 
+    			'<div class="allChoice">' + 
+    				'<input class="all-choice" type="checkbox" name="allChoice" />全选&nbsp;&nbsp;' + 
+    			'</div>' + 
+    			'<div class="queryOrder">查询订单</div>' + 
+    			'<div class="tuan-generateTable">生成表格</div>' + 
+    		'</div>'
+    	)
+    	for (var i = 0; i < content.length; i++) {
+            var img = content[i].tProducts.indexPic.split(',')[0]
+            var amount = 0
+            content[i].tProducts.productsTypes.forEach(function (val, key) {
+                amount += val.amount
+            })
+            if(content[i].leavemsg == null){
+				content[i].leavemsg = "无";
+			}
+			if(content[i].leavemsg2 == null){
+				content[i].leavemsg2 = "无";
+			}
+            amount_.push(amount)
+            $('.all').append(
+				'<div class="details">' + 
+					'<div class="oNum" style="display:none;">' + content[i].id + '</div>' + 
+					'<div class="details-top">' + 
+						'<input type="checkbox" class="checkbox"/>&nbsp;' + 
+						'<span> 订单号：' + content[i].code + '</span>&nbsp;&nbsp;<span>成交时间：' + content[i].tDeliver.createDate + '</span>' +
+					'</div>' + 
+					'<div class="details-con">' + 
+						'<div class="details-con-img">' + 
+							'<img src="' + img + '" alt="">\n' +
+						'</div>' + 
+						'<div class="details-con-seller">' + 
+							'<p class="pname">' + content[i].tProducts.pname +'</p>' + 
+							'<div class="produce-style">' +
+								'<span class="price">单价：￥' + content[i].tProductsTypes.newPrice + '</span>&nbsp;&nbsp;&nbsp;' +
+								'<span class="yanse">颜色：' + content[i].tProductsTypes.color + '</span>&nbsp;&nbsp;&nbsp;' +
+                				'<span class="chima">尺码：' + content[i].tProductsTypes.size + '</span>&nbsp;&nbsp;&nbsp;' +
+							'</div>' + 
+							'<div class="num">' + 
+								content[i].amount + '件&nbsp;&nbsp;&nbsp;共' + content[i].totalPrice + '元' + 
+							'</div>' + 
+							'<div class="seller-beizhu">卖家备注：' + 
+								content[i].leavemsg2 +
+							'</div>' + 
+						'</div>' + 
+						'<div class="details-con-Buyers">' + 
+							'<div class="name-tel">' + 
+								content[i].tDeliver.receiver +'&nbsp;&nbsp;&nbsp;' + content[i].tDeliver.phone + 
+							'</div>' + 
+							'<p class="address"> 地址：' + 
+								content[i].tDeliver.address +
+							'</p>' + 
+							'<div class="beizhu">买家备注：' + 
+								content[i].leavemsg +
+							'</div>' + 
+						'</div>' + 
+						'<div class="see-wuliu" title="">\n' + 
+		                	'查看物流\n' +
+		                '</div>\n' +
+		                '<div class="order-style">' + 
+		                	content[i].state + 
+		                '</div>' + 
+					'</div>' + 
+					'<div class="details-details-cons">' +
+		                '<div class="wuliu" >' + 
+		                	'<span>物流公司：' + content[i].tDeliver.dname + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+		                	'<span>物流单号：' + content[i].tDeliver.dcode + '</span>' + 
+	                	'</div>' + 
+		            '</div>\n' +
+				'</div>'
+			)
+            if(content[i].groupCode != undefined){
+            	$('<span>团购号：'+ content[i].groupCode + '</span>&nbsp;&nbsp;').insertBefore('.details-top span:eq(0)')
+            }
+        }
+    }
+}
 
 
 
 //订单查询
-/*function queryOrder(){
+function queryOrder(){
 	$('body').append(
-		'<div class="search">' + 
-			'<div class="tab">' + 
-				'<div class="tuan">团购订单</div>' + 
-				'<div class="personal">个人订单</div>' + 
+		'<div class="search-con">' + 
+			'<div class="input option">' + 
+				'<span>订单类型：（必填）</span>' + 
+				'<select><option></option><option value="2">团购订单</option><option value="1">个人订单</option></select>' + 
 			'</div>' + 
-			'<div><input type="text" class="orderNum" placeholder="请填写订单号" />&nbsp;&nbsp;选填' + 
+			'<div class="input number">' + 
+				'<span>订单编号：</span><input type="text" placeholder="订单编号">' +
 			'</div>' +
+			'<div class="input nickname">' + 
+				'<span>买家昵称：</span><input type="text" placeholder="买家昵称">' +
+			'</div>' + 
+			'<div class="input-time">' + 
+				'<span>成交时间：</span><input type="text" placeholder="开始时间"><span>——</span><input type="text" placeholder="结束时间">' + 
+			'</div>' + 
+			'<div class="search-sure">' + 
+				'<input type="button" value="开始搜索" class="begin">&nbsp;&nbsp;&nbsp;&nbsp;' + 
+				'<input type="button" value="取消" class="dele">' + 
+			'</div>' + 
 		'</div>'
 	)
 }
-*/
+
+$('.all').on('click','.queryOrder',function(){
+	queryOrder()
+	$('.search-con').hide()
+	$('.search-con').slideDown('fast')
+})
+$(document).on('click','.search-con .dele',function(){
+	console.log(123)
+	$(this).parents('.search-con').remove()
+})
+
+//查询方法
+function search() {
+  var code = $('.number input').val()
+  var startDate = $('.input-time input').eq(0).val()
+  var endDate = $('.input-time input').eq(1).val()
+  var wxname = $('.nickname input').val()
+  if ((endDate === '' && startDate === '') || (endDate !== '' && startDate !== '')) {
+    if (startDate !== '' && endDate !== '') {
+      if (!reg.test(startDate)) {
+        if (reg2.test(startDate)) {
+          startDate = startDate.split('.').join('-')
+        } else if (reg1.test(startDate)) {
+          startDate = startDate.split('/').join('-')
+        } else {
+          alert('日期格式为  年-月-日')
+          return false
+        }
+      }
+      if (!reg.test(endDate)) {
+        if (reg2.test(endDate)) {
+          endDate = endDate.split('.').join('-')
+        } else if (reg1.test(endDate)) {
+          endDate = endDate.split('/').join('-')
+        } else {
+          alert('日期格式为  年-月-日')
+          return false
+        }
+      }
+    }
+    $.post(localhost + '/tuan/torders/query', {
+      code: code,
+      startDate: startDate,
+      endDate: endDate,
+      wxname: wxname,
+      order_type: order_type,
+      saleId: token,
+      online_code: onlinecode
+    }, function (res) {
+      outline(res)
+      $('.all').html('')
+      if (res.data !== null) {
+        var content = res.data
+        addhtml13_(content)
+        $('.body-top .li:eq(4)').addClass('li-change').siblings().removeClass('li-change')
+      }
+    })
+  } else {
+    alert('开始日期与结束日期必须全部填写完整或或全部不填')
+  }
+}
+
+$(document).on('click','.search-con select',function () {
+  var type = $('select option:selected').val()
+  order_type = type
+})
+
+$(document).on('click','.search-sure .begin',function () {
+  search()
+  $(this).parents('.search-con').remove()
+})
+
+$('body').on('keydown', function (e) {
+  if (e.keyCode === 13) {
+    search()
+  }
+})
+
+
+
 
 //待退货
 
@@ -677,34 +956,11 @@ $('.body-top ul li').click(function () {
                 addhtml1_(content)
                 if (content.length === 0) {
                     $('.pages').hide()
-
-                
                 } else {
                     $('.pages').show()
                 }
             })
             break
-        /*case 1:
-            
-            break*/
-        /*case 4:
-            $.post(localhost + '/tuan/product/list', {
-                saleId: token,
-                active: false,
-                online_code: onlinecode
-            }, function (data) {
-                outline(data)
-                var content = data.data.content
-                addhtml4_(content)
-                if (content.length === 0) {
-                    $('.pages').hide()
-                } else {
-                    $('.pages').show()
-                }
-            })
-            chageStyle('/tuan/product/list', addhtml4_)
-            details_.active = false
-            break*/
         default:
             break
     }
@@ -1158,37 +1414,15 @@ $('.all').on('click', '.order-img', function () {
     }
 })
 
-// 团购点击物流状态
-/*$('body').on('click', '.fahuo-tuan-ready input', function () {
-    if ($(this).attr('title') === '') {
-        $(this).parents('.details-right-charge').siblings('.details-details-cons').stop(true).slideDown()
-        $(this).prop('title', '发货')
-    } else {
-        $(this).parents('.details-right-charge').siblings('.details-details-cons').stop(true).slideUp()
-        $(this).prop('title', '')
-    }
-})*/
-$('.all').on('click', '.fahuo-tuan-ready input', function () {
-    var stu = eval($(this).prop('name')) === true ? true : false
-    $(this).prop('name', !stu)
-    if (stu) {
-        $(this).val('隐藏')
-        $(this).parents('.details').find('.details-details-cons').slideDown()
-    } else {
-        $(this).val('查看物流')
-        $(this).parents('.details').find('.details-details-cons').slideUp()
-    }
-})
 
 // 点击查看物流详情
-$('.all').on('click', '.show-express input', function () {
-    var stu = eval($(this).prop('name')) === true ? true : false
-    $(this).prop('name', !stu)
-    var dcode = $(this).parent('.show-express').siblings('.details-details-cons-tuan-express-con').find('.dcode').text()
-    if (stu) {
-        $(this).parents('.show-express').next('.details-details-cons-tuan-express-con').slideDown()
+$('body').on('click', '.see-wuliu', function () {
+    if ($(this).attr('title') === '') {
+        $(this).parents('.details').find('.details-details-cons').stop(true).slideDown()
+        $(this).prop('title', '查看物流')
     } else {
-        $(this).parents('.show-express').next('.details-details-cons-tuan-express-con').slideUp()
+        $(this).parents('.details').find('.details-details-cons').stop(true).slideUp()
+        $(this).prop('title', '')
     }
 })
 
@@ -1220,13 +1454,13 @@ $('body').on('click', '.details-ul li', function () {
 
 
 // 普通订单发货点击确认按钮，成功后更改订单状态
-$('body').on('click', '.express-sure', function () {
+$('body').on('click', '.fahuo-sure', function () {
     var dename_ = []
-    var index = $(this).parents('.details').index()
-    var oid = $(this).siblings('.oid').text()
+    var oid = $(this).parents('.details').find('.oNum').html()
     var dcode = $(this).siblings('.express').find('input').val()
     var dname = $(this).siblings('.details-ul').find('input').val()
-    var id = $(this).parents('.details').find('.deliverId').html()
+    var id = $(this).parents('.details').find('.did').html()
+    var that = $(this)
     $.post(localhost + '/tuan/tdeliver/update', {
         id: id,
         oid: oid,
@@ -1252,7 +1486,7 @@ $('body').on('click', '.express-sure', function () {
                         alert(data.message)
                     } else {
                         if (data.message === '操作成功') {
-                            $('.all').find('.details').eq(index).remove()
+                        	that.parents('.details').remove()
                         }
                     }
                 })
@@ -1262,37 +1496,53 @@ $('body').on('click', '.express-sure', function () {
 })
 
 //团购未发货订单卖家备注填写
-$('.all').on("click", '.tianxie', function(){
-	var oid = $(this).parents('.details').find('.dliverid').html()
-	var leavemsg = $(this).parents('.details').find('.tmjbeizhu input').val()
-	var input = $(this).parents('.details').find('.tmjbeizhu input')
+$('.all').on("click", '.tuan-tianxie', function(){
+	var oid = $(this).parents('.details').find('.oNum').html()
+	var leavemsg
 	var that = $(this)
+	leavemsg = prompt('请填写备注');
+	
 	$.post(localhost + '/tuan/tuanorders/leavemsg',{
 		oid: oid,
 		saleId: token,
-		leavemsg: leavemsg
+		leavemsg: leavemsg,
+		online_code: onlinecode
 	}, function(res){
 		outline(res)
 		if(res.message === '操作成功'){
-			console.log(that.parents('.details').find('.tmjbeizhu input')[0].placeholder)
-			that.parents('.details').find('.tmjbeizhu input')[0].placeholder = leavemsg
-			that.parents('.details').find('.tmjbeizhu input').val("")
+			that.parents('.details').find('.seller-beizhu p').text(leavemsg)
 		}
 	})
 	
 	
-	
+})
+//普通订单卖家备注填写
+$('.all').on("click", '.tianxie', function(){
+	var oid = $(this).parents('.details').find('.oNum').html()
+	var leavemsg
+	var that = $(this)
+	leavemsg = prompt('请填写备注');
+	$.post(localhost + '/tuan/torders/leavemsg',{
+		oid: oid,
+		saleId: token,
+		leavemsg: leavemsg,
+		online_code: onlinecode
+	}, function(res){
+		outline(res)
+		if(res.message === '操作成功'){
+			that.parents('.details').find('.seller-beizhu p').text(leavemsg)
+		}
+	})
 	
 	
 })
 
 //团购订单发货 
-$('.all').on('click', '.fahuo-geren', function () {
-    var oid = $(this).parents('.details').find('.dliverid').html()
-    var did = $(this).siblings('.oid').text()
+$('.all').on('click', '.tuan-fahuo-sure', function () {
+    var oid = $(this).parents('.details').find('.oNum').html()
+    var did = $(this).siblings('.did').text()
     var dcode = $(this).siblings('.express').find('input').val()
     var dname = $(this).siblings('.details-ul').find('input').val()
-    var index = $(this).parents('.details').index()
     var that = $(this)
     $.post(localhost + '/tuan/tdeliver/update_tuan', {
         id: did,
@@ -1320,7 +1570,7 @@ $('.all').on('click', '.fahuo-geren', function () {
                     } else {
                         if (res.message === '操作成功') {
                             alert('发货成功')
-                            that.parents('.details').eq(index).remove()
+                            that.parents('.details').remove()
                             /*that.parents('.details-details-cons-tuan-cons').find('.details-details-cons-tuan-con').eq(index).remove()
                             if (that.parents('.details-details-cons-tuan-cons').find('.details-details-cons-tuan-con').length === 0) {
                                 that.parents('.details-details-cons-tuan-cons').remove()
